@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>猫鹅村生态图鉴 · ねこぺん村 Fan Guide</title>
+<meta name="description" content="走进もじじ笔下「ねこぺん日和」的猫鹅村：ねこくん与ぺんちゃん的村民图鉴、互动村庄地图、关系网、一日生态观察与年表。非官方粉丝资料页。">
+<meta property="og:title" content="猫鹅村生态图鉴 · ねこぺん村 Fan Guide">
+<meta property="og:description" content="ねこくん与ぺんちゃん的悠闲村庄：互动地图、村民图鉴、关系网、一日观察、交通装备与年表。">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#bae1f7">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='30' r='26' fill='%23302c2e'/%3E%3Cpath d='M32 26c-4-6-17-5-16 7s9 15 16 13c7 2 15-1 16-13s-12-13-16-7z' fill='%23fff'/%3E%3Ccircle cx='25' cy='33' r='2.6' fill='%23302c2e'/%3E%3Ccircle cx='39' cy='33' r='2.6' fill='%23302c2e'/%3E%3C/svg%3E">
+<style>
+:root{
+  --ink:#4a3222;--ink2:#7a5a44;--wood:#c69a6a;--wood-d:#8b5e34;--cream:#fff7e3;--sky:#bae1f7;
+  --mint:#c8e8dd;--grass:#b1ce7c;--mikan:#f4a340;--pink:#f4b4b0;--red:#e8705f;--paper:#fffdf8;
+  --font:"Zen Maru Gothic","M PLUS Rounded 1c","Hiragino Maru Gothic ProN","Arial Rounded MT Bold","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;font-family:var(--font);color:var(--ink);background:var(--cream);line-height:1.75;-webkit-text-size-adjust:100%;overflow-x:hidden}
+a{color:#c0463a}
+button{font-family:inherit;color:inherit}
+img,svg{display:block}
+.wrap{max-width:1140px;margin:0 auto}
+
+/* ===== top bar ===== */
+.topbar{position:fixed;inset:0 0 auto 0;z-index:50;height:60px;background:rgba(255,253,248,.94);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-bottom:2px dashed var(--ink);display:flex;align-items:center;gap:14px;padding:0 16px}
+.brand{display:flex;align-items:center;gap:8px;font-weight:800;text-decoration:none;color:var(--ink);white-space:nowrap;font-size:17px}
+.brand svg{width:34px;height:34px}
+.nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;flex:1;-webkit-overflow-scrolling:touch}
+.nav::-webkit-scrollbar{display:none}
+.nav a{white-space:nowrap;text-decoration:none;color:var(--ink);font-weight:700;font-size:14px;padding:6px 10px;border-radius:999px}
+.nav a:hover{background:var(--mint)}
+.share-btn{flex:none;border:0;background:var(--wood-d);color:#fff;font-weight:800;border-radius:999px;padding:8px 16px;cursor:pointer;box-shadow:0 3px 0 #5d3c1f;font-size:14px}
+.share-btn:active{transform:translateY(2px);box-shadow:0 1px 0 #5d3c1f}
+
+/* ===== hero ===== */
+.hero{position:relative;min-height:min(94vh,780px);background:linear-gradient(#a9daf6 0%,#cfeefc 60%,#e7f7ff 100%);overflow:hidden;padding:84px 16px 0;display:flex;flex-direction:column;align-items:center}
+.cloud{position:absolute;background:#fff;border-radius:999px;opacity:.95;animation:drift linear infinite}
+.cloud::before,.cloud::after{content:"";position:absolute;background:#fff;border-radius:50%}
+.cloud::before{width:55%;height:160%;left:14%;bottom:20%}
+.cloud::after{width:38%;height:120%;right:12%;bottom:30%}
+@keyframes drift{from{transform:translateX(-30vw)}to{transform:translateX(130vw)}}
+.sun{position:absolute;right:8%;top:90px;width:74px;height:74px;border-radius:50%;background:#ffd765;box-shadow:0 0 0 12px rgba(255,215,101,.35),0 0 0 26px rgba(255,215,101,.18)}
+.sign{position:relative;z-index:3;margin-top:3vh;max-width:760px;width:100%;background:#fff8e6;border:10px solid var(--wood);outline:3px solid var(--ink);border-radius:14px;padding:26px 22px 24px;text-align:center;box-shadow:0 10px 0 rgba(139,94,52,.25)}
+.sign::before,.sign::after{content:"";position:absolute;bottom:-90px;width:22px;height:84px;background:var(--wood-d);border:3px solid var(--ink);border-top:0;z-index:-1}
+.sign::before{left:16%}.sign::after{right:16%}
+.sign .kicker{display:inline-block;background:var(--mint);border-radius:999px;padding:2px 14px;font-weight:800;font-size:14px;letter-spacing:.08em}
+.sign h1{margin:10px 0 6px;font-size:clamp(30px,6vw,56px);line-height:1.2;letter-spacing:.06em}
+.sign h1 small{display:block;font-size:.42em;letter-spacing:.2em;color:var(--ink2);margin-top:6px}
+.sign p{margin:8px auto 0;max-width:560px;color:var(--ink2);font-size:15px}
+.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-flex;align-items:center;gap:6px;border:3px solid var(--ink);background:#fff;border-radius:999px;padding:8px 20px;font-weight:800;text-decoration:none;color:var(--ink);cursor:pointer;box-shadow:0 4px 0 var(--ink);font-size:15px}
+.btn.primary{background:var(--mikan)}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--ink)}
+.hero-scene{position:absolute;left:0;right:0;bottom:0;height:min(46vh,420px);z-index:1}
+.hero-scene svg{width:100%;height:100%}
+.hero-quote{position:absolute;z-index:4;left:50%;bottom:16px;transform:translateX(-50%);background:rgba(255,255,255,.85);border-radius:999px;padding:4px 16px;font-size:13px;font-weight:700;white-space:nowrap}
+
+/* ===== sections ===== */
+section{position:relative;padding:92px 18px 84px}
+section.plank::before{content:"";position:absolute;left:0;right:0;top:0;height:18px;background:var(--wood);border-bottom:5px solid var(--wood-d);box-shadow:inset 0 3px 0 rgba(255,255,255,.25)}
+.sec-title{text-align:center;margin-bottom:36px}
+.sec-title .jp{display:inline-block;background:#fff;border:2px solid var(--ink);border-radius:999px;padding:0 14px;font-size:13px;font-weight:800;letter-spacing:.1em}
+.sec-title h2{font-size:clamp(26px,4.2vw,40px);margin:10px 0 0;letter-spacing:.06em;line-height:1.3}
+.sec-title h2::before,.sec-title h2::after{content:"";display:inline-block;width:34px;height:4px;border-radius:4px;background:currentColor;vertical-align:middle;margin:0 14px;opacity:.35}
+.sec-title p{max-width:720px;margin:12px auto 0;color:var(--ink2)}
+.bg-cork{background-color:#f8e6c2;background-image:radial-gradient(#ecd2a2 1.3px,transparent 1.5px),radial-gradient(#f2dbb0 1px,transparent 1.2px);background-size:14px 14px,9px 9px;background-position:0 0,5px 7px}
+.bg-mint{background:var(--mint)}
+.bg-stripe{background:repeating-linear-gradient(-45deg,#fff3c4 0 16px,#ffeaa6 16px 32px)}
+.bg-dots{background:#fffdf0 radial-gradient(#f1cfae 2px,transparent 2.5px) 0 0/28px 28px}
+.bg-sky{background:linear-gradient(#cdeefc,#eef9ff)}
+.card{background:var(--paper);border:3px solid var(--ink);border-radius:22px;box-shadow:0 7px 0 rgba(139,94,52,.22)}
+
+/* tags */
+.tag{display:inline-block;font-size:12px;font-weight:800;border-radius:999px;padding:1px 10px;margin:0 4px 4px 0;white-space:nowrap}
+.t-off{background:#dcefd2;color:#3d6a2d}.t-exh{background:#ffe1c2;color:#97521a}.t-ref{background:#d8e8f8;color:#2d5888}.t-fan{background:#f9d8e1;color:#a03c5c}
+.legend{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 14px;font-size:13px;color:var(--ink2);margin-top:10px}
+
+/* ===== about ===== */
+.about-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:26px;align-items:start}
+.about-card{padding:26px 26px 22px}
+.about-card h3{margin:0 0 8px;font-size:22px}
+.about-card p{margin:8px 0}
+.quote{position:relative;background:#fff3d8;border-radius:16px;padding:16px 18px 14px 50px;margin:14px 0;font-size:15px}
+.quote::before{content:"\201C";position:absolute;left:12px;top:-6px;font-size:58px;line-height:1;color:var(--mikan);font-family:Georgia,serif}
+.quote .ja{display:block;color:var(--ink2);font-size:13px;margin-top:6px}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.stat{padding:16px;text-align:center}
+.stat b{display:block;font-size:30px;line-height:1.2;color:var(--wood-d)}
+.stat span{font-size:13px;color:var(--ink2)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.duo .card{padding:14px;display:flex;gap:10px;align-items:center}
+.duo svg{width:70px;height:70px;flex:none}
+.duo h4{margin:0;font-size:17px}
+.duo p{margin:2px 0 0;font-size:13px;color:var(--ink2);line-height:1.5}
+.links{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.links a{font-size:13px;font-weight:800;text-decoration:none;background:#fff;border:2px solid var(--ink);border-radius:999px;padding:3px 12px;color:var(--ink)}
+
+/* ===== map ===== */
+.map-tools{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:16px}
+.seg{display:inline-flex;background:#fff;border:3px solid var(--ink);border-radius:999px;padding:3px;gap:2px}
+.seg button{border:0;background:transparent;border-radius:999px;padding:5px 14px;font-weight:800;cursor:pointer;font-size:14px}
+.seg button.on{background:var(--mikan)}
+.map-layout{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:20px;align-items:start}
+.map-layout>*{min-width:0}
+.map-frame{position:relative;border:10px solid var(--wood);outline:3px solid var(--ink);border-radius:18px;overflow:hidden;background:#cfe3a0}
+.map-scroll{overflow:auto;-webkit-overflow-scrolling:touch}
+#vmap{width:100%;height:auto;min-width:0}
+.fx{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.fx i{position:absolute;top:-20px;display:block;animation:fall linear infinite}
+@keyframes fall{to{transform:translate(var(--dx,40px),110vh) rotate(var(--rot,360deg))}}
+.map-hint{position:absolute;left:10px;bottom:10px;background:rgba(255,255,255,.88);border-radius:999px;padding:2px 12px;font-size:12px;font-weight:700;pointer-events:none}
+.place-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;justify-content:center}
+.place-chips button{border:2px solid var(--ink);background:#fff;border-radius:999px;padding:3px 12px;font-weight:800;font-size:13px;cursor:pointer}
+.place-chips button.on{background:var(--mikan)}
+.panel{padding:20px 20px 18px;position:sticky;top:76px}
+.panel .no{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--mikan);border:2px solid var(--ink);font-weight:900;margin-right:6px}
+.panel h3{margin:6px 0 0;font-size:22px;line-height:1.35}
+.panel .jpn{color:var(--ink2);font-size:14px;font-weight:700}
+.panel p{margin:10px 0;font-size:15px}
+.panel ul{margin:8px 0 0;padding-left:20px;font-size:14px}
+.panel li{margin:4px 0}
+.who{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.who span{display:inline-flex;align-items:center;gap:4px;background:#f6efe0;border-radius:999px;padding:2px 10px 2px 2px;font-size:13px;font-weight:700}
+.who svg{width:28px;height:28px;background:#fff;border-radius:50%}
+.spot{cursor:pointer;transition:filter .2s}
+.spot:hover,.spot.active{filter:drop-shadow(0 0 5px #fff) drop-shadow(0 0 2px #fff)}
+.pin{cursor:pointer}
+.pin .pulse{fill:rgba(244,163,64,.45);transform-box:fill-box;transform-origin:center;animation:pulse 1.8s ease-out infinite}
+.pin.active .pulse{fill:rgba(232,112,95,.6)}
+.pin.active .disc{fill:var(--red)}
+@keyframes pulse{from{transform:scale(.7);opacity:1}to{transform:scale(1.9);opacity:0}}
+.pin-label{font-size:20px;font-weight:800;fill:var(--ink);paint-order:stroke;stroke:#fff;stroke-width:5px;stroke-linejoin:round}
+.m-ground{fill:var(--ground)}
+.m-gmark{stroke:var(--gmark)}
+.m-sea{fill:var(--sea)}
+.m-wave{fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;opacity:.8}
+.m-tree{fill:var(--tree);stroke:var(--ink);stroke-width:3}
+.m-tree2{fill:var(--tree2);stroke:var(--ink);stroke-width:3}
+.m-hill{fill:var(--hill);stroke:var(--ink);stroke-width:3}
+.m-hill.b{fill:var(--hill2)}
+.m-hilltex{fill:none;stroke:rgba(74,50,34,.35);stroke-width:2.5;stroke-linecap:round}
+.m-path{fill:none;stroke:var(--path);stroke-width:24;stroke-linecap:round;stroke-linejoin:round}
+.m-path-in{fill:none;stroke:rgba(255,255,255,.45);stroke-width:3;stroke-dasharray:2 14;stroke-linecap:round}
+.m-river{fill:none;stroke:var(--sea);stroke-width:34;stroke-linecap:round}
+.m-river-edge{fill:none;stroke:var(--ink);stroke-width:40;stroke-linecap:round}
+.m-river-hi{fill:none;stroke:#fff;stroke-width:3;stroke-dasharray:14 22;opacity:.7;stroke-linecap:round}
+.m-snow{fill:#fff;opacity:0}
+.m-night{fill:#18214d;opacity:0;transition:opacity .8s;pointer-events:none}
+.m-lights,.m-stars{opacity:0;transition:opacity .8s;pointer-events:none}
+.night .m-night{opacity:.5}
+.night .m-lights,.night .m-stars{opacity:1}
+.win{fill:#cfe9f5}
+.night .win{fill:#ffd96b}
+.m-boat{animation:bob2 2.4s ease-in-out infinite alternate}
+@keyframes bob2{from{transform:translate(455px,58px)}to{transform:translate(455px,64px) rotate(2deg)}}
+.m-smoke circle{fill:#fff;stroke:var(--ink);stroke-width:2;opacity:.9}
+.bob{animation:bob .45s ease-in-out infinite alternate}
+@keyframes bob{to{transform:translateY(-12px)}}
+.twinkle{animation:tw 2s ease-in-out infinite alternate}
+@keyframes tw{to{opacity:.3}}
+.map-frame[data-season="spring"]{--ground:#d7e9a6;--gmark:#a9c97a;--tree:#93c46e;--tree2:#f6bfd0;--sea:#a4d9f2;--hill:#8cbf6a;--hill2:#7fb35f;--path:#d9b98a}
+.map-frame[data-season="summer"]{--ground:#c6df8c;--gmark:#93b864;--tree:#62ad57;--tree2:#4f9a4c;--sea:#86cff0;--hill:#5fa557;--hill2:#4f964b;--path:#d8b683}
+.map-frame[data-season="autumn"]{--ground:#e9d690;--gmark:#c9ae63;--tree:#eaa04c;--tree2:#d8643f;--sea:#9fcfe6;--hill:#c9a34e;--hill2:#b98f45;--path:#c99c66}
+.map-frame[data-season="winter"]{--ground:#eef4f6;--gmark:#cddbe2;--tree:#9fbcae;--tree2:#86a998;--sea:#b4d7ea;--hill:#e3edf1;--hill2:#d5e3e9;--path:#d8cbb8}
+.map-frame[data-season="winter"] .m-snow{opacity:.95}
+
+/* ===== residents ===== */
+.rules{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px}
+.rule{padding:14px 14px 12px;font-size:14px}
+.rule b{display:block;font-size:16px;margin-bottom:4px}
+.filter{display:flex;justify-content:center;margin-bottom:22px}
+.res-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:18px}
+.res{padding:14px 14px 16px;text-align:center;cursor:pointer;transition:transform .15s;position:relative}
+.res:hover{transform:translateY(-4px) rotate(-.6deg)}
+.res .av{width:120px;height:120px;margin:0 auto 4px;background:radial-gradient(circle at 50% 60%,#fff 0 55%,transparent 56%),var(--mint);border-radius:50%}
+.res.sp-penguin .av{background:radial-gradient(circle at 50% 60%,#fff 0 55%,transparent 56%),#d8ecf8}
+.res.sp-other .av{background:radial-gradient(circle at 50% 60%,#fff 0 55%,transparent 56%),#fbe3c8}
+.res h3{margin:4px 0 0;font-size:18px}
+.res .cn{font-size:13px;color:var(--ink2);font-weight:700}
+.res p{margin:6px 0 0;font-size:13px;line-height:1.55}
+.res .role{position:absolute;top:10px;left:10px}
+.modal{position:fixed;inset:0;z-index:80;background:rgba(40,28,18,.55);display:none;align-items:center;justify-content:center;padding:16px}
+.modal.open{display:flex}
+.modal .card{max-width:620px;width:100%;max-height:88vh;overflow:auto;padding:22px;position:relative}
+.modal .close{position:absolute;right:12px;top:10px;border:2px solid var(--ink);background:#fff;border-radius:50%;width:36px;height:36px;font-size:20px;font-weight:900;cursor:pointer;line-height:1}
+.m-head{display:flex;gap:16px;align-items:center}
+.m-head svg{width:120px;height:120px;flex:none;background:var(--mint);border-radius:50%}
+.m-head h3{margin:0;font-size:26px}
+table.prof{width:100%;border-collapse:collapse;margin-top:14px;font-size:14px}
+table.prof th{width:96px;text-align:left;vertical-align:top;padding:8px 8px 8px 0;color:var(--wood-d);white-space:nowrap}
+table.prof td{padding:8px 0;border-bottom:1px dashed #d9c4a5}
+.src{font-size:12px;color:var(--ink2);margin-top:12px}
+
+/* ===== relations ===== */
+.rel-box{padding:10px}
+#relSvg{width:100%;height:auto}
+.edge line{stroke:var(--ink);stroke-width:3;opacity:.55;transition:opacity .2s,stroke-width .2s}
+.edge.dash line{stroke-dasharray:8 8}
+.edge text{font-size:15px;font-weight:800;fill:var(--ink)}
+.edge rect{fill:#fff;stroke:var(--ink);stroke-width:2}
+.node{cursor:pointer}
+.node text{font-size:16px;font-weight:800;fill:var(--ink);paint-order:stroke;stroke:#fffdf0;stroke-width:5px}
+#relSvg.focus .edge{opacity:.15}
+#relSvg.focus .edge.hl{opacity:1}
+#relSvg.focus .edge.hl line{opacity:1;stroke-width:5;stroke:var(--red)}
+#relSvg.focus .node{opacity:.35}
+#relSvg.focus .node.hl{opacity:1}
+
+/* ===== day ===== */
+.day-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:22px;align-items:stretch}
+.day-scene{position:relative;min-height:330px;border:3px solid var(--ink);border-radius:22px;overflow:hidden;transition:background 1s}
+.day-scene .orb{position:absolute;width:56px;height:56px;border-radius:50%;transition:left 1s,top 1s,background 1s,box-shadow 1s}
+.day-scene .ground{position:absolute;left:0;right:0;bottom:0;height:34%;background:var(--grass);border-top:3px solid var(--ink)}
+.day-scene .stars{position:absolute;inset:0;opacity:0;transition:opacity 1s}
+.day-scene .stars i{position:absolute;width:3px;height:3px;background:#fff;border-radius:50%}
+.day-chars{position:absolute;left:0;right:0;bottom:12%;display:flex;justify-content:center;gap:24%}
+.day-chars .c{position:relative;width:110px}
+.day-chars svg{width:110px;height:110px}
+.bubble{position:absolute;bottom:112px;left:50%;transform:translateX(-50%);background:#fff;border:2.5px solid var(--ink);border-radius:16px;padding:6px 10px;font-size:13px;font-weight:700;width:max-content;max-width:180px;text-align:center;line-height:1.45}
+.bubble::after{content:"";position:absolute;left:50%;bottom:-9px;margin-left:-7px;border:7px solid transparent;border-top-color:var(--ink);border-bottom:0}
+.day-clock{position:absolute;left:14px;top:12px;background:rgba(255,255,255,.9);border:2.5px solid var(--ink);border-radius:999px;padding:2px 14px;font-weight:900;font-size:18px}
+.day-info{padding:20px}
+.day-info h3{margin:0;font-size:22px}
+.day-info p{margin:8px 0}
+input[type=range]{width:100%;accent-color:var(--mikan);margin:14px 0 6px}
+.hours{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.hours button{border:2px solid var(--ink);background:#fff;border-radius:999px;padding:2px 10px;font-weight:800;font-size:12px;cursor:pointer}
+.hours button.on{background:var(--mikan)}
+.linkbtn{border:0;background:none;color:#c0463a;font-weight:800;cursor:pointer;padding:0;text-decoration:underline;font-size:14px}
+
+/* ===== vehicles ===== */
+.veh-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.veh{padding:16px 18px 18px}
+.veh svg{width:100%;height:150px;background:#fff6e2;border-radius:16px;margin-bottom:10px}
+.veh h3{margin:0;font-size:19px}
+.veh .cn{font-size:13px;color:var(--ink2);font-weight:700}
+.veh p{margin:6px 0 0;font-size:14px}
+
+/* ===== timeline ===== */
+.tl{position:relative;max-width:860px;margin:0 auto;padding-left:34px}
+.tl::before{content:"";position:absolute;left:12px;top:6px;bottom:6px;width:6px;border-radius:6px;background:repeating-linear-gradient(var(--wood) 0 14px,var(--wood-d) 14px 18px)}
+.tl-item{position:relative;margin-bottom:16px;padding:12px 16px}
+.tl-item::before{content:"";position:absolute;left:-31px;top:18px;width:18px;height:18px;border-radius:50%;background:var(--mikan);border:3px solid var(--ink)}
+.tl-item time{font-weight:900;color:var(--wood-d);margin-right:8px}
+.tl-item b{font-size:16px}
+.tl-item p{margin:4px 0 0;font-size:14px;color:var(--ink2)}
+
+/* ===== sources ===== */
+.src-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.src-card{padding:16px 18px}
+.src-card h3{margin:0 0 6px;font-size:17px}
+.src-card ul{margin:0;padding-left:18px;font-size:14px}
+.src-card li{margin:4px 0;word-break:break-all}
+.notice{margin-top:22px;padding:18px 20px;font-size:14px;background:#fff3d8}
+footer{background:var(--ink);color:#f4e6d0;text-align:center;padding:30px 16px 40px;font-size:13px}
+footer b{color:#fff}
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,30px);background:var(--ink);color:#fff;border-radius:999px;padding:8px 18px;font-weight:800;opacity:0;transition:.3s;z-index:99;pointer-events:none}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+@media (max-width:980px){
+  .map-layout{grid-template-columns:minmax(0,1fr)}
+  .panel{position:static}
+  .about-grid,.day-grid{grid-template-columns:1fr}
+  .rules{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:640px){
+  .brand span{display:none}
+  section{padding:80px 14px 70px}
+  .sign{padding:18px 14px}
+  .sign::before,.sign::after{display:none}
+  #vmap{min-width:880px}
+  .map-hint{display:block}
+  .rules,.src-grid,.duo{grid-template-columns:1fr}
+  .res-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+  .res .av{width:96px;height:96px}
+  .day-chars{gap:10%}
+  .hero-quote{font-size:11px}
+}
+@media (min-width:641px){.map-hint{display:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="#top" aria-label="回到顶部"><svg viewBox="0 0 120 120"><g class="chr" data-c="penPlain"></g></svg><span>猫鹅村生态图鉴</span></a>
+  <nav class="nav" aria-label="页面导航">
+    <a href="#about">作者</a><a href="#map">村庄地图</a><a href="#residents">村民图鉴</a><a href="#relations">关系网</a><a href="#day">一日观察</a><a href="#vehicles">交通装备</a><a href="#timeline">年表</a><a href="#sources">出处</a>
+  </nav>
+  <button class="share-btn" id="shareBtn" type="button">分享</button>
+</header>
+
+<!-- ================= HERO ================= -->
+<div class="hero" id="top">
+  <div class="sun"></div>
+  <div class="cloud" style="top:110px;width:150px;height:44px;animation-duration:70s;animation-delay:-20s"></div>
+  <div class="cloud" style="top:190px;width:110px;height:34px;animation-duration:90s;animation-delay:-60s"></div>
+  <div class="cloud" style="top:70px;width:90px;height:28px;animation-duration:60s;animation-delay:-5s"></div>
+  <div class="sign">
+    <span class="kicker">ねこぺん村へようこそ</span>
+    <h1>猫鹅村生态图鉴<small>NEKOPEN VILLAGE FIELD GUIDE</small></h1>
+    <p>白猫「ねこくん」和企鹅宝宝「ぺんちゃん」住在一座自然丰富、悠闲自在的村子里。这里是插画师もじじ笔下「ねこぺん日和」的世界——我们把官方设定、展览资料整理成一份村庄生态观察手册。</p>
+    <div class="cta">
+      <a class="btn primary" href="#map">进村看看地图</a>
+      <a class="btn" href="#residents">认识村民</a>
+    </div>
+  </div>
+  <div class="hero-scene" aria-hidden="true">
+    <svg viewBox="0 0 1440 420" preserveAspectRatio="xMidYMax slice">
+      <path d="M0 250C200 238 380 248 560 262V420H0Z" fill="#9fd3ef"/>
+      <path d="M40 300q14-9 28 0t28 0M300 330q14-9 28 0t28 0M180 360q14-9 28 0t28 0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+      <ellipse cx="230" cy="262" rx="130" ry="20" fill="#9cc27a" stroke="#4a3222" stroke-width="3"/>
+      <path d="M126 264L208 168Q230 152 252 168L334 264Z" fill="#b3add0" stroke="#4a3222" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M198 180L208 168Q230 152 252 168L262 180L250 190L240 180L230 190L220 180L210 190Z" fill="#fff" stroke="#4a3222" stroke-width="2.5" stroke-linejoin="round"/>
+      <path class="twinkle" d="M230 108l6 12 13 2-9 9 2 13-12-6-12 6 2-13-9-9 13-2z" fill="#ffd34d" stroke="#4a3222" stroke-width="2.5" stroke-linejoin="round"/>
+      <path d="M420 300C560 222 720 232 840 290C980 214 1200 222 1440 276V420H420Z" fill="#cfe6a6" stroke="#4a3222" stroke-width="3"/>
+      <g><rect x="650" y="232" width="10" height="34" rx="3" fill="#9b6a3f" stroke="#4a3222" stroke-width="2.5"/><circle cx="655" cy="222" r="24" fill="#8cc06b" stroke="#4a3222" stroke-width="3"/>
+      <rect x="1010" y="226" width="10" height="34" rx="3" fill="#9b6a3f" stroke="#4a3222" stroke-width="2.5"/><circle cx="1015" cy="214" r="26" fill="#8cc06b" stroke="#4a3222" stroke-width="3"/><circle cx="1006" cy="208" r="4" fill="#f39a3b"/><circle cx="1024" cy="220" r="4" fill="#f39a3b"/><circle cx="1012" cy="226" r="4" fill="#f39a3b"/>
+      <rect x="1290" y="226" width="10" height="34" rx="3" fill="#9b6a3f" stroke="#4a3222" stroke-width="2.5"/><circle cx="1295" cy="214" r="24" fill="#8cc06b" stroke="#4a3222" stroke-width="3"/><circle cx="1288" cy="210" r="4" fill="#e8584a"/><circle cx="1302" cy="220" r="4" fill="#e8584a"/></g>
+      <path d="M0 336C240 306 520 322 760 332C1000 342 1240 312 1440 322V420H0Z" fill="#b1ce7c" stroke="#4a3222" stroke-width="3"/>
+      <g id="heroFlowers"></g>
+      <g transform="translate(560 262)"><g transform="scale(.62)"><g class="bob chr" data-c="neko"></g></g></g>
+      <g transform="translate(640 284)"><g transform="scale(.52)"><g class="bob chr" data-c="pen" style="animation-delay:-.2s"></g></g></g>
+      <g transform="translate(1080 252)"><g class="chr" data-c="car"></g></g>
+    </svg>
+  </div>
+  <div class="hero-quote">「のんびりいこう」—— 慢慢来吧（もじじ 官方明信片寄语）</div>
+</div>
+
+<!-- ================= ABOUT ================= -->
+<section id="about" class="plank bg-cork">
+  <div class="wrap">
+    <div class="sec-title"><span class="jp">もじじ と ねこぺん日和</span><h2>作者与作品</h2><p>「ねこぺん日和」（ねこぺんびより）是鹿儿岛县的插画师もじじ创作的 LINE 贴图角色，2014 年登场，凭借猫与企鹅温柔的日常走红。</p></div>
+    <div class="about-grid">
+      <div class="card about-card">
+        <h3>画师 もじじ（@mojimojiji）</h3>
+        <p>住在鹿儿岛县的插画师，以动物为主题创作温暖治愈的画。X（原 Twitter）简介自称「ちんちくりんの絵描き」——小个子的画画人。除了「ねこぺん日和」，还画过 LINE 贴图『ぺんちゃん』『ねこばかり』等作品。</p>
+        <p>最初，她把两只小家伙不经意的日常画成一张张单幅插画发到 Twitter 上，标题就是「ねこぺん日和」。读者留言说「被治愈了」「心里暖暖的」「有精神了」，这些反馈后来变成了贴图，也变成了今天的猫鹅村。</p>
+        <div class="quote">活着并不全是开心的事，也会有难过、伤心的时候。我想，能不能为这样的人，用画传递一点治愈呢……就这样诞生了猫「ねこくん」和企鹅「ぺんちゃん」。<span class="ja">「生きていたら楽しいことばかりじゃなく、つらいこと・かなしいこともあるじゃないですか。そんな人たちに向けて絵で何か癒しを伝えることができないか……」——2015 年 LINE 贴图官方博客采访</span></div>
+        <div class="links">
+          <a href="https://x.com/mojimojiji" target="_blank" rel="noopener">X @mojimojiji</a>
+          <a href="https://www.instagram.com/mojiji2014/" target="_blank" rel="noopener">Instagram @mojiji2014</a>
+          <a href="https://linefriends.co.jp/nekopen" target="_blank" rel="noopener">LINE FRIENDS 官方页面</a>
+          <a href="https://store.line.me/stickershop/author/96785/ja" target="_blank" rel="noopener">LINE 贴图商店</a>
+        </div>
+      </div>
+      <div>
+        <div class="stats">
+          <div class="card stat"><b>2014</b><span>在 LINE Creators 贴图登场</span></div>
+          <div class="card stat"><b>39 套</b><span>LINE 商店作者名下贴图（2026）</span></div>
+          <div class="card stat"><b>约16.5万</b><span>X 关注者（第三方统计，2026.9）</span></div>
+          <div class="card stat"><b>2015.12</b><span>获 LINE Creators MVP</span></div>
+        </div>
+        <div class="duo">
+          <div class="card"><svg viewBox="0 0 120 120"><g class="chr" data-c="neko"></g></svg><div><h4>ねこくん</h4><p>温和温柔的白猫，有点太我行我素。句尾「～にゃ」。</p></div></div>
+          <div class="card"><svg viewBox="0 0 120 120"><g class="chr" data-c="pen"></g></svg><div><h4>ぺんちゃん</h4><p>坦率纯真的企鹅宝宝，有点冒失。句尾「～だっぺ」。</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MAP ================= -->
+<section id="map" class="plank bg-mint">
+  <div class="wrap">
+    <div class="sec-title"><span class="jp">ねこぺん村 ひみつのちず</span><h2>猫鹅村互动地图</h2><p>根据官方页面「ねこぺん村とは？」「ねこぺん村のみどころ」，以及 10 周年纪念展的「ねこぺん村 ジオラマ」（立体村庄模型）整理绘制。点击地图上的地点查看生态笔记。</p>
+      <div class="legend"><span><span class="tag t-off">官方</span>官方页面/商品/新闻</span><span><span class="tag t-exh">展览</span>10周年展再现与模型</span><span><span class="tag t-ref">资料</span>百科/采访/新闻稿</span><span><span class="tag t-fan">演绎</span>本站根据设定的想象</span></div>
+    </div>
+    <div class="map-tools">
+      <div class="seg" id="seasonSeg" role="group" aria-label="季节">
+        <button type="button" data-v="spring" class="on">春</button><button type="button" data-v="summer">夏</button><button type="button" data-v="autumn">秋</button><button type="button" data-v="winter">冬</button>
+      </div>
+      <div class="seg" id="timeSeg" role="group" aria-label="昼夜">
+        <button type="button" data-v="day" class="on">白天</button><button type="button" data-v="night">夜晚</button>
+      </div>
+    </div>
+    <div class="map-layout">
+      <div>
+        <div class="map-frame" id="mapFrame" data-season="spring">
+          <div class="map-scroll">
+<svg id="vmap" viewBox="0 0 1200 760" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-label="猫鹅村示意地图">
+<defs>
+  <pattern id="gpat" width="48" height="48" patternUnits="userSpaceOnUse"><path class="m-gmark" d="M10 14l3-7 3 7M30 38l3-7 3 7" fill="none" stroke-width="2" stroke-linecap="round"/></pattern>
+  <radialGradient id="glow"><stop offset="0" stop-color="#fff3a8" stop-opacity=".95"/><stop offset=".45" stop-color="#ffd96b" stop-opacity=".5"/><stop offset="1" stop-color="#ffd96b" stop-opacity="0"/></radialGradient>
+  <path id="walkPath" d="M60 648C140 634 200 620 270 580C330 545 400 500 420 440C500 420 560 380 620 340C620 420 600 500 700 520C780 536 840 560 900 600"/>
+</defs>
+<rect class="m-ground" width="1200" height="760"/>
+<rect width="1200" height="760" fill="url(#gpat)"/>
+
+<!-- sea -->
+<path class="m-sea" d="M0 0H540C522 66 452 118 360 136C250 158 120 190 0 228Z" stroke="#4a3222" stroke-width="3"/>
+<path class="m-wave" d="M40 176q14-9 28 0t28 0M110 52q14-9 28 0t28 0M330 30q14-9 28 0t28 0M362 112q14-9 28 0t28 0M20 112q14-9 28 0t28 0"/>
+<g transform="translate(118 160) rotate(-12)"><path d="M-22 0H22L16 10H-16Z" fill="#fff" stroke="#4a3222" stroke-width="2.5" stroke-linejoin="round"/><path d="M-8 2L-20 -6M8 2L20 -6" stroke="#7a5a44" stroke-width="2"/></g>
+<g class="m-boat" transform="translate(455 58)">
+  <path d="M-34 0H34L24 16H-24Z" fill="#fff" stroke="#4a3222" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M0 0V-52" stroke="#4a3222" stroke-width="3"/>
+  <path d="M3 -50L30 -8H3Z" fill="#fffaf0" stroke="#4a3222" stroke-width="2.6" stroke-linejoin="round"/>
+  <path d="M-3 -44L-24 -8H-3Z" fill="#f6d2a0" stroke="#4a3222" stroke-width="2.6" stroke-linejoin="round"/>
+</g>
+
+<!-- kompei island -->
+<g class="spot" data-id="kompei">
+  <ellipse cx="230" cy="104" rx="96" ry="22" fill="#9cc27a" stroke="#4a3222" stroke-width="3"/>
+  <path d="M160 104L214 46Q230 36 246 46L300 104Z" fill="#a9a3c6" stroke="#4a3222" stroke-width="3" stroke-linejoin="round"/>
+  <path class="m-snow" d="M175 92L190 75L198 84L210 70L222 86L236 72L248 84L260 76L285 92Z" stroke="#4a3222" stroke-width="2"/>
+  <path d="M206 55L214 46Q230 36 246 46L254 55L244 62L236 54L228 62L220 54L212 62Z" fill="#fff" stroke="#4a3222" stroke-width="2.4" stroke-linejoin="round"/>
+  <g class="m-smoke"><circle cx="254" cy="30" r="6"/><circle cx="266" cy="20" r="8"/><circle cx="282" cy="12" r="10"/></g>
+  <path class="twinkle" d="M230 4l5 10 11 2-8 8 2 11-10-5-10 5 2-11-8-8 11-2z" fill="#ffd34d" stroke="#4a3222" stroke-width="2.4" stroke-linejoin="round"/>
+</g>
+
+<!-- hills -->
+<g class="spot" data-id="hill">
+  <path class="m-hill" d="M500 236C496 130 548 64 606 64C664 64 712 136 706 236Z"/>
+  <path class="m-hill b" d="M640 236C632 96 690 30 752 30C818 30 864 110 858 236Z"/>
+  <path class="m-hilltex" d="M560 120q6-6 12 0M590 170q6-6 12 0M640 130q6-6 12 0M720 80q6-6 12 0M780 140q6-6 12 0M700 190q6-6 12 0M810 190q6-6 12 0"/>
+  <path class="m-snow" d="M560 82Q606 50 652 82Q630 100 606 92Q584 100 560 82ZM700 52Q752 16 804 52Q780 72 752 62Q726 72 700 52Z"/>
+</g>
+
+<!-- river (edge first) -->
+<path class="m-river-edge" d="M880 -10C860 70 930 110 900 180C870 250 960 300 1020 330C1080 360 1140 380 1214 404"/>
+<g class="spot" data-id="water">
+  <path class="m-river" d="M880 -10C860 70 930 110 900 180C870 250 960 300 1020 330C1080 360 1140 380 1214 404"/>
+  <path class="m-river-hi" d="M880 -10C860 70 930 110 900 180C870 250 960 300 1020 330C1080 360 1140 380 1214 404"/>
+  <ellipse class="m-sea" cx="1090" cy="126" rx="80" ry="38" stroke="#4a3222" stroke-width="3"/>
+  <path d="M1068 122q12-10 24 0q-12 10-24 0zM1092 122l8-6v12z" fill="#f39a3b" stroke="#4a3222" stroke-width="2" stroke-linejoin="round"/>
+  <path class="m-wave" d="M1040 140q10-7 20 0t20 0M1110 104q10-7 20 0t20 0"/>
+</g>
+
+<!-- paths -->
+<g>
+  <path class="m-path" d="M-10 650C110 640 200 620 270 580C330 545 400 500 420 440C432 400 440 370 440 345"/>
+  <path class="m-path" d="M420 440C500 420 560 380 620 340"/>
+  <path class="m-path" d="M620 340C620 420 600 500 700 520C780 536 840 560 900 600"/>
+  <path class="m-path" d="M900 600C1010 600 1020 430 982 310C975 285 1000 270 1050 266"/>
+  <path class="m-path" d="M505 322C540 262 500 200 440 166"/>
+  <path class="m-path" d="M270 580C230 500 200 420 190 365"/>
+  <path class="m-path" d="M270 580C240 530 200 495 150 478"/>
+  <path class="m-path-in" d="M-10 650C110 640 200 620 270 580C330 545 400 500 420 440C500 420 560 380 620 340C620 420 600 500 700 520C780 536 840 560 900 600C1010 600 1020 430 982 310C975 285 1000 270 1050 266"/>
+</g>
+
+<!-- bridge -->
+<g class="spot" data-id="water" transform="translate(982 312) rotate(-82)">
+  <rect x="-44" y="-17" width="88" height="34" rx="6" fill="#d9a066" stroke="#4a3222" stroke-width="3"/>
+  <path d="M-30 -17v34M-15 -17v34M0 -17v34M15 -17v34M30 -17v34" stroke="#a8743f" stroke-width="2.4"/>
+  <path d="M-46 -21H46M-46 21H46" stroke="#8b5e34" stroke-width="5" stroke-linecap="round"/>
+</g>
+
+<!-- decor trees -->
+<g id="decorTrees"></g>
+
+<!-- pier -->
+<g class="spot" data-id="pier">
+  <g transform="translate(418 140) rotate(-38)">
+    <rect x="-14" y="-64" width="28" height="90" fill="#d9a066" stroke="#4a3222" stroke-width="3"/>
+    <path d="M-14 -46H14M-14 -28H14M-14 -10H14M-14 8H14" stroke="#a8743f" stroke-width="2"/>
+  </g>
+  <path d="M392 78Q352 30 322 58" fill="none" stroke="#7a5a44" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M322 58V98" stroke="#7a5a44" stroke-width="1.6" stroke-dasharray="3 3"/>
+  <g transform="translate(362 52) scale(.36)"><g class="chr" data-c="nekoPlain"></g></g>
+</g>
+
+<!-- house -->
+<g class="spot" data-id="house" transform="translate(440 300)">
+  <path d="M-92 32H128" stroke="#4a3222" stroke-width="3" stroke-linecap="round"/>
+  <rect x="64" y="-6" width="58" height="38" fill="#f2e3c6" stroke="#4a3222" stroke-width="3"/>
+  <path d="M60 -6H126L120 -18H66Z" fill="#c9604f" stroke="#4a3222" stroke-width="3" stroke-linejoin="round"/>
+  <rect x="72" y="4" width="42" height="28" fill="#6b5240" stroke="#4a3222" stroke-width="2"/>
+  <g transform="translate(73 6) scale(.25)"><g class="chr" data-c="carEmpty"></g></g>
+  <text x="93" y="-23" text-anchor="middle" font-size="10" font-weight="800" fill="#4a3222">しゃこ</text>
+  <rect x="-60" y="-40" width="120" height="72" fill="#fff8ea" stroke="#4a3222" stroke-width="3"/>
+  <rect x="26" y="-104" width="16" height="30" fill="#c9604f" stroke="#4a3222" stroke-width="3"/>
+  <path d="M-76 -36L0 -96L76 -36Z" fill="#e8705f" stroke="#4a3222" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M-50 -50L0 -86L50 -50" fill="none" stroke="#c9604f" stroke-width="3"/>
+  <rect class="win" x="-46" y="-26" width="28" height="22" stroke="#4a3222" stroke-width="2.5"/>
+  <rect class="win" x="18" y="-26" width="28" height="22" stroke="#4a3222" stroke-width="2.5"/>
+  <path d="M-32 -26v22M-46 -15h28M32 -26v22M18 -15h28" stroke="#4a3222" stroke-width="2"/>
+  <rect x="-11" y="-2" width="22" height="34" rx="9" fill="#b9814f" stroke="#4a3222" stroke-width="2.5"/>
+  <circle cx="5" cy="16" r="2" fill="#4a3222"/>
+  <rect x="-86" y="2" width="5" height="30" fill="#9b6a3f" stroke="#4a3222" stroke-width="1.5"/>
+  <rect x="-96" y="-12" width="24" height="16" rx="5" fill="#d9483b" stroke="#4a3222" stroke-width="2.5"/>
+  <path d="M-48 32q4-10 8 0q4-10 8 0M36 32q4-10 8 0q4-10 8 0" fill="#7fb35f" stroke="#4a3222" stroke-width="2"/>
+</g>
+
+<!-- tea house -->
+<g class="spot" data-id="chaya" transform="translate(190 330)">
+  <rect x="-56" y="-32" width="112" height="58" fill="#f7e6c8" stroke="#4a3222" stroke-width="3"/>
+  <path d="M-72 -28L-52 -64H52L72 -28Z" fill="#f08a3e" stroke="#4a3222" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M-62 -40H62M-56 -52H56M-30 -64l-6 36M0 -64v36M30 -64l6 36" stroke="#c4612a" stroke-width="2"/>
+  <rect x="-42" y="-28" width="84" height="24" fill="#5f8f5a" stroke="#4a3222" stroke-width="2.5"/>
+  <path d="M-14 -28v24M14 -28v24" stroke="#4a3222" stroke-width="1.5"/>
+  <text x="-28" y="-11" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">茶</text>
+  <text x="0" y="-11" text-anchor="middle" font-size="9" font-weight="800" fill="#fff">そら</text>
+  <text x="28" y="-11" text-anchor="middle" font-size="9" font-weight="800" fill="#fff">まめ</text>
+  <rect x="-64" y="12" width="76" height="10" rx="3" fill="#e8584a" stroke="#4a3222" stroke-width="2.5"/>
+  <path d="M-58 22v10M6 22v10" stroke="#4a3222" stroke-width="3"/>
+  <path d="M58 -6V34" stroke="#4a3222" stroke-width="3"/>
+  <path d="M28 -4Q58 -34 88 -4Z" fill="#d93b34" stroke="#4a3222" stroke-width="2.5" stroke-linejoin="round"/>
+  <g transform="translate(-50 -16) scale(.26)"><g class="chr" data-c="nekoPlain"></g></g>
+  <g transform="translate(-22 -12) scale(.24)"><g class="chr" data-c="penPlain"></g></g>
+</g>
+
+<!-- garden + fountain -->
+<g class="spot" data-id="garden">
+  <ellipse cx="110" cy="462" rx="66" ry="28" fill="#8db86a" stroke="#4a3222" stroke-width="3"/>
+  <g id="flowerBed"></g>
+  <circle cx="305" cy="470" r="40" fill="#d6dde2" stroke="#4a3222" stroke-width="3"/>
+  <circle cx="305" cy="470" r="28" class="m-sea" stroke="#4a3222" stroke-width="2.5"/>
+  <rect x="300" y="446" width="10" height="24" rx="3" fill="#d6dde2" stroke="#4a3222" stroke-width="2.5"/>
+  <path d="M305 446Q290 430 284 452M305 446Q320 430 326 452" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+  <rect x="266" y="520" width="32" height="8" rx="3" fill="#b9814f" stroke="#4a3222" stroke-width="2"/>
+  <rect x="318" y="520" width="32" height="8" rx="3" fill="#b9814f" stroke="#4a3222" stroke-width="2"/>
+</g>
+
+<!-- orchard -->
+<g class="spot" data-id="orchard">
+  <rect x="569" y="320" width="12" height="40" rx="4" fill="#9b6a3f" stroke="#4a3222" stroke-width="2.5"/>
+  <circle class="m-tree" cx="575" cy="306" r="32"/>
+  <g fill="#e8463b" stroke="#4a3222" stroke-width="1.6"><circle cx="560" cy="298" r="5"/><circle cx="584" cy="292" r="5"/><circle cx="572" cy="316" r="5"/><circle cx="592" cy="312" r="5"/><circle cx="556" cy="318" r="5"/></g>
+  <rect x="646" y="312" width="12" height="40" rx="4" fill="#9b6a3f" stroke="#4a3222" stroke-width="2.5"/>
+  <circle class="m-tree" cx="652" cy="298" r="30"/>
+  <g fill="#f39a3b" stroke="#4a3222" stroke-width="1.6"><circle cx="640" cy="290" r="5"/><circle cx="662" cy="286" r="5"/><circle cx="650" cy="308" r="5"/><circle cx="668" cy="304" r="5"/><circle cx="636" cy="308" r="5"/></g>
+</g>
+
+<!-- farm -->
+<g class="spot" data-id="farm">
+  <rect x="650" y="396" width="54" height="74" rx="10" fill="#a7744a" stroke="#4a3222" stroke-width="3"/>
+  <rect x="714" y="396" width="54" height="74" rx="10" fill="#a7744a" stroke="#4a3222" stroke-width="3"/>
+  <rect x="778" y="396" width="54" height="74" rx="10" fill="#a7744a" stroke="#4a3222" stroke-width="3"/>
+  <g id="farmPlants"></g>
+</g>
+
+<!-- cat gathering place -->
+<g class="spot" data-id="shukai">
+  <path d="M906 580C910 540 904 500 912 460L928 460C934 500 930 540 936 580Z" fill="#9b6a3f" stroke="#4a3222" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M912 500L880 478M930 490L962 470" stroke="#9b6a3f" stroke-width="9" stroke-linecap="round"/>
+  <circle class="m-tree" cx="876" cy="440" r="36"/>
+  <circle class="m-tree" cx="966" cy="436" r="38"/>
+  <circle class="m-tree" cx="920" cy="414" r="56"/>
+  <rect x="868" y="444" width="62" height="8" rx="3" fill="#d9a066" stroke="#4a3222" stroke-width="2.5"/>
+  <rect x="918" y="482" width="64" height="8" rx="3" fill="#d9a066" stroke="#4a3222" stroke-width="2.5"/>
+  <g transform="translate(870 412) scale(.28)"><g class="chr" data-c="cha"></g></g>
+  <g transform="translate(900 412) scale(.28)"><g class="chr" data-c="nekoPlain"></g></g>
+  <g transform="translate(924 450) scale(.28)"><g class="chr" data-c="buchi"></g></g>
+  <g transform="translate(952 450) scale(.28)"><g class="chr" data-c="mike"></g></g>
+  <g transform="translate(940 372) scale(.26)"><g class="chr" data-c="kuro"></g></g>
+  <g transform="translate(862 548) scale(.28)"><g class="chr" data-c="saba"></g></g>
+  <g id="fence"></g>
+</g>
+
+<!-- penguin park -->
+<g class="spot" data-id="penpark">
+  <g transform="translate(1124 248)">
+    <rect x="-44" y="-26" width="88" height="44" rx="8" fill="#a9d0d3" stroke="#4a3222" stroke-width="3"/>
+    <rect x="-34" y="-18" width="40" height="20" fill="#fff8ea" stroke="#4a3222" stroke-width="2"/>
+    <path d="M-48 -26L-40 -40H40L48 -26Z" fill="#fff" stroke="#4a3222" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M-34 -40L-38 -26M-18 -40L-20 -26M-2 -40v14M14 -40l2 14M30 -40l4 14" stroke="#e8584a" stroke-width="7"/>
+    <circle cx="-24" cy="20" r="8" fill="#fff" stroke="#4a3222" stroke-width="2.5"/><circle cx="24" cy="20" r="8" fill="#fff" stroke="#4a3222" stroke-width="2.5"/>
+    <text x="22" y="-3" text-anchor="middle" font-size="10" font-weight="800" fill="#4a3222">クレープ</text>
+    <g transform="translate(-30 -26) scale(.2)"><g class="chr" data-c="friend"></g></g>
+  </g>
+  <path d="M1068 250V284" stroke="#4a3222" stroke-width="3"/>
+  <path d="M1044 254Q1068 228 1092 254Z" fill="#f6c95a" stroke="#4a3222" stroke-width="2.5" stroke-linejoin="round"/>
+  <rect x="996" y="262" width="52" height="8" rx="3" fill="#b9814f" stroke="#4a3222" stroke-width="2"/>
+  <path d="M1002 270v10M1042 270v10" stroke="#4a3222" stroke-width="3"/>
+  <g transform="translate(1000 234) scale(.24)"><g class="chr" data-c="friend"></g></g>
+  <g transform="translate(1056 284) scale(.22)"><g class="chr" data-c="penPlain"></g></g>
+  <g transform="translate(1086 288) scale(.22)"><g class="chr" data-c="hana"></g></g>
+</g>
+
+<!-- forest -->
+<g class="spot" data-id="forest" id="forest"></g>
+
+<!-- gate -->
+<g class="spot" data-id="gate" transform="translate(120 584)">
+  <rect x="-5" y="-12" width="10" height="56" fill="#9b6a3f" stroke="#4a3222" stroke-width="2.5"/>
+  <path d="M-66 -56H66L60 -8H-60Z" fill="#e2b77e" stroke="#4a3222" stroke-width="3" stroke-linejoin="round"/>
+  <text x="0" y="-36" text-anchor="middle" font-size="15" font-weight="800" fill="#4a3222">ねこぺん村へ</text>
+  <text x="0" y="-16" text-anchor="middle" font-size="15" font-weight="800" fill="#4a3222">ようこそ</text>
+  <path d="M-22 44q4-12 8 0q4-12 8 0q4-12 8 0" fill="#7fb35f" stroke="#4a3222" stroke-width="2"/>
+</g>
+
+<!-- walkers -->
+<g id="walkers">
+  <g><animateMotion dur="46s" repeatCount="indefinite" keyPoints="0;1;0" keyTimes="0;0.5;1" calcMode="linear"><mpath href="#walkPath" xlink:href="#walkPath"/></animateMotion><g transform="translate(-16 -42) scale(.32)"><g class="bob chr" data-c="pen"></g></g></g>
+  <g><animateMotion dur="46s" begin="-1.6s" repeatCount="indefinite" keyPoints="0;1;0" keyTimes="0;0.5;1" calcMode="linear"><mpath href="#walkPath" xlink:href="#walkPath"/></animateMotion><g transform="translate(-20 -46) scale(.36)"><g class="bob chr" data-c="neko" style="animation-delay:-.2s"></g></g></g>
+</g>
+
+<!-- night -->
+<rect class="m-night" width="1200" height="760"/>
+<g class="m-stars" id="mapStars"></g>
+<g class="m-lights">
+  <circle cx="408" cy="285" r="34" fill="url(#glow)"/><circle cx="472" cy="285" r="34" fill="url(#glow)"/>
+  <circle cx="190" cy="318" r="40" fill="url(#glow)"/><circle cx="230" cy="20" r="34" fill="url(#glow)"/>
+  <circle cx="1124" cy="240" r="40" fill="url(#glow)"/><circle cx="305" cy="470" r="30" fill="url(#glow)"/>
+  <g transform="translate(640 34) scale(.3)"><g class="chr" data-c="pen"></g></g>
+  <path d="M676 50l40-22" stroke="#4a3222" stroke-width="4" stroke-linecap="round"/><rect x="706" y="20" width="18" height="10" rx="3" transform="rotate(-28 715 25)" fill="#9fb3c8" stroke="#4a3222" stroke-width="2"/>
+</g>
+<g id="pins"></g>
+</svg>
+          </div>
+          <div class="fx" id="fx"></div>
+          <div class="map-hint">左右滑动查看完整地图</div>
+        </div>
+        <div class="place-chips" id="placeChips"></div>
+      </div>
+      <aside class="card panel" id="placePanel" aria-live="polite"></aside>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RESIDENTS ================= -->
+<section id="residents" class="plank bg-stripe">
+  <div class="wrap">
+    <div class="sec-title"><span class="jp">むらびと ずかん</span><h2>村民图鉴</h2><p>猫鹅村的住民以「两条腿走路、过着和人类一样生活」的猫与企鹅为主。点击卡片查看详细档案。</p></div>
+    <div class="rules">
+      <div class="card rule"><b>法则一 · 双足生活</b>主角之外，还有许多像人类一样用两条腿走路、过日子的猫和企鹅作为朋友登场。<br><span class="tag t-ref">资料</span></div>
+      <div class="card rule"><b>法则二 · 其他动物</b>猫和企鹅以外的动物偶尔登场，但能否像他们一样生活不明；联动角色「ひよこさんきょうだい」会说话。<br><span class="tag t-ref">资料</span></div>
+      <div class="card rule"><b>法则三 · 纸箱工学</b>车、摩托、副驾、酒店乃至「传说的剑与盾」，都是纸箱做的。<br><span class="tag t-ref">资料</span><span class="tag t-off">官方</span></div>
+      <div class="card rule"><b>法则四 · 慢慢来</b>没有什么比一起散步、吃好吃的、睡个午觉更重要——「のんびりいこう」。<br><span class="tag t-fan">演绎</span></div>
+    </div>
+    <div class="filter"><div class="seg" id="resFilter" role="group" aria-label="物种筛选"><button type="button" data-v="all" class="on">全部</button><button type="button" data-v="cat">猫</button><button type="button" data-v="penguin">企鹅</button><button type="button" data-v="other">其他</button></div></div>
+    <div class="res-grid" id="resGrid"></div>
+  </div>
+</section>
+
+<!-- ================= RELATIONS ================= -->
+<section id="relations" class="plank bg-dots">
+  <div class="wrap">
+    <div class="sec-title"><span class="jp">なかよし かんけいず</span><h2>村民关系网</h2><p>把鼠标移到（或点按）头像上，高亮 TA 的关系；点击可打开档案。关系均来自官方页面与百科资料，「联动来访」用虚线表示。</p></div>
+    <div class="card rel-box"><svg id="relSvg" viewBox="0 0 920 560" role="img" aria-label="村民关系图"></svg></div>
+  </div>
+</section>
+
+<!-- ================= DAY ================= -->
+<section id="day" class="plank bg-sky">
+  <div class="wrap">
+    <div class="sec-title"><span class="jp">ねこぺん の いちにち</span><h2>一日生态观察</h2><p>拖动时间轴，看看ねこくん和ぺんちゃん在做什么。行为全部基于官方的「爱好 / 喜欢的食物」设定，具体时间与地点为本站演绎。</p></div>
+    <div class="day-grid">
+      <div class="day-scene" id="dayScene">
+        <div class="stars" id="dayStars"></div>
+        <div class="orb" id="dayOrb"></div>
+        <div class="ground"></div>
+        <div class="day-clock" id="dayClock">06:00</div>
+        <div class="day-chars">
+          <div class="c"><div class="bubble" id="bNeko"></div><svg viewBox="0 0 120 120"><g class="bob chr" data-c="neko"></g></svg></div>
+          <div class="c"><div class="bubble" id="bPen"></div><svg viewBox="0 0 120 120"><g class="bob chr" data-c="pen" style="animation-delay:-.25s"></g></svg></div>
+        </div>
+      </div>
+      <div class="card day-info">
+        <h3 id="dayTitle"></h3>
+        <div id="dayTags"></div>
+        <p id="dayDesc"></p>
+        <button class="linkbtn" id="dayGo" type="button">在地图上查看这个地点</button>
+        <input type="range" id="daySlider" min="0" max="9" step="1" value="0" aria-label="时间">
+        <div class="hours" id="dayHours"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VEHICLES ================= -->
+<section id="vehicles" class="plank bg-cork">
+  <div class="wrap">
+    <div class="sec-title"><span class="jp">ねこぺん の あいしゃ</span><h2>交通与装备</h2><p>猫鹅村的「纸箱工学」。官方页面介绍了「ねこぺんの愛車（※一部）」，百科还记录了更多纸箱系列。</p></div>
+    <div class="veh-grid" id="vehGrid"></div>
+  </div>
+</section>
+
+<!-- ================= TIMELINE ================= -->
+<section id="timeline" class="plank bg-mint">
+  <div class="wrap">
+    <div class="sec-title"><span class="jp">ねこぺん ねんぴょう</span><h2>猫鹅年表</h2><p>从一张张推特单幅插画，到在 6 座城市「入村」的 10 周年纪念展。</p></div>
+    <div class="tl" id="tl"></div>
+  </div>
+</section>
+
+<!-- ================= SOURCES ================= -->
+<section id="sources" class="plank bg-dots">
+  <div class="wrap">
+    <div class="sec-title"><span class="jp">しりょう</span><h2>资料出处</h2><p>本页内容整理自以下公开资料（2026 年 10 月查阅）。</p></div>
+    <div class="src-grid">
+      <div class="card src-card"><h3>官方</h3><ul>
+        <li><a href="https://linefriends.co.jp/nekopen" target="_blank" rel="noopener">ねこぺん日和公式ページ（LINE FRIENDS）</a>——角色介绍、「ねこぺん村とは？」「ねこぺんの愛車」「ねこぺん村のみどころ」</li>
+        <li><a href="https://linefriends.co.jp/nekopen/news/VmQhaq4g" target="_blank" rel="noopener">官方新闻：「ぺんちゃんふれんず」シリーズ</a>——ぺんぎんこうえん描述</li>
+        <li><a href="https://linefriendssquare.jp/products/100026518" target="_blank" rel="noopener">LINE FRIENDS SQUARE 商品文案</a>——「ねこくんがコツコツとつくったねこのしゅうかいじょ」</li>
+        <li><a href="https://x.com/mojimojiji" target="_blank" rel="noopener">もじじ X @mojimojiji</a> / <a href="https://www.instagram.com/mojiji2014/" target="_blank" rel="noopener">Instagram @mojiji2014</a></li>
+        <li><a href="https://store.line.me/stickershop/author/96785/ja" target="_blank" rel="noopener">LINE STORE もじじ 作者页</a></li>
+      </ul></div>
+      <div class="card src-card"><h3>展览 · 新闻稿</h3><ul>
+        <li><a href="https://prtimes.jp/main/html/rd/p/000000457.000034304.html" target="_blank" rel="noopener">10周年记念展「ねこぺん村へご招待」会场看点</a>——ジオラマ、ねこぺんハウス、茶屋そらまめ</li>
+        <li><a href="https://prtimes.jp/main/html/rd/p/000000111.000086964.html" target="_blank" rel="noopener">ねこぺん日和カフェ～ねこのしゅうかいじょ～</a>（2024）</li>
+        <li><a href="https://prtimes.jp/main/html/rd/p/000000036.000040759.html" target="_blank" rel="noopener">原画展「ねこぺん村の夏休み」</a>（2023）</li>
+        <li><a href="https://www.shogakukan.co.jp/news/476414" target="_blank" rel="noopener">小学馆『ねこぺん日和シールブック』</a>（2024）</li>
+      </ul></div>
+      <div class="card src-card"><h3>资料 · 采访</h3><ul>
+        <li><a href="https://ja.wikipedia.org/wiki/%E3%81%AD%E3%81%93%E3%81%BA%E3%82%93%E6%97%A5%E5%92%8C" target="_blank" rel="noopener">Wikipedia「ねこぺん日和」</a>——角色、朋友、纸箱系列</li>
+        <li><a href="https://linesticker-ja.blog.jp/archives/1046027561.html" target="_blank" rel="noopener">LINE 贴图官方博客 もじじ 采访</a>（2015）</li>
+        <li><a href="https://www.kinokuniya.co.jp/f/dsg-01-9784299044679" target="_blank" rel="noopener">『しゅっぱつ ねこぺん』书目信息</a>（宝岛社 2024）</li>
+        <li><a href="https://playersells.com/best-x-accounts/mojimojiji" target="_blank" rel="noopener">X 账号第三方统计</a>（关注数为估算）</li>
+      </ul></div>
+      <div class="card src-card"><h3>本站标注说明</h3><ul>
+        <li><span class="tag t-off">官方</span>来自官方页面、官方新闻或官方商品文案。</li>
+        <li><span class="tag t-exh">展览</span>来自 10 周年纪念展的场景再现与「ねこぺん村 ジオラマ」。</li>
+        <li><span class="tag t-ref">资料</span>来自百科、采访、出版社与新闻稿。</li>
+        <li><span class="tag t-fan">演绎</span>本站根据设定做的想象（地图布局、一日作息等），并非官方说法。</li>
+      </ul></div>
+    </div>
+    <div class="card notice"><b>声明：</b>本页为非官方的粉丝向资料整理页面，与 もじじ、LINE FRIENDS 及相关公司无关。「ねこぺん日和」及所有角色的著作权归 ©もじじ / LINE FRIENDS 所有。页面中的插画均为本站原创的简笔示意图，并非官方原画；想看真正的ねこくん和ぺんちゃん，请访问官方页面与作者的社交账号，并支持正版周边与书籍。</div>
+  </div>
+</section>
+
+<footer>
+  <p><b>猫鹅村生态图鉴</b> · ねこぺん村 Fan Guide</p>
+  <p>「今この時 このしゅんかん いっしゅん いっしゅんに しあわせのあしあとがついている 毎日のくりかえしは愛しい」<br>—— 10周年纪念展「ねこぺんハウス」墙上的话</p>
+  <p>非官方粉丝页面 · 角色著作权 ©もじじ / LINE FRIENDS · 资料整理于 2026 年 10 月</p>
+</footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="card" id="modalCard"></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+'use strict';
+var INK='#4a3222', uid=0;
+
+/* ---------- character drawings (original simplified fan art) ---------- */
+var CAT_HEAD='M60 22C66 22 72 23 77 25L92 9C97 8 99 11 99 15L98 34C104 42 106 52 104 62C100 82 82 92 60 92C38 92 20 82 16 62C14 52 16 42 22 34L21 15C21 11 23 8 28 9L43 25C48 23 54 22 60 22Z';
+var CAT_BODY='M38 84C32 100 33 113 44 115L76 115C87 113 88 100 82 84Z';
+var STRIPES='M50 27l3 11M60 25v12M70 27l-3 11M17 52l12 3M17 62h12M103 52l-12 3M103 62H91M42 98h10M68 98h10M44 106h8M68 106h8';
+var FOXTAIL='<path d="M84 100C96 86 102 70 104 54" fill="none" stroke="#7ba05b" stroke-width="2.6" stroke-linecap="round"/><ellipse cx="105" cy="44" rx="5" ry="11" transform="rotate(12 105 44)" fill="#d6e48f" stroke="#7ba05b" stroke-width="2"/>';
+function catInner(o){
+  o=o||{}; var id='cc'+(++uid), fur=o.fur||'#fff', s='';
+  s+='<defs><clipPath id="'+id+'"><path d="'+CAT_HEAD+'"/><path d="'+CAT_BODY+'"/></clipPath></defs>';
+  s+='<path d="M82 106C96 108 104 98 100 88" fill="none" stroke="'+INK+'" stroke-width="7.5" stroke-linecap="round"/><path d="M82 106C96 108 104 98 100 88" fill="none" stroke="'+fur+'" stroke-width="3.6" stroke-linecap="round"/>';
+  s+='<path d="'+CAT_BODY+'" fill="'+fur+'"/><path d="'+CAT_HEAD+'" fill="'+fur+'"/>';
+  if(o.patches) s+='<g clip-path="url(#'+id+')">'+o.patches+'</g>';
+  s+='<path d="'+CAT_BODY+'" fill="none" stroke="'+INK+'" stroke-width="3.2" stroke-linejoin="round"/><path d="'+CAT_HEAD+'" fill="none" stroke="'+INK+'" stroke-width="3.2" stroke-linejoin="round"/>';
+  s+='<path d="M45 92C41 98 41 104 46 106M75 92C79 98 79 104 74 106M60 108v7" fill="none" stroke="'+INK+'" stroke-width="2.6" stroke-linecap="round"/>';
+  var eye=o.eye||INK;
+  s+='<circle cx="44" cy="58" r="4.4" fill="'+eye+'"/><circle cx="76" cy="58" r="4.4" fill="'+eye+'"/>';
+  if(o.pupil) s+='<ellipse cx="44" cy="58" rx="1.6" ry="3.4" fill="'+o.pupil+'"/><ellipse cx="76" cy="58" rx="1.6" ry="3.4" fill="'+o.pupil+'"/>';
+  s+='<ellipse cx="33" cy="68" rx="5.5" ry="3.2" fill="#f5a9a0" opacity=".55"/><ellipse cx="87" cy="68" rx="5.5" ry="3.2" fill="#f5a9a0" opacity=".55"/>';
+  var ml=o.mouth||INK;
+  s+='<path d="M51.5 64.5c0 6.5 8.5 6.5 8.5 0c0 6.5 8.5 6.5 8.5 0" fill="none" stroke="'+ml+'" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="60" cy="63" rx="3.4" ry="2.5" fill="'+ml+'"/>';
+  if(o.acc) s+=o.acc;
+  return s;
+}
+function flower(x,y,c,r){
+  r=r||5; var s='<g>';
+  for(var i=0;i<5;i++){var a=i*Math.PI*2/5-Math.PI/2; s+='<circle cx="'+(x+Math.cos(a)*r).toFixed(1)+'" cy="'+(y+Math.sin(a)*r).toFixed(1)+'" r="'+(r*.75).toFixed(1)+'" fill="'+c+'" stroke="'+INK+'" stroke-width="1.6"/>';}
+  return s+'<circle cx="'+x+'" cy="'+y+'" r="'+(r*.6).toFixed(1)+'" fill="#ffd34d" stroke="'+INK+'" stroke-width="1.4"/></g>';
+}
+function penInner(o){
+  o=o||{}; var s='';
+  s+='<ellipse cx="48" cy="114" rx="9" ry="4.5" fill="#6d6662" stroke="'+INK+'" stroke-width="2"/><ellipse cx="72" cy="114" rx="9" ry="4.5" fill="#6d6662" stroke="'+INK+'" stroke-width="2"/>';
+  s+='<path d="M30 70C20 80 17 93 22 97C29 93 33 85 35 77Z" fill="#96949a" stroke="'+INK+'" stroke-width="2.8" stroke-linejoin="round"/><path d="M90 70C100 80 103 93 98 97C91 93 87 85 85 77Z" fill="#96949a" stroke="'+INK+'" stroke-width="2.8" stroke-linejoin="round"/>';
+  s+='<path d="M31 62C21 80 23 105 37 111C49 116 71 116 83 111C97 105 99 80 89 62Z" fill="#b0aeb3" stroke="'+INK+'" stroke-width="3" stroke-linejoin="round"/>';
+  s+='<circle cx="60" cy="47" r="34" fill="#302c2e" stroke="'+INK+'" stroke-width="3"/>';
+  s+='<path d="M60 40C53 29 30 31 31 53C32 71 47 77 60 73C73 77 88 71 89 53C90 31 67 29 60 40Z" fill="#fff"/>';
+  s+='<circle cx="48" cy="54" r="4.3" fill="#302c2e"/><circle cx="72" cy="54" r="4.3" fill="#302c2e"/>';
+  s+='<path d="M55.5 61Q60 68 64.5 61Q60 59 55.5 61Z" fill="#302c2e"/>';
+  s+='<ellipse cx="39" cy="64" rx="5" ry="3" fill="#f5a9a0" opacity=".6"/><ellipse cx="81" cy="64" rx="5" ry="3" fill="#f5a9a0" opacity=".6"/>';
+  if(o.bow) s+='<path d="M60 84L47 77V91ZM60 84L73 77V91Z" fill="#e8705f" stroke="'+INK+'" stroke-width="2" stroke-linejoin="round"/><circle cx="60" cy="84" r="3.4" fill="#c94f40" stroke="'+INK+'" stroke-width="1.5"/>';
+  if(o.flower) s+=flower(82,16,'#f6a5b8',6.5);
+  if(o.onigiri) s+='<path d="M84 104L94 86L104 104Z" fill="#fff" stroke="'+INK+'" stroke-width="2.2" stroke-linejoin="round"/><rect x="89" y="97" width="10" height="7" fill="#2f3b2f"/>';
+  if(o.acc) s+=o.acc;
+  return s;
+}
+function adultInner(){
+  var s='';
+  s+='<ellipse cx="50" cy="114" rx="10" ry="4" fill="#4b4446" stroke="'+INK+'" stroke-width="2"/><ellipse cx="70" cy="114" rx="10" ry="4" fill="#4b4446" stroke="'+INK+'" stroke-width="2"/>';
+  s+='<path d="M60 6C45 6 39 18 41 32C30 50 28 84 34 102C40 116 80 116 86 102C92 84 90 50 79 32C81 18 75 6 60 6Z" fill="#2f2c2e" stroke="'+INK+'" stroke-width="3" stroke-linejoin="round"/>';
+  s+='<path d="M60 36C47 40 41 62 43 86C45 104 75 104 77 86C79 62 73 40 60 36Z" fill="#fbf8f2"/>';
+  s+='<path d="M60 36C54 37 50 41 48 46C54 42 66 42 72 46C70 41 66 37 60 36Z" fill="#f6c94e"/>';
+  s+='<ellipse cx="44" cy="26" rx="5" ry="9" fill="#f2b544" stroke="'+INK+'" stroke-width="1.5"/><ellipse cx="76" cy="26" rx="5" ry="9" fill="#f2b544" stroke="'+INK+'" stroke-width="1.5"/>';
+  s+='<circle cx="52" cy="20" r="2.6" fill="#fff"/><circle cx="68" cy="20" r="2.6" fill="#fff"/>';
+  s+='<path d="M56 25L60 38L64 25Z" fill="#3b3537" stroke="'+INK+'" stroke-width="1.5" stroke-linejoin="round"/><path d="M57 30L60 37L63 30" fill="none" stroke="#f08a3e" stroke-width="2"/>';
+  s+='<path d="M34 54C24 68 22 84 26 90C32 84 36 72 38 60Z" fill="#2f2c2e" stroke="'+INK+'" stroke-width="2.5"/><path d="M86 54C96 68 98 84 94 90C88 84 84 72 82 60Z" fill="#2f2c2e" stroke="'+INK+'" stroke-width="2.5"/>';
+  return s;
+}
+function bearInner(){
+  var b='#b07a4f', l='#ecd0a6', s='';
+  s+='<circle cx="34" cy="28" r="12" fill="'+b+'" stroke="'+INK+'" stroke-width="3"/><circle cx="86" cy="28" r="12" fill="'+b+'" stroke="'+INK+'" stroke-width="3"/><circle cx="34" cy="28" r="5" fill="'+l+'"/><circle cx="86" cy="28" r="5" fill="'+l+'"/>';
+  s+='<ellipse cx="30" cy="92" rx="10" ry="14" transform="rotate(30 30 92)" fill="'+b+'" stroke="'+INK+'" stroke-width="3"/><ellipse cx="90" cy="92" rx="10" ry="14" transform="rotate(-30 90 92)" fill="'+b+'" stroke="'+INK+'" stroke-width="3"/>';
+  s+='<ellipse cx="60" cy="98" rx="27" ry="20" fill="'+b+'" stroke="'+INK+'" stroke-width="3"/><circle cx="60" cy="100" r="11" fill="'+l+'"/>';
+  s+='<ellipse cx="44" cy="114" rx="9" ry="5" fill="'+b+'" stroke="'+INK+'" stroke-width="2.5"/><ellipse cx="76" cy="114" rx="9" ry="5" fill="'+b+'" stroke="'+INK+'" stroke-width="2.5"/>';
+  s+='<circle cx="60" cy="52" r="32" fill="'+b+'" stroke="'+INK+'" stroke-width="3"/>';
+  s+='<ellipse cx="60" cy="63" rx="14" ry="10" fill="'+l+'"/><ellipse cx="60" cy="58" rx="4.5" ry="3.2" fill="'+INK+'"/><path d="M60 61v5M55 67q5 4 10 0" fill="none" stroke="'+INK+'" stroke-width="2" stroke-linecap="round"/>';
+  s+='<circle cx="47" cy="48" r="3.6" fill="'+INK+'"/><circle cx="73" cy="48" r="3.6" fill="'+INK+'"/>';
+  s+='<path d="M74 28l8 8M79 26l-3 10M84 32l-8 2" stroke="#f4e3c5" stroke-width="2" stroke-linecap="round"/><path d="M22 84l8 4M24 92l8-2" stroke="#f4e3c5" stroke-width="2" stroke-linecap="round"/>';
+  return s;
+}
+function chickInner(){
+  var s='';
+  function one(x,y,k){return '<g transform="translate('+x+' '+y+') scale('+k+')"><path d="M50 106v8M70 106v8M44 114h12M64 114h12" stroke="#f08a3e" stroke-width="3" stroke-linecap="round"/><circle cx="60" cy="68" r="38" fill="#ffd95a" stroke="'+INK+'" stroke-width="3.2"/><path d="M58 30q4-12 10-4q-6 0-6 8" fill="#ffd95a" stroke="'+INK+'" stroke-width="2.5"/><circle cx="47" cy="62" r="4.2" fill="'+INK+'"/><circle cx="73" cy="62" r="4.2" fill="'+INK+'"/><path d="M53 70L60 78L67 70Z" fill="#f08a3e" stroke="'+INK+'" stroke-width="2" stroke-linejoin="round"/><ellipse cx="38" cy="74" rx="5" ry="3" fill="#f5a9a0" opacity=".7"/><ellipse cx="82" cy="74" rx="5" ry="3" fill="#f5a9a0" opacity=".7"/><path d="M24 80q-8 8 2 14M96 80q8 8-2 14" fill="none" stroke="'+INK+'" stroke-width="2.5" stroke-linecap="round"/></g>';}
+  s+=one(42,30,.62)+one(4,40,.66);
+  return s;
+}
+function carInner(o){
+  o=o||{}; var s='';
+  if(!o.empty){ s+='<g transform="translate(16 -2) scale(.62)">'+catInner({})+'</g><g transform="translate(78 12) scale(.55)">'+penInner({})+'</g>'; }
+  s+='<path d="M14 54L4 42M156 54L168 44" stroke="'+INK+'" stroke-width="3" stroke-linecap="round"/>';
+  s+='<path d="M14 54H156V98H14Z" fill="#e0b47a" stroke="'+INK+'" stroke-width="3.2" stroke-linejoin="round"/>';
+  s+='<rect x="42" y="62" width="82" height="28" rx="4" fill="#fff6e4" stroke="'+INK+'" stroke-width="2"/>';
+  s+='<text x="83" y="74" font-size="10.5" text-anchor="middle" fill="'+INK+'" font-weight="800">こうきゅうな</text><text x="83" y="86" font-size="10.5" text-anchor="middle" fill="'+INK+'" font-weight="800">くるま</text>';
+  s+='<circle cx="40" cy="100" r="12" fill="#fff" stroke="'+INK+'" stroke-width="3"/><circle cx="130" cy="100" r="12" fill="#fff" stroke="'+INK+'" stroke-width="3"/>';
+  s+='<path d="M146 56L150 50" stroke="'+INK+'" stroke-width="3"/><circle cx="152" cy="42" r="10" fill="#e9a25f" stroke="'+INK+'" stroke-width="2.6"/><circle cx="152" cy="42" r="4" fill="#fff6e4" stroke="'+INK+'" stroke-width="1.8"/><path d="M145 38l3-1M157 35l2 2M158 47l-2 2M146 47l2 1" stroke="#f6a5b8" stroke-width="2" stroke-linecap="round"/>';
+  return s;
+}
+var CHAR={
+  neko:function(){return catInner({acc:FOXTAIL});},
+  nekoPlain:function(){return catInner({});},
+  pen:function(){return penInner({bow:true});},
+  penPlain:function(){return penInner({});},
+  saba:function(){return catInner({fur:'#c9ccd1',patches:'<path d="'+STRIPES+'" stroke="#7f858e" stroke-width="3.6" stroke-linecap="round"/>'});},
+  cha:function(){return catInner({fur:'#f6c47f',patches:'<path d="'+STRIPES+'" stroke="#d98a3d" stroke-width="3.6" stroke-linecap="round"/>',acc:flower(64,76,'#fff',5)});},
+  buchi:function(){return catInner({patches:'<ellipse cx="80" cy="36" rx="20" ry="16" fill="#3d3836"/><ellipse cx="30" cy="60" rx="9" ry="7" fill="#3d3836"/><ellipse cx="46" cy="104" rx="12" ry="9" fill="#3d3836"/>'});},
+  mike:function(){return catInner({patches:'<ellipse cx="32" cy="30" rx="22" ry="18" fill="#f2a65a"/><ellipse cx="88" cy="40" rx="15" ry="13" fill="#3d3836"/><ellipse cx="72" cy="106" rx="12" ry="9" fill="#f2a65a"/>',acc:'<path d="M94 22l-10-7v14zM94 22l10-7v14z" fill="#f6a5b8" stroke="'+INK+'" stroke-width="2" stroke-linejoin="round"/><circle cx="94" cy="22" r="3" fill="#e9708a" stroke="'+INK+'" stroke-width="1.5"/>'});},
+  kuro:function(){return catInner({fur:'#3d3836',eye:'#f3dc6b',pupil:'#3d3836',mouth:'#efe3d2'});},
+  hana:function(){return penInner({flower:true});},
+  friend:function(){return penInner({onigiri:true});},
+  parents:adultInner, bear:bearInner, hiyoko:chickInner,
+  car:function(){return carInner();}, carEmpty:function(){return carInner({empty:true});}
+};
+function svgOf(key,vb){return '<svg viewBox="'+(vb||'0 0 120 120')+'" aria-hidden="true">'+CHAR[key]()+'</svg>';}
+function fillChars(root){
+  var list=(root||document).querySelectorAll('.chr'); for(var i=0;i<list.length;i++){var g=list[i]; if(!g.dataset.done&&CHAR[g.dataset.c]){g.innerHTML=CHAR[g.dataset.c](); g.dataset.done='1';}}
+}
+
+/* ---------- data ---------- */
+var TAGN={off:'官方',exh:'展览',ref:'资料',fan:'演绎'};
+function tags(arr){return arr.map(function(t){return '<span class="tag t-'+t+'">'+TAGN[t]+'</span>';}).join('');}
+
+var RES=[
+ {id:'neko',name:'ねこくん',cn:'猫君',sp:'cat',spl:'猫 · 白猫',role:'主角',line:'温和温柔、有点太我行我素的白猫；ぺんちゃん的室友兼监护人。',
+  rows:[['性别/年龄','雄性。年龄不详，是比ぺんちゃん年长的青年猫，也承担监护人的角色'],['性格','おだやかでやさしい（温和温柔），ちょっとマイペースすぎる（有点过于我行我素）'],['喜欢的食物','おいしいものぜんぶ——所有好吃的'],['爱好','钓鱼、散步、午睡、边走边吃、玩逗猫棒'],['口癖','句尾带猫语「～にゃ」'],['宝物','从众多逗猫棒中精挑细选的「特别的逗猫棒」'],['生态位','建造者与守护者：一点一点亲手建造了「ねこのしゅうかいじょ」；曾为ぺんちゃん熬夜缝好くまさん掉下的手臂'],['家庭','和ぺんちゃん是朋友也是室友；女朋友是三花猫（みけちゃん）']],
+  src:['off','ref'],place:'shukai'},
+ {id:'pen',name:'ぺんちゃん',cn:'企鹅酱',sp:'penguin',spl:'企鹅 · 帝企鹅宝宝',role:'主角',line:'坦率纯真、有点冒失的企鹅宝宝；爱植物、图鉴、领结和星星。',
+  rows:[['性别/年龄','雄性的小企鹅。年龄不详，还不会写难的汉字，接近小孩'],['性格','素直で純粋（坦率纯真），すこしおっちょこちょい（有点冒失）'],['喜欢的食物','饭团、鱼、甜食'],['爱好','照顾与观察植物、看图鉴、散步、收集领结、天体观测'],['口癖','句尾带企鹅语「～だっぺ」'],['宝物','珍惜的くまさん（熊玩偶）'],['特长','爱开车——「こうきゅうなくるま」基本交给他驾驶'],['家庭','父母是写实风格的帝企鹅；女朋友是头上戴花的はなちゃん']],
+  src:['off','ref'],place:'farm'},
+ {id:'bear',name:'くまさん',cn:'小熊先生',sp:'other',spl:'玩偶 · 熊',role:'宝物',line:'ぺんちゃん最珍惜的熊玩偶，身上有缝补的痕迹。',
+  rows:[['身份','ぺんちゃん大切にしている熊玩偶'],['故事','哪里开线了就缝好、继续珍惜。有一天左臂掉了，ねこくん熬夜帮它缝了回去'],['出没地点','ねこぺんハウス（大概率在ぺんちゃん怀里）']],src:['off','ref'],place:'house'},
+ {id:'mike',name:'みけちゃん',cn:'三花酱',sp:'cat',spl:'猫 · 三花猫',role:'',line:'ねこくん的女朋友，ねこのしゅうかいじょ的成员。',
+  rows:[['身份','ねこくん的女朋友（三花猫）'],['出没地点','ねこのしゅうかいじょ'],['小知识','2024 年主题咖啡馆的三明治可选「ねこくん・ぶちくん・みけちゃん」造型']],src:['ref','off'],place:'shukai'},
+ {id:'saba',name:'サバトラくん',cn:'灰虎斑君',sp:'cat',spl:'猫 · 灰色虎斑',role:'',line:'ねこくん特别要好的三只猫之一。',
+  rows:[['身份','ねこくん特别要好的三只猫之一（サバトラ＝灰色虎斑）'],['出没地点','ねこのしゅうかいじょ'],['小知识','主题咖啡馆的追加棉花糖造型之一']],src:['ref','off'],place:'shukai'},
+ {id:'cha',name:'茶トラさん',cn:'橘虎斑桑',sp:'cat',spl:'猫 · 橘色虎斑',role:'',line:'好友三人组之一，常以「叼着花」的样子登场。',
+  rows:[['身份','ねこくん特别要好的三只猫之一（茶トラ＝橘色虎斑）'],['招牌造型','官方商品中是「お花をくわえた茶トラさん」——叼着花的茶トラさん'],['出没地点','ねこのしゅうかいじょ']],src:['ref','off'],place:'shukai'},
+ {id:'buchi',name:'ぶちくん',cn:'花斑君',sp:'cat',spl:'猫 · 黑白花',role:'',line:'好友三人组之一，黑白花纹的猫。',
+  rows:[['身份','ねこくん特别要好的三只猫之一（ぶち＝花斑）'],['出没地点','ねこのしゅうかいじょ']],src:['ref','off'],place:'shukai'},
+ {id:'kuro',name:'くろねこ',cn:'黑猫',sp:'cat',spl:'猫 · 黑猫',role:'',line:'沉默寡言，却什么都知道。',
+  rows:[['身份','ねこくん的朋友'],['性格','無口だけど何でもしっている——不爱说话，却什么都知道'],['生态位','村里的「活百科」（本站演绎）']],src:['ref'],place:'shukai'},
+ {id:'hana',name:'はなちゃん',cn:'花酱',sp:'penguin',spl:'企鹅 · 小企鹅',role:'',line:'头上戴着花的小企鹅，ぺんちゃん的女朋友。',
+  rows:[['身份','ぺんちゃん的女朋友'],['辨认方法','和ぺんちゃん很像，但头上戴着一朵花'],['小知识','2024 年小学馆『シールブック』收录了她的最新插画']],src:['ref','off'],place:'penpark'},
+ {id:'friend',name:'ぺんちゃんふれんず',cn:'企鹅朋友们',sp:'penguin',spl:'企鹅 · 小企鹅群',role:'群居',line:'和ぺんちゃん长得一模一样的众多小企鹅。',
+  rows:[['身份','外表和ぺんちゃん几乎一样的许多小企鹅'],['栖息地','ぺんぎんこうえん'],['日常','坐在长椅上吃饭团、做可丽饼、做体操……'],['观察难度','极高。读者感叹「完全分不出来」']],src:['off','ref'],place:'penpark'},
+ {id:'parents',name:'ぺんちゃんの両親',cn:'企鹅爸妈',sp:'penguin',spl:'企鹅 · 帝企鹅',role:'',line:'和Q版的孩子不同，是写实风格的帝企鹅。',
+  rows:[['身份','ぺんちゃん的父母'],['外观','リアルなコウテイペンギン——写实风格的帝企鹅模样'],['观察笔记','与圆滚滚的ぺんちゃん形成强烈反差（本站评语）']],src:['ref'],place:'house'},
+ {id:'hiyoko',name:'ひよこさんきょうだい',cn:'小鸡兄弟',sp:'other',spl:'鸟 · 小鸡',role:'联动',line:'联动登场的角色，会说话。',
+  rows:[['身份','クロスオーバー（联动）登场的角色'],['特点','猫和企鹅以外的动物能否像他们一样生活不明，但小鸡兄弟似乎会说话']],src:['ref'],place:'gate'}
+];
+var RESMAP={}; RES.forEach(function(r){RESMAP[r.id]=r;});
+
+var PLACES=[
+ {id:'gate',n:1,name:'村口木牌',jp:'ねこぺん村へ ようこそ',x:218,y:540,tags:['off','exh'],
+  desc:'官方页面「ねこぺん村とは？」的插画里，有一块写着「ねこぺん村へ ようこそ」的木牌——欢迎来到猫鹅村。',
+  facts:['10 周年纪念展把参观称为「入村」：观众作为客人来村里拜访ねこくん和ぺんちゃん。','展览全名：『ねこぺん村へご招待～あたたかい言葉のプレゼント～』（邀你来猫鹅村～温暖话语的礼物～）。'],who:['neko','pen','hiyoko']},
+ {id:'kompei',n:2,name:'金平岛',jp:'こんぺい島',x:230,y:150,tags:['off','exh','fan'],
+  desc:'官方介绍：猫鹅村是ねこくん和ぺんちゃん居住的悠闲村庄，自然资源丰富，村子附近的「こんぺい島」是地标。插画中它是一座海上的火山岛，山顶闪着一颗星星。',
+  facts:['10 周年展的立体村庄模型里，岛顶同样立着星星，海上还有帆船。','作者もじじ住在鹿儿岛——冒烟的火山岛很容易让人联想到樱岛（本站推测，非官方说法）。','「こんぺい」与金平糖同音；10 周年展纪念品里正好有「金平糖」。'],who:[]},
+ {id:'pier',n:3,name:'海边钓点',jp:'うみべ',x:470,y:96,tags:['off','exh','fan'],
+  desc:'ねこくん的爱好之一是钓鱼，ぺんちゃん喜欢吃鱼——海边自然是两人常来的地方。',
+  facts:['官方设定：ねこくん的爱好是「つり・さんぽ・おひるね・たべあるき・ねこじゃらしあそび」。','立体村庄模型的海面上有帆船和两艘小划艇。','「钓点」这个具体位置是本站根据爱好做的演绎。'],who:['neko','pen']},
+ {id:'house',n:4,name:'猫鹅之家',jp:'ねこぺんハウス',x:440,y:186,tags:['exh','ref'],
+  desc:'ねこくん和ぺんちゃん是朋友，也是住在一起的室友。10 周年展把他们的家搬进了展厅：红色屋顶下几扇小窗，打开就能窥见两人在客厅、厨房里的日常。',
+  facts:['门口有红色邮筒，展览中可以投递写给两人的信——「投函すると何か良いことがあるかも」。','车库「しゃこ」里停着引以为傲的纸箱车「こうきゅうなくるま」。','外墙上写着：「今この時 このしゅんかん いっしゅん いっしゅんに しあわせのあしあとがついている 毎日のくりかえしは愛しい」——每一个瞬间都留下幸福的足迹，日复一日也值得珍爱。'],who:['neko','pen','bear']},
+ {id:'hill',n:5,name:'星见之丘',jp:'ふたつのおか',x:690,y:118,tags:['exh','off','fan'],
+  desc:'村子中央有两座圆滚滚的大山丘（见于 10 周年展的立体村庄模型）。ぺんちゃん的爱好之一是天体观测，本站把这里设定为两人夜里看星星的地方。',
+  facts:['切换到「夜晚」模式，可以看到ぺんちゃん在山顶用望远镜观星。','天体观测是官方爱好设定；观星地点为本站演绎。','LINE 贴图里也有「キラキラ宇宙さんぽ」（闪闪宇宙散步）系列。'],who:['pen','neko']},
+ {id:'chaya',n:6,name:'蚕豆茶屋',jp:'茶屋そらまめ',x:190,y:250,tags:['exh'],
+  desc:'村里的和风小茶屋。10 周年展把它完整再现：橙色瓦片屋顶、写着「茶 そらまめ」的绿色暖帘、红色长凳与大红和伞，ねこくん和ぺんちゃん就坐在门口歇脚。',
+  facts:['茶屋一角是「ねこぺんミニ美術館」，展出もじじ新绘的原画。','观众可以坐在长凳上「ほっと一息」——松一口气。','纪念品里有温感汤吞、畳杯垫、茶罐、手巾等茶屋风周边。'],who:['neko','pen']},
+ {id:'garden',n:7,name:'花田与喷泉广场',jp:'はなばたけ・ふんすい',x:210,y:440,tags:['exh','fan'],
+  desc:'立体村庄模型的左侧，有一块五彩缤纷的花坛和一座带长椅的喷泉小广场。',
+  facts:['散步是ねこくん和ぺんちゃん共同的爱好，这里很适合绕一圈。','切换到「春」可以看到花瓣飘落（本站演出）。'],who:['neko','pen','hana']},
+ {id:'orchard',n:8,name:'果树园',jp:'かじゅえん',x:612,y:254,tags:['exh','off'],
+  desc:'立体村庄模型里，房子附近长着结满红苹果和橙色果实的果树。',
+  facts:['橘子是猫鹅世界的常客：ねこくん的摩托用装过橘子的纸箱做成，至今隐约飘着橘子香，还配了橘子头盔（官方）。','2024 年主题咖啡馆的饮品中也有「みかんフロート」（橘子苏打）。'],who:['neko']},
+ {id:'farm',n:9,name:'菜园',jp:'はたけ',x:742,y:372,tags:['exh','off'],
+  desc:'村子中间是一块块整齐的田垄：番茄、南瓜……ぺんちゃん的爱好是照顾和观察植物，菜园正是他的主场。',
+  facts:['ぺんちゃん官方爱好：植物の照料与观察、看图鉴、散步、收集领结、天体观测。','立体模型里，田垄旁边还有一座红顶小屋。'],who:['pen']},
+ {id:'shukai',n:10,name:'猫咪集会所',jp:'ねこのしゅうかいじょ',x:920,y:342,tags:['off'],
+  desc:'官方「ねこぺん村のみどころ」之一。这是ねこくん一点一点（コツコツ）亲手建造的地方，个性十足的猫咪们在这里大集合。官方插画里，猫咪们窝在一棵搭着木平台的大树上，树下围着木栅栏。',
+  facts:['常客：サバトラくん、茶トラさん、ぶちくん、みけちゃん……','2024 年「ねこぺん日和カフェ～ねこのしゅうかいじょ～」在表参道限时营业，菜单有「从木头里探出头的猫」三明治、「猫咪在树上玩耍」的馅蜜芭菲。','LINE 贴图「アレンジで楽しい！ねこぺん日和」就是集会所主题。'],who:['neko','saba','cha','buchi','mike','kuro']},
+ {id:'water',n:11,name:'小河·木桥·池塘',jp:'かわ・はし・いけ',x:930,y:150,tags:['exh','fan'],
+  desc:'一条小河从山丘后面蜿蜒流过，一座木桥把村子和企鹅公园连起来，旁边还有一片池塘（见于立体村庄模型）。',
+  facts:['河、池塘与大海共同构成猫鹅村「自然がたくさん」的水系。','鱼是猫和企鹅共同的美味——这片水域大概是村里最受欢迎的「食堂」（本站玩笑）。'],who:['pen','friend']},
+ {id:'penpark',n:12,name:'企鹅公园',jp:'ぺんぎんこうえん',x:1080,y:196,tags:['off'],
+  desc:'官方「ねこぺん村のみどころ」之一。这里有许多ぺんちゃん的朋友：有的坐在长椅上吃饭团，有的在做可丽饼，有的在做体操……悠闲又热闹。',
+  facts:['官方插画里有一辆撑着遮阳伞的小餐车。','对应 2024 年的商品系列「ぺんちゃんふれんず」。','小企鹅们和ぺんちゃん长得几乎一样，读者感叹「分不出来」。'],who:['friend','hana','pen']},
+ {id:'forest',n:13,name:'南边的森林',jp:'もり',x:760,y:640,tags:['exh','fan'],
+  desc:'村子南边是一片茂密的森林，是立体村庄模型里面积最大的绿色。',
+  facts:['ねこくん的「特别的逗猫棒」是从无数逗猫棒中精挑细选出来的——也许就是在这里找到的（本站演绎）。'],who:['neko']}
+];
+var PMAP={}; PLACES.forEach(function(p){PMAP[p.id]=p;});
+
+/* ---------- map decorations ---------- */
+function rnd(seed){var x=Math.sin(seed)*10000;return x-Math.floor(x);}
+function tree(x,y,r,cls,fruit){
+  var s='<rect x="'+(x-5)+'" y="'+(y)+'" width="10" height="'+(r*.9).toFixed(0)+'" rx="3" fill="#9b6a3f" stroke="'+INK+'" stroke-width="2.5"/><circle class="'+(cls||'m-tree')+'" cx="'+x+'" cy="'+(y-r*.35).toFixed(1)+'" r="'+r+'"/>';
+  s+='<path class="m-snow" d="M'+(x-r*.8)+' '+(y-r*.6)+'Q'+x+' '+(y-r*1.6)+' '+(x+r*.8)+' '+(y-r*.6)+'Q'+x+' '+(y-r*.9)+' '+(x-r*.8)+' '+(y-r*.6)+'Z"/>';
+  return s;
+}
+function buildMap(){
+  var f='',i;
+  for(i=0;i<46;i++){var x=290+i*20+rnd(i)*14, y=690+rnd(i+9)*40+(i%2)*26; if(x>1210)break; f+=tree(x.toFixed(0),y.toFixed(0),(20+rnd(i+3)*10).toFixed(0),i%3?'m-tree':'m-tree2');}
+  for(i=0;i<8;i++){f+=tree((10+i*36).toFixed(0),(740+rnd(i+40)*16).toFixed(0),18,'m-tree2');}
+  document.getElementById('forest').innerHTML=f;
+  var d='',pts=[[330,260,22],[90,300,20],[40,380,22],[560,560,20],[500,600,18],[380,640,16],[1160,520,24],[1100,560,20],[1180,190,18],[960,40,20],[1000,90,16],[1160,40,22],[790,300,18],[260,180,16],[40,540,18]];
+  pts.forEach(function(p,k){d+=tree(p[0],p[1],p[2],k%2?'m-tree':'m-tree2');});
+  document.getElementById('decorTrees').innerHTML=d;
+  var fb='',cols=['#f6a5b8','#fff','#f9d35b','#c7a6e8','#f08a6e'];
+  for(i=0;i<16;i++){var a=i*2.4, rr=8+(i%4)*12; fb+=flower((110+Math.cos(a)*rr*1.9).toFixed(0)*1,(462+Math.sin(a)*rr*.75).toFixed(0)*1,cols[i%5],4);}
+  document.getElementById('flowerBed').innerHTML=fb;
+  var fp='';
+  for(i=0;i<3;i++){fp+='<path d="M'+(658)+' '+(414+i*22)+'h38M'+(722)+' '+(414+i*22)+'h38M'+(786)+' '+(414+i*22)+'h38" stroke="#8a5d38" stroke-width="2"/>';
+    fp+='<g fill="#5fa557" stroke="'+INK+'" stroke-width="1.4">';
+    for(var j=0;j<3;j++){fp+='<circle cx="'+(664+j*13)+'" cy="'+(408+i*22)+'" r="5"/>';fp+='<path d="M'+(794+j*13)+' '+(412+i*22)+'l-4-9M'+(794+j*13)+' '+(412+i*22)+'l4-9" stroke="#5fa557" stroke-width="3" stroke-linecap="round"/>';}
+    fp+='</g>';
+    for(j=0;j<3;j++){fp+='<circle cx="'+(666+j*13)+'" cy="'+(411+i*22)+'" r="3" fill="#e8463b"/>';fp+='<ellipse cx="'+(728+j*13)+'" cy="'+(409+i*22)+'" rx="6" ry="5" fill="#f39a3b" stroke="'+INK+'" stroke-width="1.5"/>';}
+  }
+  document.getElementById('farmPlants').innerHTML=fp;
+  var fe='<path d="M852 556H890M910 556H958M852 572H890M910 572H958" stroke="#b9814f" stroke-width="5" stroke-linecap="round"/>';
+  [852,866,880,890,910,922,936,948,958].forEach(function(x){fe+='<rect x="'+(x-3)+'" y="546" width="7" height="36" rx="2" fill="#d9a066" stroke="'+INK+'" stroke-width="2"/>';});
+  document.getElementById('fence').innerHTML=fe;
+  var st='';
+  for(i=0;i<70;i++){st+='<circle class="twinkle" style="animation-delay:'+(-rnd(i)*2).toFixed(2)+'s" cx="'+(rnd(i+1)*1200).toFixed(0)+'" cy="'+(rnd(i+200)*360).toFixed(0)+'" r="'+(1+rnd(i+50)*2).toFixed(1)+'" fill="#fff8c8"/>';}
+  st+='<circle cx="1110" cy="60" r="24" fill="#fff4c2" stroke="'+INK+'" stroke-width="2.5"/><circle cx="1122" cy="52" r="22" fill="#18214d" opacity=".9"/>';
+  document.getElementById('mapStars').innerHTML=st;
+  var hf='';
+  for(i=0;i<22;i++){hf+=flower((40+i*66+rnd(i)*30).toFixed(0)*1,(360+rnd(i+7)*44).toFixed(0)*1,cols[i%5],5);}
+  document.getElementById('heroFlowers').innerHTML=hf;
+  var pins='';
+  PLACES.forEach(function(p){
+    pins+='<g class="pin" data-id="'+p.id+'" tabindex="0" role="button" aria-label="'+p.name+'" transform="translate('+p.x+' '+p.y+')"><circle class="pulse" r="18"/><circle class="disc" r="15" fill="#f4a340" stroke="'+INK+'" stroke-width="3"/><text y="6" text-anchor="middle" font-size="16" font-weight="900" fill="'+INK+'">'+p.n+'</text><text class="pin-label" y="40" text-anchor="middle">'+p.name+'</text></g>';
+  });
+  document.getElementById('pins').innerHTML=pins;
+  var chips='';
+  PLACES.forEach(function(p){chips+='<button type="button" data-id="'+p.id+'">'+p.n+' '+p.name+'</button>';});
+  document.getElementById('placeChips').innerHTML=chips;
+}
+
+function miniWho(ids){
+  if(!ids||!ids.length) return '';
+  return '<div class="who">'+ids.map(function(id){var r=RESMAP[id];return '<span>'+svgOf(id==='neko'?'nekoPlain':id==='pen'?'penPlain':id)+r.name+'</span>';}).join('')+'</div>';
+}
+var current=null;
+function selectPlace(id,scroll){
+  var p=PMAP[id]; if(!p) return; current=id;
+  document.querySelectorAll('#vmap .spot, #vmap .pin').forEach(function(el){el.classList.toggle('active',el.getAttribute('data-id')===id);});
+  document.querySelectorAll('#placeChips button').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-id')===id);});
+  var html='<div><span class="no">'+p.n+'</span>'+tags(p.tags)+'</div><h3>'+p.name+'</h3><div class="jpn">'+p.jp+'</div><p>'+p.desc+'</p><ul>'+p.facts.map(function(f){return '<li>'+f+'</li>';}).join('')+'</ul>';
+  if(p.who.length) html+='<div style="margin-top:12px;font-weight:800;font-size:14px">常见村民</div>'+miniWho(p.who);
+  document.getElementById('placePanel').innerHTML=html;
+  if(scroll){document.getElementById('map').scrollIntoView({behavior:'smooth'});}
+  var sc=document.querySelector('.map-scroll'); if(sc&&sc.scrollWidth>sc.clientWidth){var ratio=sc.scrollWidth/1200; sc.scrollTo({left:Math.max(0,p.x*ratio-sc.clientWidth/2),behavior:'smooth'});}
+}
+function bindMap(){
+  var svg=document.getElementById('vmap');
+  svg.addEventListener('click',function(e){var t=e.target.closest('[data-id]'); if(t&&svg.contains(t)) selectPlace(t.getAttribute('data-id'));});
+  svg.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){var t=e.target.closest('.pin'); if(t){e.preventDefault();selectPlace(t.getAttribute('data-id'));}}});
+  document.getElementById('placeChips').addEventListener('click',function(e){var b=e.target.closest('button'); if(b) selectPlace(b.getAttribute('data-id'));});
+  segment('seasonSeg',function(v){document.getElementById('mapFrame').setAttribute('data-season',v); particles(v);});
+  segment('timeSeg',function(v){document.getElementById('vmap').classList.toggle('night',v==='night');});
+}
+function segment(id,cb){
+  var el=document.getElementById(id);
+  el.addEventListener('click',function(e){var b=e.target.closest('button'); if(!b) return; el.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b);}); cb(b.getAttribute('data-v'));});
+}
+function particles(season){
+  var fx=document.getElementById('fx'), h='', n=season==='summer'?0:22, i;
+  var make={
+    spring:function(){return '<svg width="14" height="12" viewBox="0 0 14 12"><path d="M7 11C1 7 1 2 4 1c2-.6 3 1 3 2 0-1 1-2.6 3-2 3 1 3 6-3 10z" fill="#f8b9cb" stroke="#e98aa6"/></svg>';},
+    autumn:function(i){return '<svg width="16" height="16" viewBox="0 0 16 16"><path d="M8 1l2 4 4-1-2 4 3 2-4 1 1 4-4-2-4 2 1-4-4-1 3-2-2-4 4 1z" fill="'+(i%2?'#e8743b':'#d9483b')+'" stroke="#9a4a20" stroke-width=".8"/></svg>';},
+    winter:function(){return '<svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="4" fill="#fff" stroke="#c9dbe6"/></svg>';}
+  };
+  for(i=0;i<n;i++){
+    h+='<i style="left:'+(rnd(i+3)*100).toFixed(1)+'%;animation-duration:'+(7+rnd(i+11)*8).toFixed(1)+'s;animation-delay:'+(-rnd(i+5)*14).toFixed(1)+'s;--dx:'+((rnd(i+8)-.3)*160).toFixed(0)+'px;--rot:'+(rnd(i)*720).toFixed(0)+'deg">'+make[season](i)+'</i>';
+  }
+  fx.innerHTML=h;
+}
+
+/* ---------- residents ---------- */
+function buildResidents(){
+  var g='';
+  RES.forEach(function(r){
+    g+='<article class="card res sp-'+r.sp+'" data-sp="'+r.sp+'" data-id="'+r.id+'" tabindex="0" role="button" aria-label="'+r.name+' 档案">'+(r.role?'<span class="tag t-exh role">'+r.role+'</span>':'')+'<div class="av">'+svgOf(r.id)+'</div><h3>'+r.name+'</h3><div class="cn">'+r.cn+' · '+r.spl+'</div><p>'+r.line+'</p></article>';
+  });
+  var grid=document.getElementById('resGrid'); grid.innerHTML=g;
+  grid.addEventListener('click',function(e){var c=e.target.closest('.res'); if(c) openRes(c.getAttribute('data-id'));});
+  grid.addEventListener('keydown',function(e){if(e.key==='Enter'){var c=e.target.closest('.res'); if(c) openRes(c.getAttribute('data-id'));}});
+  segment('resFilter',function(v){grid.querySelectorAll('.res').forEach(function(c){c.style.display=(v==='all'||c.getAttribute('data-sp')===v)?'':'none';});});
+}
+function openRes(id){
+  var r=RESMAP[id]; if(!r) return;
+  var p=PMAP[r.place];
+  var h='<button class="close" type="button" aria-label="关闭">×</button><div class="m-head">'+svgOf(r.id)+'<div><div>'+tags(r.src)+'</div><h3 id="modalTitle">'+r.name+'</h3><div class="cn" style="font-weight:700;color:#7a5a44">'+r.cn+' · '+r.spl+'</div></div></div>';
+  h+='<table class="prof">'+r.rows.map(function(x){return '<tr><th>'+x[0]+'</th><td>'+x[1]+'</td></tr>';}).join('')+'</table>';
+  if(p) h+='<p style="margin:14px 0 0"><button class="linkbtn" type="button" data-goto="'+p.id+'">在地图上找 TA 常去的地方：'+p.name+'</button></p>';
+  h+='<div class="src">资料来源：'+r.src.map(function(t){return TAGN[t];}).join('、')+'（详见页面底部「资料出处」）</div>';
+  var m=document.getElementById('modal'); document.getElementById('modalCard').innerHTML=h; m.classList.add('open');
+  m.querySelector('.close').focus();
+}
+function bindModal(){
+  var m=document.getElementById('modal');
+  m.addEventListener('click',function(e){
+    if(e.target===m||e.target.closest('.close')){m.classList.remove('open');return;}
+    var g=e.target.closest('[data-goto]'); if(g){m.classList.remove('open'); selectPlace(g.getAttribute('data-goto'),true);}
+  });
+  document.addEventListener('keydown',function(e){if(e.key==='Escape') m.classList.remove('open');});
+}
+
+/* ---------- relations ---------- */
+var NODES={neko:[330,280,62],pen:[590,280,62],mike:[140,140,44],saba:[90,300,44],cha:[120,440,44],buchi:[250,480,44],kuro:[300,100,44],hana:[780,130,44],friend:[830,300,44],parents:[780,460,44],bear:[460,470,44],hiyoko:[460,100,44]};
+var EDGES=[['neko','pen','室友·挚友·监护'],['neko','mike','恋人'],['neko','saba','好友'],['neko','cha','好友'],['neko','buchi','好友'],['neko','kuro','朋友'],['pen','hana','恋人'],['pen','friend','朋友们'],['pen','parents','父母'],['pen','bear','宝物'],['neko','bear','熬夜修补'],['pen','hiyoko','联动来访',1]];
+function buildRel(){
+  var s='<g id="edges">';
+  EDGES.forEach(function(e){
+    var a=NODES[e[0]],b=NODES[e[1]],t=(e[1]==='pen')?0.5:0.58,mx=a[0]+(b[0]-a[0])*t,my=a[1]+(b[1]-a[1])*t,w=e[2].length*15+18;
+    s+='<g class="edge'+(e[3]?' dash':'')+'" data-a="'+e[0]+'" data-b="'+e[1]+'"><line x1="'+a[0]+'" y1="'+a[1]+'" x2="'+b[0]+'" y2="'+b[1]+'"/><rect x="'+(mx-w/2)+'" y="'+(my-14)+'" width="'+w+'" height="28" rx="14"/><text x="'+mx+'" y="'+(my+5)+'" text-anchor="middle">'+e[2]+'</text></g>';
+  });
+  s+='</g>';
+  Object.keys(NODES).forEach(function(k){
+    var n=NODES[k],r=n[2],sc=(r*1.7/120),bg=RESMAP[k].sp==='cat'?'#c8e8dd':RESMAP[k].sp==='penguin'?'#d8ecf8':'#fbe3c8';
+    s+='<g class="node" data-id="'+k+'" tabindex="0" role="button" aria-label="'+RESMAP[k].name+'"><circle cx="'+n[0]+'" cy="'+n[1]+'" r="'+r+'" fill="'+bg+'" stroke="'+INK+'" stroke-width="3"/><g transform="translate('+(n[0]-60*sc)+' '+(n[1]-60*sc-2)+') scale('+sc.toFixed(3)+')">'+CHAR[k==='neko'?'neko':k==='pen'?'pen':k]()+'</g><text x="'+n[0]+'" y="'+(n[1]<200?(n[1]-r-12):(n[1]+r+24))+'" text-anchor="middle">'+RESMAP[k].name+'</text></g>';
+  });
+  var svg=document.getElementById('relSvg'); svg.innerHTML=s;
+  function focus(id){
+    if(!id){svg.classList.remove('focus');svg.querySelectorAll('.hl').forEach(function(x){x.classList.remove('hl');});return;}
+    svg.classList.add('focus'); svg.querySelectorAll('.hl').forEach(function(x){x.classList.remove('hl');});
+    svg.querySelector('.node[data-id="'+id+'"]').classList.add('hl');
+    svg.querySelectorAll('.edge').forEach(function(e){var a=e.getAttribute('data-a'),b=e.getAttribute('data-b'); if(a===id||b===id){e.classList.add('hl'); svg.querySelector('.node[data-id="'+(a===id?b:a)+'"]').classList.add('hl');}});
+  }
+  svg.addEventListener('mouseover',function(e){var n=e.target.closest('.node'); focus(n?n.getAttribute('data-id'):null);});
+  svg.addEventListener('mouseleave',function(){focus(null);});
+  svg.addEventListener('click',function(e){var n=e.target.closest('.node'); if(n){var id=n.getAttribute('data-id'); if(svg.classList.contains('focus')&&n.classList.contains('hl')&&svg.dataset.last===id){openRes(id);} else {focus(id); svg.dataset.last=id;}} else {focus(null);}});
+}
+
+/* ---------- day ---------- */
+var DAY=[
+ {h:6,t:'晨间散步',neko:'早上的风好舒服にゃ',pen:'去看看昨天的小芽だっぺ！',d:'散步是两人共同的爱好（官方）。沿着村里的小路走一圈，顺便去菜园看看。',tg:['off','fan'],p:'garden'},
+ {h:8,t:'早饭吃饭团',neko:'今天的饭团也很好吃にゃ',pen:'饭团最棒了だっぺ！',d:'饭团（おにぎり）是ぺんちゃん喜欢的食物第一名（官方）。ねこくん则是「所有好吃的都喜欢」。',tg:['off','fan'],p:'house'},
+ {h:10,t:'照顾植物与图鉴观察',neko:'（挥舞特别的逗猫棒）',pen:'图鉴上说这是番茄的花だっぺ',d:'ぺんちゃん的爱好：照顾和观察植物、看图鉴（官方）。ねこくん在一旁玩逗猫棒。',tg:['off','fan'],p:'farm'},
+ {h:12,t:'边走边吃',neko:'去茶屋吃团子にゃ',pen:'还要甜甜的だっぺ！',d:'「たべあるき」（边走边吃）是ねこくん的爱好，甜食是ぺんちゃん的最爱（官方）。',tg:['off','fan'],p:'chaya'},
+ {h:13,t:'午睡时间',neko:'zzz……にゃ',pen:'（抱着くまさん）zzz',d:'「おひるね」（午睡）是ねこくん的官方爱好。ちょっとマイペースすぎる，所以可能会睡很久。',tg:['off','fan'],p:'house'},
+ {h:15,t:'海边钓鱼',neko:'今天一定能钓到大鱼にゃ',pen:'鱼！鱼！だっぺ',d:'钓鱼是ねこくん的爱好，鱼是ぺんちゃん喜欢的食物（官方）。',tg:['off','fan'],p:'pier'},
+ {h:17,t:'开着纸箱车兜风',neko:'安全驾驶にゃ～',pen:'出发だっぺ！',d:'ねこくん也会开车，但基本交给爱开车的ぺんちゃん（官方「ねこぺんの愛車」）。方向盘是甜甜圈。',tg:['off'],p:'house'},
+ {h:19,t:'晚饭与甜点',neko:'吃饱了にゃ',pen:'甜点是另一个胃だっぺ',d:'一起吃晚饭——好吃的东西，是猫鹅村通用的语言（本站演绎）。',tg:['fan'],p:'house'},
+ {h:21,t:'山丘上观星',neko:'那颗是什么星にゃ？',pen:'图鉴里有写だっぺ！',d:'天体观测是ぺんちゃん的官方爱好。夜空下，金平岛的星星也一闪一闪。',tg:['off','fan'],p:'hill'},
+ {h:23,t:'抱着くまさん入睡',neko:'晚安にゃ',pen:'くまさん，晚安だっぺ',d:'くまさん是ぺんちゃん最珍惜的玩偶；它掉了的手臂，是ねこくん熬夜缝好的（资料）。',tg:['ref','fan'],p:'house'}
+];
+var SKY={5:['#f6c1a0','#fde5c6'],6:['#f9cfae','#fff0d6'],8:['#9fd6f5','#dcf2fc'],10:['#8fd0f5','#d2effc'],12:['#86ccf4','#cdeefc'],13:['#8fd0f5','#d2effc'],15:['#9fd2f0','#e3f3fb'],17:['#f4b27c','#fbe2b2'],19:['#7d74bd','#f1a58e'],21:['#1f2a5a','#3b4a86'],23:['#141c42','#2a3570']};
+function setDay(i){
+  var d=DAY[i]; var sc=document.getElementById('dayScene'), sky=SKY[d.h];
+  sc.style.background='linear-gradient('+sky[0]+','+sky[1]+')';
+  var night=d.h>=19||d.h<5, orb=document.getElementById('dayOrb');
+  var tpos=night?((d.h-19)/5):((d.h-5)/13);
+  orb.style.left=(8+tpos*78)+'%'; orb.style.top=(10+Math.pow(Math.abs(tpos-.5)*2,2)*28)+'%';
+  orb.style.background=night?'#fff4c2':(d.h>=17?'#ffb067':'#ffd765');
+  orb.style.boxShadow=night?'inset -14px -6px 0 #d8cf9e,0 0 24px rgba(255,244,194,.6)':'0 0 0 10px rgba(255,215,101,.3),0 0 0 22px rgba(255,215,101,.15)';
+  document.getElementById('dayStars').style.opacity=night?1:0;
+  sc.querySelector('.ground').style.background=night?'#6f8a5c':'';
+  document.getElementById('dayClock').textContent=(d.h<10?'0':'')+d.h+':00';
+  document.getElementById('bNeko').textContent=d.neko; document.getElementById('bPen').textContent=d.pen;
+  document.getElementById('dayTitle').textContent=d.t;
+  document.getElementById('dayTags').innerHTML=tags(d.tg)+'<span class="tag" style="background:#f3ead8">地点：'+PMAP[d.p].name+'</span>';
+  document.getElementById('dayDesc').textContent=d.d;
+  document.getElementById('dayGo').setAttribute('data-id',d.p);
+  document.getElementById('daySlider').value=i;
+  document.querySelectorAll('#dayHours button').forEach(function(b,k){b.classList.toggle('on',k===i);});
+}
+function buildDay(){
+  var hs=''; DAY.forEach(function(d,i){hs+='<button type="button" data-i="'+i+'">'+(d.h<10?'0':'')+d.h+':00</button>';});
+  document.getElementById('dayHours').innerHTML=hs;
+  var st=''; for(var i=0;i<40;i++){st+='<i style="left:'+(rnd(i+70)*100).toFixed(1)+'%;top:'+(rnd(i+90)*60).toFixed(1)+'%"></i>';}
+  document.getElementById('dayStars').innerHTML=st;
+  document.getElementById('daySlider').addEventListener('input',function(e){setDay(+e.target.value);});
+  document.getElementById('dayHours').addEventListener('click',function(e){var b=e.target.closest('button'); if(b) setDay(+b.getAttribute('data-i'));});
+  document.getElementById('dayGo').addEventListener('click',function(e){selectPlace(e.currentTarget.getAttribute('data-id'),true);});
+  setDay(0);
+}
+
+/* ---------- vehicles ---------- */
+var VEH=[
+ {name:'こうきゅうなくるま',cn:'高级的车',tg:['off','ref'],svg:'<svg viewBox="0 0 220 150"><g transform="translate(26 18)">'+carInner()+'</g></svg>',d:'猫鹅引以为傲的纸箱车，方向盘是甜甜圈。ねこくん也会开，但基本交给爱开车的ぺんちゃん。早期是ねこくん从后面推着走，不知何时起像普通汽车一样能跑了。'},
+ {name:'バイク',cn:'纸箱摩托',tg:['off'],svg:'',d:'由ねこくん驾驶。用装过橘子的纸箱做成，至今隐约飘着橘子香；配套「みかんヘルメット」（橘子头盔）。行驶音效：ドルルルル。'},
+ {name:'かっこいいじょしゅせき',cn:'帅气的副驾',tg:['ref'],svg:'',d:'同样是纸箱做的，可以和纸箱摩托连接起来——ぺんちゃん的专属座位（座位归属为本站演绎）。'},
+ {name:'こうきゅうほてる',cn:'高级酒店',tg:['ref'],svg:'',d:'把纸箱倒扣过来，就是一间「高级酒店」。'},
+ {name:'でんせつのよろい・けん・たて',cn:'传说的铠甲·剑·盾',tg:['ref'],svg:'',d:'纸箱制的冒险装备三件套。猫鹅村的「纸箱工学」从交通延伸到了勇者装备。'}
+];
+function vehSvgs(){
+  var bike='<svg viewBox="0 0 220 150"><g transform="translate(20 6)">'+
+    '<g transform="translate(58 -2) scale(.6)">'+catInner({})+'</g>'+
+    '<path d="M84 22A26 23 0 0 1 136 22Z" fill="#f39a3b" stroke="'+INK+'" stroke-width="3" stroke-linejoin="round"/><path d="M110 0q10-10 20-2q-10 8-20 2z" fill="#7bb05a" stroke="'+INK+'" stroke-width="2"/>'+
+    '<path d="M46 74H150V108H46Z" fill="#f3b25a" stroke="'+INK+'" stroke-width="3" stroke-linejoin="round"/><text x="98" y="97" text-anchor="middle" font-size="14" font-weight="800" fill="'+INK+'">みかん</text>'+
+    '<path d="M150 80L168 58H178" fill="none" stroke="'+INK+'" stroke-width="4" stroke-linecap="round"/>'+
+    '<circle cx="60" cy="116" r="16" fill="#fff" stroke="'+INK+'" stroke-width="3"/><circle cx="150" cy="116" r="16" fill="#fff" stroke="'+INK+'" stroke-width="3"/>'+
+    '<text x="0" y="40" font-size="13" font-weight="800" fill="#c0463a" transform="rotate(-10 0 40)">ドルルルル</text></g></svg>';
+  var side='<svg viewBox="0 0 220 150"><g transform="translate(30 10)">'+
+    '<g transform="translate(36 8) scale(.6)">'+penInner({bow:true})+'</g>'+
+    '<path d="M20 70H120Q140 70 140 92V106H20Z" fill="#e0b47a" stroke="'+INK+'" stroke-width="3" stroke-linejoin="round"/>'+
+    '<rect x="24" y="78" width="110" height="22" rx="4" fill="#fff6e4" stroke="'+INK+'" stroke-width="2"/><text x="79" y="93" text-anchor="middle" font-size="9" font-weight="800" fill="'+INK+'">かっこいいじょしゅせき</text>'+
+    '<circle cx="80" cy="116" r="14" fill="#fff" stroke="'+INK+'" stroke-width="3"/><path d="M140 92H168" stroke="'+INK+'" stroke-width="5" stroke-linecap="round" stroke-dasharray="6 5"/></g></svg>';
+  var hotel='<svg viewBox="0 0 220 150"><g transform="translate(40 10)">'+
+    '<path d="M10 40L70 22L130 40V126H10Z" fill="#e0b47a" stroke="'+INK+'" stroke-width="3" stroke-linejoin="round"/><path d="M10 40H130" stroke="'+INK+'" stroke-width="2.5"/>'+
+    '<path d="M50 126V96Q70 74 90 96V126Z" fill="#5c4332" stroke="'+INK+'" stroke-width="3"/>'+
+    '<g transform="translate(52 86) scale(.32)">'+penInner({})+'</g>'+
+    '<rect x="28" y="50" width="84" height="22" rx="4" fill="#fff6e4" stroke="'+INK+'" stroke-width="2"/><text x="70" y="66" text-anchor="middle" font-size="12" font-weight="800" fill="'+INK+'">こうきゅうほてる</text></g></svg>';
+  var gear='<svg viewBox="0 0 220 150"><g transform="translate(30 8)">'+
+    '<path d="M100 20H160V70Q160 112 130 128Q100 112 100 70Z" fill="#e0b47a" stroke="'+INK+'" stroke-width="3" stroke-linejoin="round"/><path class="twinkle" d="M130 52l6 12 13 2-9 9 2 13-12-6-12 6 2-13-9-9 13-2z" fill="#ffd34d" stroke="'+INK+'" stroke-width="2"/>'+
+    '<rect x="42" y="6" width="16" height="96" rx="3" fill="#e9c896" stroke="'+INK+'" stroke-width="3"/><rect x="26" y="98" width="48" height="12" rx="4" fill="#c69a6a" stroke="'+INK+'" stroke-width="3"/><rect x="44" y="110" width="12" height="24" rx="3" fill="#8b5e34" stroke="'+INK+'" stroke-width="3"/>'+
+    '<path d="M46 20h8M46 40h8M46 60h8M46 80h8" stroke="#c69a6a" stroke-width="2"/></g></svg>';
+  VEH[1].svg=bike; VEH[2].svg=side; VEH[3].svg=hotel; VEH[4].svg=gear;
+}
+function buildVeh(){
+  vehSvgs();
+  document.getElementById('vehGrid').innerHTML=VEH.map(function(v){return '<article class="card veh">'+v.svg+'<div>'+tags(v.tg)+'</div><h3>'+v.name+'</h3><div class="cn">'+v.cn+'</div><p>'+v.d+'</p></article>';}).join('');
+}
+
+/* ---------- timeline ---------- */
+var TL=[
+ ['2013.12','もじじ 开设 X 账号 @mojimojiji','第三方统计显示账号注册于 2013 年 12 月。早期在推特上连载「ねこぺん日和」单幅插画。'],
+ ['2014','「ねこぺん日和」LINE 贴图登场','在 LINE Creators 贴图市场推出，2 只小家伙的日常被称为「治愈」，人气迅速升温。'],
+ ['2015','首批官方周边 & LINE Creators MVP','全国 LOFT 的「LINE Creators Market Pop-up Store」推出官方周边，明信片写着「のんびりいこう」；12 月获 LINE Creators MVP。'],
+ ['2016.08','首本角色书『ねこぺん日和』','宝岛社出版，全新绘制的漫画、「ぺんちゃん日记」、作者的碎碎念专栏。'],
+ ['2018.03','第一次主题咖啡馆','表参道「ねこぺん日和カフェ」，以「野餐」为主题。'],
+ ['2019.09','『ねこぺんとことこ』','宝岛社，目录包含「ねこぺん村」「ねこくんとぺんちゃんの一日」「ねこぺんのゆるゆる四季」。'],
+ ['2021.04','涂色书『のびのび元気なふたり』','宝岛社『ねこぺん日和 塗り絵BOOK』。'],
+ ['2023.07','原画展「ねこぺん村の夏休み」','东京裏参道ガーデン古民家会场，入场送「ねこぺん村カード」，并在新宿开设 POPUP，后巡回各地。'],
+ ['2024.02','主题咖啡馆「ねこのしゅうかいじょ」','10 周年纪念，以猫鹅村的猫咪集会所为主题，表参道限时营业。'],
+ ['2024.07','小学馆『ねこぺん日和シールブック』','收录 319 张贴纸，包括「ねこぺん村マップ」、集会所的伙伴们和はなちゃん。'],
+ ['2024.08','10 周年：『しゅっぱつ ねこぺん』与巡回纪念展','第 3 本插画书出版；纪念展「ねこぺん村へご招待～あたたかい言葉のプレゼント～」在东京、西宫、仙台、名古屋、福冈、札幌巡回至 2025 年 2 月，再现ねこぺんハウス、茶屋そらまめ与村庄模型。'],
+ ['2025.04','『ねこぺん日和 まるごとレターブック』','小学馆，收录 44 张信纸与新绘插画。'],
+ ['2026.08','12 周年纪念活动','LINE FRIENDS SQUARE 涩谷店举办纪念活动，推出附「出生卡」的 BABY 玩偶套装。']
+];
+function buildTL(){
+  document.getElementById('tl').innerHTML=TL.map(function(t){return '<div class="card tl-item"><time>'+t[0]+'</time><b>'+t[1]+'</b><p>'+t[2]+'</p></div>';}).join('');
+}
+
+/* ---------- share ---------- */
+function toast(msg){var t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(toast._t); toast._t=setTimeout(function(){t.classList.remove('show');},2200);}
+function copyText(txt){
+  if(navigator.clipboard&&window.isSecureContext){return navigator.clipboard.writeText(txt);}
+  return new Promise(function(res,rej){var ta=document.createElement('textarea'); ta.value=txt; ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.select(); try{document.execCommand('copy')?res():rej();}catch(e){rej(e);} document.body.removeChild(ta);});
+}
+function bindShare(){
+  document.getElementById('shareBtn').addEventListener('click',function(){
+    var url=location.href.split('#')[0], data={title:document.title,text:'来逛逛ねこくん和ぺんちゃん住的猫鹅村吧！',url:url};
+    if(navigator.share){navigator.share(data).catch(function(){});return;}
+    copyText(url).then(function(){toast('链接已复制，快去分享吧');},function(){toast('请复制地址栏中的链接分享');});
+  });
+}
+
+/* ---------- init ---------- */
+buildMap(); buildResidents(); buildRel(); buildVeh(); buildTL();
+fillChars(document);
+bindMap(); bindModal(); buildDay(); bindShare();
+particles('spring'); selectPlace('shukai');
+})();
+</script>
+</body>
+</html>
