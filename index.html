@@ -438,7 +438,12 @@ section.plank::before{content:"";position:absolute;left:0;right:0;top:0;height:1
 .day-film-wrap{position:absolute;inset:0;overflow:hidden;z-index:4;display:none}
 .day-scene.film .day-film-wrap{display:block}
 .day-film{position:absolute;left:-1.5%;top:-1.5%;width:103%;height:103%;object-fit:fill}
-.day-scene.film .day-chars,.day-scene.film .day-props,.day-scene.film .day-front,.day-scene.film .day-clock{display:none}
+.day-scene.film .day-chars,.day-scene.film .day-props,.day-scene.film .day-front{display:none}
+/* 时钟是站点的 HTML，浮在影片之上：数字永远准确，也不用让模型去重画 */
+.day-scene .day-clock{z-index:5}
+/* 某些片段右上角会被模型画出一个多余的挂钟，用同色的天空补掉 */
+.film-patch{position:absolute;right:0;top:0;width:11.4%;height:19.6%;z-index:5;display:none;pointer-events:none}
+.day-scene.film-patched .film-patch{display:block}
 /* 坐车时角色要站在车斗沿上，所以整体抬高，让车体留在下方 */
 .day-scene.car .day-chars{bottom:20%}
 .day-scene.night .hold .zzz{fill:#fff6d8}
@@ -940,7 +945,7 @@ footer b{color:#fff}
           <div class="c"><div class="bubble" id="bPen"></div><svg viewBox="0 0 120 120"><g class="chr" id="gPen" data-c="penRig" style="animation-delay:-.25s"></g></svg><div class="hold" id="holdPen"></div></div>
         </div>
         <div class="day-front" id="dayFront"></div>
-        <div class="day-film-wrap"><video class="day-film" id="dayFilm" muted loop playsinline preload="none" poster=""></video></div>
+        <div class="day-film-wrap"><video class="day-film" id="dayFilm" muted loop playsinline preload="none" poster=""></video></div>        <div class="film-patch" id="filmPatch"></div>
       </div>
       <div class="card day-info">
         <h3 id="dayTitle"></h3>
@@ -1470,6 +1475,8 @@ var SKY={5:['#f6c1a0','#fde5c6'],6:['#f9cfae','#fff0d6'],8:['#9fd6f5','#dcf2fc']
 /* 每个时段一条 H3 生成的动作流：首帧驱动，5 秒循环 */
 var FILMS=['media/day-0600.mp4','media/day-0800.mp4','media/day-1000.mp4','media/day-1200.mp4','media/day-1300.mp4','media/day-1500.mp4','media/day-1700.mp4','media/day-1900.mp4','media/day-2100.mp4','media/day-2300.mp4'];
 var FILMPOST=['media/day-0600.jpg','media/day-0800.jpg','media/day-1000.jpg','media/day-1200.jpg','media/day-1300.jpg','media/day-1500.jpg','media/day-1700.jpg','media/day-1900.jpg','media/day-2100.jpg','media/day-2300.jpg'];
+/* 需要补掉模型画残的片段：索引 -> 补丁渐变（取自该片段自身的天空色） */
+var FILMPATCH={5:'linear-gradient(180deg,rgb(147,197,233) 0%,rgb(152,200,234) 45%,rgb(160,205,236) 100%)'};
 var REDUCE=window.matchMedia?window.matchMedia('(prefers-reduced-motion: reduce)'):{matches:false};
 function bindFilm(){
   var f=document.getElementById('dayFilm');
@@ -1516,6 +1523,9 @@ function setDay(i){
       if(fsrc){ film.src=fsrc; film.load(); } else { film.removeAttribute('src'); }
     }
     sc.classList.toggle('film',!!fsrc);
+    var patch=document.getElementById('filmPatch');
+    if(patch){ patch.style.background=FILMPATCH[i]||'';
+      sc.classList.toggle('film-patched',!!FILMPATCH[i]); }
     if(fsrc&&!REDUCE.matches){ var pr=film.play(); if(pr&&pr.catch) pr.catch(function(){}); }
     else film.pause();
   }
