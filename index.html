@@ -160,176 +160,88 @@ section.plank::before{content:"";position:absolute;left:0;right:0;top:0;height:1
 .bob{animation:bob .45s ease-in-out infinite alternate}
 @keyframes bob{to{transform:translateY(-12px)}}
 .twinkle{animation:tw 2s ease-in-out infinite alternate}
-@keyframes tw{to{opacity:.3}}
-/* ---------- 分部件动作骨架 ---------- */
+@keyframes tw{to{opacity:.3}}/* ---------- 动作骨架：整只角色 + 眼睛 ----------
+   原版的猫和企鹅都是一整块闭合轮廓，拆开反而会露出接缝，
+   所以动作都做在整体上（摇摆、倾斜、蹲下、呼吸），眼睛单独做。 */
 @keyframes idle{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-2px) rotate(-.7deg)}}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
-.rig,.hd,.am,.ft{transform-box:view-box}
+.rig{transform-box:view-box}
 .ey{transform-box:fill-box;transform-origin:50% 50%}
-.rig-cat .hd{transform-origin:60.0px 64.0px}
-.rig-cat .am-l{transform-origin:33.0px 72.0px}
-.rig-cat .am-r{transform-origin:87.0px 72.0px}
-.rig-cat .ft-l{transform-origin:41.0px 98.0px}
-.rig-cat .ft-r{transform-origin:79.0px 98.0px}
-.rig-pen .hd{transform-origin:60.0px 80.0px}
-.rig-pen .am-l{transform-origin:40.0px 84.0px}
-.rig-pen .am-r{transform-origin:80.0px 84.0px}
+.act{transform-box:fill-box;transform-origin:50% 100%}
 
-/* 走路：四个节拍 —— 迈左脚 / 过渡 / 迈右脚 / 过渡 */
+/* 走：迈左 → 过渡 → 迈右 → 过渡，整体左右摇摆 */
 @keyframes dWalk{
-  0%{transform:translateX(0) translateY(0) rotate(-2.2deg)}
-  25%{transform:translateX(2px) translateY(-4px) rotate(0deg)}
-  50%{transform:translateX(4px) translateY(0) rotate(2.2deg)}
-  75%{transform:translateX(2px) translateY(-4px) rotate(0deg)}
-  100%{transform:translateX(0) translateY(0) rotate(-2.2deg)}}
-@keyframes wArmL{0%{transform:rotate(24deg)}25%{transform:rotate(0)}50%{transform:rotate(-24deg)}75%{transform:rotate(0)}100%{transform:rotate(24deg)}}
-@keyframes wArmR{0%{transform:rotate(-24deg)}25%{transform:rotate(0)}50%{transform:rotate(24deg)}75%{transform:rotate(0)}100%{transform:rotate(-24deg)}}
-@keyframes wFootL{0%{transform:rotate(-17deg)}30%{transform:rotate(6deg)}50%{transform:rotate(15deg)}70%{transform:rotate(0)}100%{transform:rotate(-17deg)}}
-@keyframes wFootR{0%{transform:rotate(15deg)}30%{transform:rotate(0)}50%{transform:rotate(-17deg)}70%{transform:rotate(6deg)}100%{transform:rotate(15deg)}}
-@keyframes wHead{0%{transform:rotate(-1.5deg)}25%{transform:rotate(1.5deg)}50%{transform:rotate(-1.5deg)}75%{transform:rotate(1.5deg)}100%{transform:rotate(-1.5deg)}}
+  0%{transform:translateX(0) translateY(0) rotate(-2.6deg) scale(1,1)}
+  25%{transform:translateX(3px) translateY(-3px) rotate(0deg) scale(.99,1.01)}
+  50%{transform:translateX(6px) translateY(0) rotate(2.6deg) scale(1,1)}
+  75%{transform:translateX(3px) translateY(-3px) rotate(0deg) scale(.99,1.01)}
+  100%{transform:translateX(0) translateY(0) rotate(-2.6deg) scale(1,1)}}
+@keyframes walkEye{0%,42%{transform:scaleY(1)}48%{transform:scaleY(.15)}54%,100%{transform:scaleY(1)}}
 
-/* 吃饭：伸手 → 抓起 → 送到嘴边 → 咀嚼 → 吞下 */
+/* 吃：凑近 → 叼住 → 咀嚼 → 咽下 */
 @keyframes dEat{
   0%{transform:translateY(0) rotate(0deg)}
   16%{transform:translateY(2px) rotate(3.5deg)}
-  34%{transform:translateY(3px) rotate(4.5deg)}
-  58%{transform:translateY(0) rotate(0.5deg)}
-  76%{transform:translateY(-1px) rotate(-1.5deg)}
-  88%{transform:translateY(-2px) rotate(-3deg)}
+  32%{transform:translateY(3px) rotate(5deg)}
+  46%{transform:translateY(1px) rotate(1.5deg)}
+  58%{transform:translateY(3px) rotate(4deg)}
+  68%{transform:translateY(1px) rotate(1deg)}
+  78%{transform:translateY(3px) rotate(4deg)}
+  90%{transform:translateY(0) rotate(0deg)}
   100%{transform:translateY(0) rotate(0deg)}}
-@keyframes eatArmL{
-  0%{transform:rotate(4deg)}
-  12%{transform:rotate(-18deg)}
-  28%{transform:rotate(-30deg)}
-  34%{transform:rotate(-20deg)}
-  48%{transform:rotate(-104deg)}
-  62%{transform:rotate(-108deg)}
-  78%{transform:rotate(-104deg)}
-  90%{transform:rotate(4deg)}
-  100%{transform:rotate(4deg)}}
-@keyframes eatArmR{
-  0%{transform:rotate(-4deg)}
-  12%{transform:rotate(18deg)}
-  28%{transform:rotate(30deg)}
-  34%{transform:rotate(20deg)}
-  48%{transform:rotate(104deg)}
-  62%{transform:rotate(108deg)}
-  78%{transform:rotate(104deg)}
-  90%{transform:rotate(-4deg)}
-  100%{transform:rotate(-4deg)}}
-@keyframes eatHead{
-  0%{transform:rotate(0deg)}
-  12%{transform:rotate(5deg)}
-  28%{transform:rotate(9deg)}
-  46%{transform:rotate(-5deg)}
-  62%{transform:rotate(-2deg)}
-  70%{transform:rotate(-6deg)}
-  78%{transform:rotate(-2deg)}
-  86%{transform:rotate(-8deg)}
-  100%{transform:rotate(0deg)}}
-@keyframes eatEye{0%,50%{transform:scaleY(1)}64%{transform:scaleY(.18)}76%{transform:scaleY(1)}84%{transform:scaleY(.3)}92%{transform:scaleY(1)}100%{transform:scaleY(1)}}
+@keyframes eatEye{0%,44%{transform:scaleY(1)}56%{transform:scaleY(.35)}68%{transform:scaleY(1)}80%{transform:scaleY(.45)}90%,100%{transform:scaleY(1)}}
 
-/* 睡觉：躺下 → 呼吸 → 轻微鼾声 → 醒来 */
+/* 睡：蹲下 → 呼吸 → 打鼾 → 醒来 */
 @keyframes dSleep{
-  0%{transform:translateY(0) scale(1,1)}
-  26%{transform:translateY(4px) scale(1.03,.94)}
-  62%{transform:translateY(4px) scale(1.03,.94)}
-  78%{transform:translateY(3px) scale(1.02,.96)}
-  100%{transform:translateY(0) scale(1,1)}}
-@keyframes sleepHead{
-  0%{transform:rotate(0deg)}
-  24%{transform:rotate(12deg) translateY(2px)}
-  58%{transform:rotate(13deg) translateY(2px)}
-  70%{transform:rotate(10deg) translateY(2px)}
-  80%{transform:rotate(15deg) translateY(3px)}
-  92%{transform:rotate(12deg) translateY(2px)}
-  100%{transform:rotate(0deg)}}
-@keyframes sleepArmL{0%{transform:rotate(0deg)}26%{transform:rotate(24deg)}100%{transform:rotate(24deg)}}
-@keyframes sleepArmR{0%{transform:rotate(0deg)}26%{transform:rotate(-24deg)}100%{transform:rotate(-24deg)}}
-@keyframes sleepEye{0%,18%{transform:scaleY(1)}30%,100%{transform:scaleY(.1)}}
+  0%{transform:translateY(0) scale(1,1) rotate(0deg)}
+  22%{transform:translateY(6px) scale(1.04,.92) rotate(-3deg)}
+  46%{transform:translateY(7px) scale(1.05,.90) rotate(-3.4deg)}
+  70%{transform:translateY(6px) scale(1.04,.92) rotate(-3deg)}
+  84%{transform:translateY(5px) scale(1.03,.94) rotate(-2deg)}
+  100%{transform:translateY(0) scale(1,1) rotate(0deg)}}
+@keyframes sleepEye{0%,16%{transform:scaleY(1)}26%,100%{transform:scaleY(.12)}}
 
 /* 观察：左看 → 凑近 → 右看 → 回正 */
-@keyframes dLook{0%{transform:translateY(0) rotate(0deg)}100%{transform:translateY(0) rotate(0deg)}}
-@keyframes lookHead{
-  0%{transform:rotate(0deg)}
-  20%{transform:rotate(-10deg)}
-  44%{transform:rotate(-5deg) translateY(3px)}
-  68%{transform:rotate(9deg)}
-  86%{transform:rotate(2deg)}
-  100%{transform:rotate(0deg)}}
+@keyframes dLook{
+  0%{transform:translateY(0) rotate(0deg)}
+  22%{transform:translateY(1px) rotate(-6deg)}
+  45%{transform:translateY(3px) rotate(-2deg)}
+  70%{transform:translateY(1px) rotate(6deg)}
+  88%{transform:translateY(0) rotate(2deg)}
+  100%{transform:translateY(0) rotate(0deg)}}
 @keyframes lookEye{0%,100%{transform:translateX(0)}26%{transform:translateX(-1.6px)}62%{transform:translateX(1.6px)}}
-@keyframes lookArmL{0%{transform:rotate(0deg)}30%{transform:rotate(-16deg)}60%{transform:rotate(-10deg)}100%{transform:rotate(0deg)}}
 
-/* 观星：抬头 → 停留 → 「哇」一下 → 回正 */
+/* 观星：抬头 → 惊喜 → 回正 */
 @keyframes dLookup{
   0%{transform:translateY(0) rotate(0deg)}
-  24%{transform:translateY(-3px) rotate(-4deg)}
-  58%{transform:translateY(-5px) rotate(-6deg)}
-  76%{transform:translateY(-3px) rotate(-4deg)}
+  24%{transform:translateY(-4px) rotate(-5deg)}
+  54%{transform:translateY(-6px) rotate(-7deg)}
+  66%{transform:translateY(-4px) rotate(-4deg)}
+  76%{transform:translateY(-7px) rotate(-8deg)}
+  90%{transform:translateY(-2px) rotate(-2deg)}
   100%{transform:translateY(0) rotate(0deg)}}
-@keyframes lookupHead{
-  0%{transform:rotate(0deg)}
-  20%{transform:rotate(-15deg)}
-  52%{transform:rotate(-17deg)}
-  62%{transform:rotate(-9deg)}
-  72%{transform:rotate(-19deg)}
-  86%{transform:rotate(-5deg)}
-  100%{transform:rotate(0deg)}}
 @keyframes lookupEye{0%,100%{transform:translateY(0)}34%{transform:translateY(-1.8px)}}
-@keyframes lookupArmL{0%{transform:rotate(0deg)}30%{transform:rotate(-22deg)}70%{transform:rotate(-16deg)}100%{transform:rotate(0deg)}}
 
 /* 钓鱼：抛竿 → 收线 → 咬钩 → 提竿 */
-@keyframes dFish{0%{transform:rotate(0deg)}100%{transform:rotate(0deg)}}
 @keyframes fishBody{
   0%{transform:rotate(0deg)}
   16%{transform:rotate(-7deg) translateY(1px)}
   38%{transform:rotate(6deg) translateY(-1px)}
   56%{transform:rotate(0deg)}
   68%{transform:rotate(-4deg)}
-  76%{transform:rotate(5deg)}
-  86%{transform:rotate(0deg)}
-  100%{transform:rotate(0deg)}}
-@keyframes fishArmR{
-  0%{transform:rotate(-4deg)}
-  16%{transform:rotate(-30deg)}
-  38%{transform:rotate(26deg)}
-  56%{transform:rotate(6deg)}
-  68%{transform:rotate(4deg)}
-  76%{transform:rotate(-18deg)}
-  88%{transform:rotate(-4deg)}
-  100%{transform:rotate(-4deg)}}
-@keyframes fishHead{
-  0%{transform:rotate(0deg)}
-  20%{transform:rotate(-8deg)}
-  44%{transform:rotate(5deg)}
-  60%{transform:rotate(-6deg)}
-  72%{transform:rotate(-2deg)}
-  80%{transform:rotate(4deg)}
+  78%{transform:rotate(5deg)}
+  88%{transform:rotate(0deg)}
   100%{transform:rotate(0deg)}}
 @keyframes fishEye{0%,100%{transform:scaleY(1)}72%{transform:scaleY(.2)}84%{transform:scaleY(1)}}
 
 /* 挥手 / 逗猫棒：抬手 → 挥三下 → 放下 */
 @keyframes dWave{
   0%{transform:rotate(0deg)}
-  22%{transform:rotate(-4deg)}
-  60%{transform:rotate(4deg)}
-  100%{transform:rotate(0deg)}}
-@keyframes waveArmR{
-  0%{transform:rotate(-4deg)}
-  18%{transform:rotate(-58deg)}
-  30%{transform:rotate(-96deg)}
-  42%{transform:rotate(-74deg)}
-  54%{transform:rotate(-100deg)}
-  66%{transform:rotate(-72deg)}
-  78%{transform:rotate(-98deg)}
-  90%{transform:rotate(-4deg)}
-  100%{transform:rotate(-4deg)}}
-@keyframes waveHead{
-  0%{transform:rotate(0deg)}
-  26%{transform:rotate(-6deg)}
-  46%{transform:rotate(6deg)}
-  66%{transform:rotate(-5deg)}
-  84%{transform:rotate(3deg)}
+  22%{transform:rotate(-5deg)}
+  44%{transform:rotate(5deg)}
+  62%{transform:rotate(-4.5deg)}
+  78%{transform:rotate(4deg)}
+  90%{transform:rotate(-1.5deg)}
   100%{transform:rotate(0deg)}}
 @keyframes waveEye{0%,100%{transform:scaleY(1)}40%{transform:scaleY(.45)}70%{transform:scaleY(1)}}
 
@@ -340,74 +252,29 @@ section.plank::before{content:"";position:absolute;left:0;right:0;top:0;height:1
   50%{transform:translateY(0) rotate(1.5deg)}
   74%{transform:translateY(2px) rotate(-1deg)}
   100%{transform:translateY(0) rotate(-2deg)}}
-@keyframes holdArmL{0%{transform:rotate(0deg)}24%{transform:rotate(30deg)}100%{transform:rotate(30deg)}}
-@keyframes holdArmR{0%{transform:rotate(0deg)}24%{transform:rotate(-30deg)}100%{transform:rotate(-30deg)}}
-@keyframes holdHead{
-  0%{transform:rotate(0deg)}
-  26%{transform:rotate(9deg)}
-  48%{transform:rotate(5deg)}
-  66%{transform:rotate(11deg)}
-  82%{transform:rotate(7deg)}
-  100%{transform:rotate(0deg)}}
 @keyframes holdEye{0%,24%{transform:scaleY(1)}40%,100%{transform:scaleY(.25)}}
+
+/* ---- 每个动作一条完整的先后链，而不是整体摇摆 ---- */
+.act-walk{animation:dWalk 1.15s ease-in-out infinite}
+.act-walk .ey{animation:walkEye 3.45s ease-in-out infinite}
+.act-eat{animation:dEat 3.4s ease-in-out infinite}
+.act-eat .ey{animation:eatEye 3.4s ease-in-out infinite}
+.act-sleep{animation:dSleep 4.2s ease-in-out infinite}
+.act-sleep .ey{animation:sleepEye 4.2s ease-in-out infinite}
+.act-look{animation:dLook 3.6s ease-in-out infinite}
+.act-look .ey{animation:lookEye 3.6s ease-in-out infinite}
+.act-lookup{animation:dLookup 4.4s ease-in-out infinite}
+.act-lookup .ey{animation:lookupEye 4.4s ease-in-out infinite}
+.act-fish{animation:fishBody 3.8s ease-in-out infinite}
+.act-fish .ey{animation:fishEye 3.8s ease-in-out infinite}
+.act-wave{animation:dWave 1.7s ease-in-out infinite}
+.act-wave .ey{animation:waveEye 1.7s ease-in-out infinite}
+.act-hold{animation:dHold 3.8s ease-in-out infinite}
+.act-hold .ey{animation:holdEye 3.8s ease-in-out infinite}
 
 @keyframes zzz{0%{transform:translateY(6px) scale(.6);opacity:0}18%{opacity:1}72%{opacity:1}100%{transform:translateY(-16px) scale(1.15);opacity:0}}
 @keyframes fishSwim{0%,100%{transform:translateX(0) rotate(0)}50%{transform:translateX(-7px) rotate(-5deg)}}
 @keyframes propBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
-.act{transform-box:fill-box;transform-origin:50% 100%}
-
-/* ---- 走：身体 + 四肢 + 头的四拍联动 ---- */
-.act-walk{animation:dWalk 1.15s ease-in-out infinite}
-.act-walk .am-l{animation:wArmL 1.15s ease-in-out infinite}
-.act-walk .am-r{animation:wArmR 1.15s ease-in-out infinite}
-.act-walk .ft-l{animation:wFootL 1.15s ease-in-out infinite}
-.act-walk .ft-r{animation:wFootR 1.15s ease-in-out infinite}
-.act-walk .hd{animation:wHead 1.15s ease-in-out infinite}
-
-/* ---- 吃：伸手 → 抓起 → 送到嘴边 → 咀嚼 → 吞下 ---- */
-.act-eat{animation:dEat 3.4s ease-in-out infinite}
-.act-eat .am-l{animation:eatArmL 3.4s ease-in-out infinite}
-.act-eat .am-r{animation:eatArmR 3.4s ease-in-out infinite}
-.act-eat .hd{animation:eatHead 3.4s ease-in-out infinite}
-.act-eat .ey{animation:eatEye 3.4s ease-in-out infinite}
-
-/* ---- 睡：躺下 → 呼吸 → 鼾声 ---- */
-.act-sleep{animation:dSleep 4.2s ease-in-out infinite}
-.act-sleep .hd{animation:sleepHead 4.2s ease-in-out infinite}
-.act-sleep .am-l{animation:sleepArmL 4.2s ease-in-out infinite}
-.act-sleep .am-r{animation:sleepArmR 4.2s ease-in-out infinite}
-.act-sleep .ey{animation:sleepEye 4.2s ease-in-out infinite}
-
-/* ---- 观察：扭头 → 凑近 → 再扭头 ---- */
-.act-look{animation:dLook 3.6s ease-in-out infinite}
-.act-look .hd{animation:lookHead 3.6s ease-in-out infinite}
-.act-look .ey{animation:lookEye 3.6s ease-in-out infinite}
-.act-look .am-l{animation:lookArmL 3.6s ease-in-out infinite}
-
-/* ---- 观星：抬头 → 惊喜 ---- */
-.act-lookup{animation:dLookup 4.4s ease-in-out infinite}
-.act-lookup .hd{animation:lookupHead 4.4s ease-in-out infinite}
-.act-lookup .ey{animation:lookupEye 4.4s ease-in-out infinite}
-.act-lookup .am-l{animation:lookupArmL 4.4s ease-in-out infinite}
-
-/* ---- 钓鱼：抛竿 → 收线 → 咬钩 → 提竿 ---- */
-.act-fish{animation:fishBody 3.8s ease-in-out infinite}
-.act-fish .am-r{animation:fishArmR 3.8s ease-in-out infinite}
-.act-fish .hd{animation:fishHead 3.8s ease-in-out infinite}
-.act-fish .ey{animation:fishEye 3.8s ease-in-out infinite}
-
-/* ---- 挥手 / 逗猫棒 ---- */
-.act-wave{animation:dWave 1.7s ease-in-out infinite}
-.act-wave .am-r{animation:waveArmR 1.7s ease-in-out infinite}
-.act-wave .hd{animation:waveHead 1.7s ease-in-out infinite}
-.act-wave .ey{animation:waveEye 1.7s ease-in-out infinite}
-
-/* ---- 抱东西 ---- */
-.act-hold{animation:dHold 3.8s ease-in-out infinite}
-.act-hold .am-l{animation:holdArmL 3.8s ease-in-out infinite}
-.act-hold .am-r{animation:holdArmR 3.8s ease-in-out infinite}
-.act-hold .hd{animation:holdHead 3.8s ease-in-out infinite}
-.act-hold .ey{animation:holdEye 3.8s ease-in-out infinite}
 
 .day-props .zzz,.day-chars .hold .zzz{animation:zzz 2.4s ease-out infinite}
 .day-props .fishswim,.day-chars .hold .fishswim{animation:fishSwim 1.6s ease-in-out infinite}
@@ -533,11 +400,35 @@ input[type=range]{width:100%;accent-color:var(--mikan);margin:14px 0 6px}
 .hours{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
 .hours button{border:2px solid var(--ink);background:#fff;border-radius:999px;padding:2px 10px;font-weight:800;font-size:12px;cursor:pointer}
 .hours button.on{background:var(--mikan)}
-/* ===== 一日观察：角色大一点，画面才不空；气泡与时钟用纸色 + 柔影 ===== */
+/* ===== 手绘质感：标题下的波浪线、贴纸式的数据卡、纸纹 ===== */
+.sec-title h2::before,.sec-title h2::after{
+  width:46px;height:12px;opacity:.5;background:none;vertical-align:-1px;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 46 12'><path d='M1 8c6-5 12 3 18-1s12 2 16-1 8 1 10-2' fill='none' stroke='%234a3222' stroke-width='2.4' stroke-linecap='round'/></svg>");
+  background-repeat:no-repeat;background-position:center}
+.sec-title h2::before{transform:scaleX(-1)}
+/* 荣誉与数据：贴纸一样的卡片，四角半径刻意不完全对称 */
+.honor{padding:18px 20px 16px}
+.honor h3{margin:0 0 12px;font-size:19px;letter-spacing:.04em;position:relative;padding-left:15px}
+.honor h3::before{content:"";position:absolute;left:0;top:.42em;width:8px;height:8px;border-radius:50%;background:var(--mikan);box-shadow:0 0 0 3px rgba(240,163,46,.22)}
+.honor .stats{gap:10px}
+.honor .stat{background:#fffdf6;border:2px solid var(--ink);border-radius:14px 18px 13px 17px;
+  padding:13px 10px 11px;box-shadow:0 2px 0 rgba(74,50,34,.14);transform:rotate(-.6deg)}
+.honor .stat:nth-child(even){transform:rotate(.7deg)}
+.honor .stat b{font-size:25px;letter-spacing:.01em}
+.honor .stat span{font-size:12.5px;line-height:1.45;display:block;margin-top:2px}
+.honor .src-note{margin:12px 0 0;font-size:12px;color:var(--ink2);line-height:1.6}
+/* 场景纸纹：极淡的斜纹，让画面像画在纸上 */
+.day-scene,.panel{background-blend-mode:multiply}
+.day-scene::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
+  background:repeating-linear-gradient(38deg,rgba(120,88,58,.018) 0 1px,transparent 1px 6px)}
+/* 角色大一点，画面才不空 */
+.day-chars .c{width:168px}
+.day-chars svg{width:168px;height:168px}
+.day-chars .hold svg{width:150px;height:150px}
+/* 气泡要浮在角色头顶之上，不能压到耳朵 */
+.day-chars .bubble{bottom:172px}
+/* ===== 一日观察：气泡与时钟用纸色 + 柔影（角色尺寸由 patch_site7 统一管） ===== */
 .day-scene{border-radius:26px;box-shadow:0 6px 0 rgba(74,50,34,.10)}
-.day-chars .c{width:140px}
-.day-chars svg{width:140px;height:140px}
-.day-chars .hold svg{width:128px;height:128px}
 .bubble{bottom:132px;background:#fffdf4;border-radius:18px;padding:9px 15px;font-size:14px;
   max-width:236px;box-shadow:0 3px 0 rgba(74,50,34,.13)}
 .bubble::after{border-width:8px;margin-left:-8px;border-top-color:var(--ink)}
@@ -673,11 +564,15 @@ footer b{color:#fff}
         </div>
       </div>
       <div>
-        <div class="stats">
-          <div class="card stat"><b>2014</b><span>在 LINE Creators 贴图登场</span></div>
-          <div class="card stat"><b>39 套</b><span>LINE 商店作者名下贴图（2026）</span></div>
-          <div class="card stat"><b>约16.5万</b><span>X 关注者（第三方统计，2026.9）</span></div>
-          <div class="card stat"><b>2015.12</b><span>获 LINE Creators MVP</span></div>
+        <div class="card honor">
+          <h3>荣誉与数据</h3>
+          <div class="stats">
+            <div class="stat"><b>2014</b><span>在 LINE Creators 贴图登场</span></div>
+            <div class="stat"><b>39 套</b><span>LINE 商店作者名下贴图（2026）</span></div>
+            <div class="stat"><b>约16.5万</b><span>X 关注者（第三方统计）</span></div>
+            <div class="stat"><b>2015.12</b><span>获 LINE Creators MVP</span></div>
+          </div>
+          <p class="src-note">以上为もじじ老师与「ねこぺん日和」公开可查的荣誉与数据：LINE Creators MVP 来自官方公布，其余为公开页面与第三方统计，统计时点 2026 年 9 月。猫鹅村本身则来自官方设定与展览模型，没有所谓的「村里荣誉」。</p>
         </div>
         <div class="duo">
           <div class="card"><svg viewBox="0 0 120 120"><g class="chr" data-c="neko"></g></svg><div><h4>ねこくん</h4><p>温和温柔的白猫，有点太我行我素。句尾「～にゃ」。</p></div></div>
@@ -1037,7 +932,7 @@ footer b{color:#fff}
         <li><span class="tag t-fan">演绎</span>本站根据设定做的想象（地图布局、一日作息等），并非官方说法。</li>
       </ul></div>
     </div>
-    <div class="card notice"><b>声明：</b>本页为非官方的粉丝向资料整理页面，与 もじじ、LINE FRIENDS 及相关公司无关。「ねこぺん日和」及所有角色的著作权归 ©もじじ / LINE FRIENDS 所有。页面中的插画均为本站原创的简笔示意图，并非官方原画；想看真正的ねこくん和ぺんちゃん，请访问官方页面与作者的社交账号，并支持正版周边与书籍。</div>
+    <div class="card notice"><b>声明：</b>本页为非官方的粉丝向资料整理页面，与 もじじ、LINE FRIENDS 及相关公司无关。「ねこぺん日和」及所有角色的著作权归 ©もじじ / LINE FRIENDS 所有。页面中的角色插画由本站依据官方设定图重新描绘的手绘示意图，并非官方原画；想看真正的ねこくん和ぺんちゃん，请访问官方页面与作者的社交账号，并支持正版周边与书籍。</div>
   </div>
 </section>
 
@@ -1055,66 +950,98 @@ footer b{color:#fff}
 'use strict';
 var INK='#4a3222', uid=0;
 
-
-/* ---------- character drawings: 手绘重画，不再使用逐像素描摹的素材 ----------
-   每一笔都是闭合的曲线：没有断线、没有游离墨点、没有切线，
-   所以 H3 拿去做首帧时也不会自己画出一根飘着的线。 */
+/* ---------- character drawings: 直接从原版「ねこぺん村マップ」描摹 ----------
+   原版的猫和企鹅都是一整块闭合的轮廓，所以这里也只有一整块：
+   轮廓线是墨色区域本身（不是描边），线宽就是原版的线宽，
+   也就不会出现断线、游离墨点或切线。
+   五官是叠在上面的独立小形状，可以单独眨眼。 */
 var INKH="#6b3d16";
 var uid=0;
-var HAND={"catHead": "M 26 44 C 26 28 30 21 38 17 L 30 10 C 34 9 41 12 46 16 C 50 15 54 14.5 60 14.5 C 66 14.5 70 15 74 16 C 79 12 86 9 90 10 L 82 17 C 90 21 94 28 94 44 C 94 60 80 70 60 70 C 40 70 26 60 26 44 Z", "catBody": "M 32 62 C 32 54 42 50 60 50 C 78 50 88 54 88 62 C 88 76 87 90 82 99 C 77 107 66 110 60 110 C 54 110 43 107 38 99 C 33 90 32 76 32 62 Z", "catFoot0": "M 36 100 C 36 95 41 94 44 96 C 47 98 48 106 45 110 C 41 114 36 109 36 100 Z", "catFoot1": "M 84 100 C 84 95 79 94 76 96 C 73 98 72 106 75 110 C 79 114 84 109 84 100 Z", "catArm0": "M 34 70 C 30 70 27 74 27 79 C 27 84 30 87 34 86 C 37 85 37 71 34 70 Z", "catArm1": "M 86 70 C 90 70 93 74 93 79 C 93 84 90 87 86 86 C 83 85 83 71 86 70 Z", "catEye0": "M 47 37 a 3 3 0 1 0 0.01 0 Z", "catEye1": "M 73 37 a 3 3 0 1 0 0.01 0 Z", "catNose": "M 54 49 C 54 45.8 66 45.8 66 49 C 66 53 63 57 60 57 C 57 57 54 53 54 49 Z", "catNoseCut0": "M 56.4 48.4 a 1.4 1.4 0 1 0 0.01 0 Z", "catNoseCut1": "M 63.6 48.4 a 1.4 1.4 0 1 0 0.01 0 Z", "penHood": "M 60 50 C 71 50 80 58 80 68 C 80 77 72 84 60 84 C 48 84 40 77 40 68 C 40 58 49 50 60 50 Z", "penFace": "M 60 60 C 51 60 45 65 45 71 C 45 78 51 83 60 83 C 69 83 75 78 75 71 C 75 65 69 60 60 60 Z", "penBody": "M 60 70 C 73 70 83 79 83 93 C 83 106 75 116 60 116 C 45 116 37 106 37 93 C 37 79 47 70 60 70 Z", "penFin0": "M 41 82 C 36 85 33 92 34 98 C 35 103 39 104 40 99 C 41 93 42 85 41 82 Z", "penFin1": "M 79 82 C 84 85 87 92 86 98 C 85 103 81 104 80 99 C 79 93 78 85 79 82 Z", "penEye0": "M 53.4 64.8 a 2.4 2.4 0 1 0 0.01 0 Z", "penEye1": "M 66.6 64.8 a 2.4 2.4 0 1 0 0.01 0 Z", "penBeak": "M 57.4 70.4 C 57.4 69.4 62.6 69.4 62.6 70.4 C 62.6 72.4 61 75.4 60 75.4 C 59 75.4 57.4 72.4 57.4 70.4 Z", "catSW": "3.2"};
+var HAND={"catBody": "M 67.71 6.46 C 67.44 6.72 67.17 6.26 66.50 7.92 C 65.83 9.59 64.43 14.72 63.70 16.45 C 62.96 18.19 62.72 17.89 62.10 18.35 C 61.48 18.81 62.21 18.94 60.00 19.22 C 57.79 19.50 50.96 20.13 48.83 20.02 C 46.70 19.91 48.19 20.01 47.23 18.56 C 46.28 17.10 44.08 12.71 43.09 11.31 C 42.09 9.92 41.82 10.32 41.25 10.20 C 40.68 10.07 40.81 8.19 39.67 10.57 C 38.53 12.95 36.14 21.10 34.40 24.50 C 32.66 27.89 30.61 28.78 29.26 30.93 C 27.91 33.07 27.00 35.57 26.32 37.36 C 25.63 39.15 25.47 39.51 25.12 41.65 C 24.78 43.79 24.06 47.73 24.26 50.23 C 24.46 52.73 25.56 54.88 26.32 56.66 C 27.07 58.44 27.90 59.77 28.78 60.88 C 29.66 61.99 30.34 62.52 31.60 63.32 C 32.86 64.13 35.32 65.02 36.35 65.71 C 37.37 66.39 37.52 66.70 37.74 67.42 C 37.95 68.15 38.18 68.37 37.64 70.06 C 37.10 71.75 34.97 75.74 34.51 77.57 C 34.05 79.40 34.48 80.20 34.88 81.04 C 35.29 81.89 36.23 82.39 36.95 82.61 C 37.67 82.83 38.74 82.60 39.21 82.37 C 39.69 82.14 39.80 82.01 39.78 81.23 C 39.77 80.45 38.98 78.48 39.13 77.66 C 39.27 76.85 40.14 76.41 40.67 76.33 C 41.19 76.25 41.78 76.64 42.28 77.20 C 42.78 77.77 43.32 78.85 43.68 79.71 C 44.04 80.57 44.15 79.71 44.44 82.39 C 44.74 85.07 44.98 92.22 45.46 95.79 C 45.94 99.37 46.73 101.97 47.33 103.83 C 47.93 105.69 48.37 106.10 49.05 106.94 C 49.73 107.78 50.73 108.49 51.41 108.87 C 52.09 109.24 52.39 109.73 53.14 109.17 C 53.89 108.62 55.04 106.43 55.92 105.54 C 56.79 104.65 56.46 104.22 58.39 103.82 C 60.32 103.42 65.54 103.13 67.50 103.14 C 69.46 103.15 69.12 103.20 70.15 103.88 C 71.19 104.55 72.81 106.63 73.71 107.19 C 74.60 107.75 74.92 107.43 75.52 107.26 C 76.13 107.09 76.83 106.66 77.33 106.17 C 77.83 105.69 77.97 106.16 78.51 104.34 C 79.05 102.52 80.09 97.84 80.56 95.26 C 81.02 92.67 81.28 92.12 81.31 88.82 C 81.34 85.53 80.62 77.90 80.74 75.48 C 80.87 73.05 81.54 74.35 82.07 74.27 C 82.59 74.20 83.46 74.67 83.87 75.04 C 84.29 75.41 84.44 75.78 84.56 76.49 C 84.68 77.21 84.44 78.75 84.58 79.33 C 84.72 79.90 84.77 79.99 85.39 79.95 C 86.01 79.91 87.59 79.56 88.30 79.06 C 89.01 78.57 89.58 77.84 89.67 76.96 C 89.76 76.09 90.09 75.87 88.84 73.82 C 87.59 71.78 83.36 66.56 82.16 64.70 C 80.97 62.84 79.98 64.64 81.67 62.68 C 83.36 60.71 90.19 55.24 92.31 52.90 C 94.42 50.55 93.96 50.14 94.37 48.62 C 94.79 47.10 94.99 45.94 94.80 43.79 C 94.61 41.65 94.02 38.08 93.21 35.75 C 92.41 33.43 91.41 31.87 89.95 29.86 C 88.50 27.84 86.69 25.81 84.48 23.66 C 82.28 21.52 79.09 19.68 76.72 16.98 C 74.34 14.28 71.65 9.23 70.22 7.45 C 68.79 5.68 68.55 6.50 68.13 6.34 C 67.71 6.17 67.98 6.19 67.71 6.46 Z M 59.43 40.35 C 60.26 40.33 62.56 40.06 63.82 40.26 C 65.08 40.47 66.13 40.91 67.01 41.58 C 67.88 42.25 68.66 43.19 69.09 44.28 C 69.51 45.37 69.63 47.05 69.55 48.11 C 69.46 49.18 68.93 50.08 68.58 50.65 C 68.24 51.23 68.65 51.40 67.49 51.58 C 66.33 51.76 63.33 51.52 61.63 51.72 C 59.92 51.92 58.34 52.62 57.24 52.78 C 56.14 52.94 55.74 52.86 55.05 52.67 C 54.36 52.48 53.64 52.12 53.11 51.64 C 52.58 51.15 52.14 50.52 51.86 49.75 C 51.58 48.98 51.38 47.84 51.45 47.02 C 51.51 46.20 51.73 45.62 52.24 44.83 C 52.75 44.03 53.40 42.98 54.51 42.24 C 55.62 41.51 58.07 40.72 58.89 40.41 C 59.71 40.09 58.61 40.38 59.43 40.35 Z M 44.99 38.97 C 45.48 39.11 46.72 39.38 47.30 39.91 C 47.89 40.45 48.46 41.39 48.53 42.15 C 48.60 42.91 48.22 43.86 47.73 44.49 C 47.24 45.12 46.34 45.78 45.59 45.94 C 44.84 46.09 43.90 45.97 43.22 45.44 C 42.54 44.91 41.68 43.59 41.53 42.76 C 41.38 41.94 41.83 41.10 42.31 40.48 C 42.78 39.86 43.95 39.30 44.39 39.05 C 44.84 38.80 44.51 38.82 44.99 38.97 Z M 72.74 35.81 C 73.21 35.67 74.24 35.12 75.04 35.36 C 75.85 35.60 77.07 36.55 77.58 37.25 C 78.09 37.96 78.24 38.86 78.10 39.59 C 77.97 40.33 77.37 41.20 76.76 41.66 C 76.15 42.12 75.27 42.51 74.45 42.35 C 73.63 42.20 72.38 41.37 71.84 40.71 C 71.29 40.05 71.09 39.14 71.16 38.39 C 71.24 37.64 72.00 36.64 72.26 36.21 C 72.52 35.78 72.28 35.95 72.74 35.81 Z", "catLine": "M 67.51 2.53 C 66.87 2.99 65.53 3.25 64.25 5.19 C 62.96 7.13 61.21 12.37 59.79 14.19 C 58.37 16.00 56.84 15.71 55.71 16.06 C 54.58 16.40 53.81 16.35 53.03 16.26 C 52.24 16.18 52.48 16.96 50.99 15.52 C 49.51 14.08 45.56 9.16 44.11 7.63 C 42.66 6.10 43.02 6.61 42.27 6.34 C 41.52 6.07 40.38 5.90 39.62 6.02 C 38.87 6.14 39.09 4.43 37.74 7.06 C 36.39 9.69 33.89 17.29 31.52 21.80 C 29.16 26.32 25.30 30.74 23.56 34.14 C 21.81 37.53 21.49 39.59 21.05 42.18 C 20.61 44.77 20.76 47.36 20.92 49.69 C 21.08 52.01 21.49 54.42 22.00 56.12 C 22.52 57.82 22.83 58.22 24.02 59.88 C 25.20 61.53 27.49 64.53 29.11 66.07 C 30.72 67.61 32.90 68.38 33.69 69.14 C 34.48 69.89 34.25 69.21 33.85 70.61 C 33.46 72.02 31.74 75.70 31.32 77.57 C 30.89 79.45 30.91 80.62 31.32 81.86 C 31.72 83.11 32.39 84.29 33.76 85.04 C 35.12 85.78 38.32 85.88 39.51 86.34 C 40.71 86.80 40.22 84.89 40.91 87.81 C 41.60 90.72 42.68 100.28 43.65 103.85 C 44.62 107.42 45.51 107.72 46.71 109.21 C 47.92 110.71 49.57 112.12 50.88 112.81 C 52.20 113.50 53.69 113.40 54.60 113.35 C 55.51 113.30 55.72 113.28 56.34 112.52 C 56.97 111.75 57.74 109.64 58.36 108.75 C 58.98 107.87 58.79 107.58 60.04 107.22 C 61.30 106.86 64.51 106.54 65.90 106.57 C 67.29 106.61 67.44 106.60 68.36 107.45 C 69.28 108.30 70.31 110.87 71.41 111.67 C 72.52 112.48 73.81 112.51 75.02 112.27 C 76.22 112.02 77.54 111.34 78.65 110.21 C 79.76 109.07 80.78 107.50 81.67 105.46 C 82.56 103.42 83.37 101.24 83.97 97.95 C 84.57 94.66 84.11 88.43 85.28 85.72 C 86.45 83.00 89.73 82.83 91.00 81.66 C 92.28 80.48 92.55 79.59 92.91 78.65 C 93.27 77.70 93.24 76.86 93.17 75.96 C 93.11 75.07 93.55 74.98 92.53 73.28 C 91.50 71.59 88.07 67.38 87.04 65.78 C 86.01 64.17 86.27 64.31 86.34 63.67 C 86.41 63.04 86.40 62.86 87.46 61.96 C 88.51 61.05 91.27 59.56 92.68 58.24 C 94.08 56.91 95.08 55.49 95.89 53.98 C 96.70 52.46 97.10 51.30 97.54 49.15 C 97.97 47.01 98.75 43.79 98.50 41.11 C 98.25 38.43 97.20 35.57 96.04 33.06 C 94.88 30.56 92.98 28.05 91.53 26.09 C 90.08 24.13 89.54 23.44 87.34 21.30 C 85.14 19.15 80.79 15.98 78.34 13.22 C 75.89 10.47 74.00 6.48 72.64 4.76 C 71.28 3.04 70.94 3.29 70.18 2.90 C 69.41 2.52 68.49 2.50 68.04 2.44 C 67.60 2.38 68.14 2.07 67.51 2.53 Z M 67.56 6.17 C 67.88 6.08 68.57 5.85 69.05 5.97 C 69.52 6.09 69.01 5.07 70.39 6.87 C 71.78 8.67 74.42 13.58 77.36 16.78 C 80.30 19.99 85.40 23.21 88.04 26.10 C 90.67 28.99 91.97 31.62 93.18 34.12 C 94.40 36.62 95.02 38.77 95.35 41.09 C 95.69 43.42 95.53 46.19 95.21 48.07 C 94.89 49.95 94.39 50.85 93.44 52.36 C 92.49 53.87 91.30 55.42 89.50 57.13 C 87.71 58.84 83.71 61.28 82.66 62.64 C 81.61 63.99 82.01 63.47 83.21 65.24 C 84.40 67.02 88.62 71.41 89.83 73.29 C 91.04 75.17 90.63 75.49 90.47 76.51 C 90.31 77.53 89.65 78.76 88.87 79.41 C 88.09 80.07 86.54 80.45 85.78 80.47 C 85.02 80.48 84.67 80.39 84.29 79.51 C 83.91 78.64 83.78 76.03 83.50 75.22 C 83.22 74.41 82.89 74.67 82.62 74.66 C 82.35 74.66 82.11 74.44 81.88 75.20 C 81.66 75.95 81.24 77.64 81.26 79.20 C 81.28 80.76 81.91 82.15 81.99 84.56 C 82.08 86.98 82.15 90.55 81.77 93.69 C 81.39 96.82 80.50 101.09 79.72 103.34 C 78.94 105.60 78.05 106.45 77.10 107.19 C 76.14 107.92 75.16 108.18 73.99 107.76 C 72.81 107.33 71.22 105.27 70.05 104.64 C 68.89 104.01 69.07 103.94 66.98 103.98 C 64.88 104.02 59.58 104.03 57.47 104.87 C 55.36 105.71 55.06 108.20 54.32 109.03 C 53.57 109.86 53.55 109.77 52.98 109.83 C 52.41 109.89 51.57 109.76 50.88 109.39 C 50.19 109.02 49.52 108.46 48.85 107.63 C 48.18 106.80 47.55 106.38 46.87 104.42 C 46.18 102.45 45.24 99.50 44.73 95.83 C 44.23 92.16 44.11 85.10 43.82 82.42 C 43.54 79.73 43.40 80.56 43.02 79.73 C 42.65 78.91 41.97 77.91 41.58 77.48 C 41.18 77.04 40.92 76.99 40.66 77.11 C 40.40 77.24 40.05 77.45 40.00 78.23 C 39.95 79.02 40.45 81.03 40.36 81.84 C 40.27 82.64 40.04 82.79 39.46 83.04 C 38.89 83.29 37.80 83.63 36.92 83.34 C 36.05 83.04 34.74 82.13 34.22 81.27 C 33.69 80.40 33.35 79.90 33.77 78.12 C 34.19 76.35 36.19 72.37 36.73 70.61 C 37.27 68.85 37.18 68.30 37.01 67.54 C 36.85 66.79 36.83 66.80 35.74 66.09 C 34.65 65.37 31.85 64.21 30.48 63.26 C 29.12 62.32 28.44 61.60 27.57 60.41 C 26.70 59.22 25.92 57.91 25.25 56.12 C 24.58 54.33 23.85 51.74 23.57 49.68 C 23.30 47.62 23.37 45.57 23.58 43.78 C 23.80 41.99 24.10 41.00 24.88 38.95 C 25.65 36.89 26.71 34.03 28.23 31.43 C 29.75 28.84 32.13 26.92 34.00 23.38 C 35.87 19.85 38.22 12.52 39.42 10.22 C 40.63 7.92 40.59 9.49 41.23 9.56 C 41.86 9.64 41.86 9.04 43.22 10.66 C 44.59 12.27 48.05 17.76 49.42 19.24 C 50.79 20.73 49.57 19.68 51.41 19.55 C 53.26 19.42 58.59 18.90 60.49 18.45 C 62.39 17.99 61.93 18.52 62.80 16.84 C 63.67 15.15 65.00 10.09 65.72 8.36 C 66.43 6.63 66.78 6.84 67.09 6.47 C 67.39 6.11 67.23 6.25 67.56 6.17 Z", "catNose": "M 58.88 41.22 C 58.24 41.42 56.52 41.82 55.61 42.34 C 54.69 42.86 53.96 43.47 53.41 44.34 C 52.86 45.21 52.39 46.60 52.31 47.57 C 52.23 48.55 52.56 49.50 52.94 50.19 C 53.31 50.87 54.02 51.36 54.55 51.68 C 55.08 52.01 55.03 52.26 56.12 52.15 C 57.21 52.04 59.53 51.24 61.09 51.03 C 62.65 50.83 64.43 51.09 65.50 50.92 C 66.58 50.75 67.01 50.38 67.52 50.00 C 68.03 49.61 68.33 49.22 68.56 48.63 C 68.79 48.05 68.98 47.19 68.91 46.47 C 68.83 45.75 68.51 44.97 68.11 44.30 C 67.70 43.63 67.10 42.94 66.48 42.45 C 65.87 41.96 65.58 41.57 64.40 41.35 C 63.23 41.13 60.35 41.15 59.43 41.13 C 58.51 41.11 59.52 41.02 58.88 41.22 Z M 56.21 44.32 C 56.59 44.21 57.40 43.83 57.94 44.07 C 58.48 44.31 59.25 45.16 59.47 45.76 C 59.69 46.37 59.52 47.11 59.26 47.70 C 59.01 48.29 58.45 48.95 57.94 49.31 C 57.43 49.66 56.72 49.89 56.21 49.81 C 55.69 49.74 55.11 49.43 54.85 48.86 C 54.58 48.29 54.46 47.08 54.60 46.39 C 54.74 45.70 55.41 45.04 55.68 44.70 C 55.95 44.35 55.83 44.42 56.21 44.32 Z M 62.62 43.79 C 62.97 43.68 63.73 43.39 64.27 43.54 C 64.82 43.68 65.51 44.18 65.90 44.67 C 66.29 45.17 66.61 45.93 66.62 46.51 C 66.63 47.08 66.35 47.76 65.98 48.14 C 65.61 48.53 64.93 48.81 64.38 48.81 C 63.84 48.82 63.16 48.66 62.70 48.17 C 62.25 47.69 61.73 46.56 61.65 45.90 C 61.56 45.23 62.03 44.53 62.19 44.17 C 62.35 43.82 62.27 43.89 62.62 43.79 Z", "catNostril0": "M 57.88 44.77 C 57.42 45.00 55.99 45.80 55.55 46.37 C 55.12 46.94 55.16 47.70 55.27 48.19 C 55.37 48.68 55.65 49.30 56.18 49.29 C 56.71 49.28 57.99 48.62 58.45 48.13 C 58.91 47.64 58.99 46.86 58.96 46.33 C 58.94 45.80 58.48 45.21 58.30 44.95 C 58.12 44.69 58.34 44.53 57.88 44.77 Z", "catNostril1": "M 62.56 43.79 C 62.43 43.97 62.11 44.28 62.15 44.80 C 62.19 45.32 62.34 46.37 62.80 46.92 C 63.25 47.47 64.39 48.01 64.91 48.10 C 65.42 48.18 65.77 47.78 65.90 47.43 C 66.03 47.07 66.17 46.56 65.67 45.94 C 65.17 45.33 63.41 44.11 62.89 43.75 C 62.37 43.39 62.68 43.62 62.56 43.79 Z", "catEye0": "M 73.35 36.03 C 73.00 36.36 72.07 37.11 71.82 37.79 C 71.58 38.46 71.61 39.43 71.87 40.07 C 72.14 40.70 72.78 41.33 73.40 41.59 C 74.01 41.85 74.94 41.89 75.55 41.64 C 76.16 41.40 76.80 40.75 77.05 40.12 C 77.29 39.48 77.29 38.50 77.05 37.83 C 76.80 37.15 76.07 36.41 75.55 36.08 C 75.02 35.76 74.25 35.86 73.88 35.85 C 73.52 35.85 73.69 35.71 73.35 36.03 Z", "catEye1": "M 43.48 40.34 C 43.22 40.69 42.51 41.51 42.39 42.17 C 42.27 42.83 42.51 43.79 42.77 44.32 C 43.03 44.84 43.39 45.18 43.95 45.31 C 44.51 45.45 45.50 45.47 46.12 45.13 C 46.75 44.80 47.44 44.00 47.69 43.33 C 47.95 42.67 47.91 41.71 47.64 41.14 C 47.37 40.56 46.69 40.07 46.07 39.90 C 45.45 39.72 44.38 40.00 43.95 40.07 C 43.52 40.15 43.74 39.99 43.48 40.34 Z", "penBody": "M 45.96 71.48 C 44.88 72.31 41.26 75.01 39.97 76.45 C 38.69 77.90 38.30 78.99 38.25 80.17 C 38.19 81.35 39.03 83.39 39.66 83.52 C 40.29 83.65 41.37 81.22 42.00 80.95 C 42.63 80.68 43.20 81.21 43.45 81.90 C 43.70 82.59 43.78 83.73 43.51 85.09 C 43.24 86.44 42.19 88.18 41.82 90.00 C 41.46 91.82 41.07 93.92 41.31 96.01 C 41.55 98.11 42.49 100.81 43.27 102.57 C 44.06 104.33 44.95 105.60 46.01 106.55 C 47.06 107.51 46.47 107.97 49.62 108.30 C 52.77 108.64 61.46 108.73 64.92 108.57 C 68.38 108.41 69.03 107.84 70.38 107.33 C 71.74 106.83 72.26 106.25 73.04 105.55 C 73.81 104.84 74.47 104.42 75.02 103.11 C 75.58 101.79 76.14 99.47 76.36 97.65 C 76.58 95.83 76.50 93.92 76.35 92.19 C 76.20 90.46 75.56 88.55 75.47 87.27 C 75.38 86.00 75.63 85.23 75.79 84.54 C 75.95 83.85 76.15 83.46 76.44 83.12 C 76.73 82.78 76.83 82.28 77.55 82.51 C 78.27 82.73 80.12 84.41 80.77 84.47 C 81.41 84.53 81.38 83.42 81.41 82.89 C 81.44 82.35 82.12 82.96 80.94 81.26 C 79.77 79.57 76.23 73.97 74.38 72.72 C 72.52 71.47 72.41 73.61 69.84 73.76 C 67.26 73.90 62.81 73.96 58.91 73.58 C 55.01 73.20 48.61 71.82 46.45 71.47 C 44.29 71.12 47.04 70.65 45.96 71.48 Z", "penLine": "M 57.81 48.18 C 56.81 48.50 54.21 48.84 52.35 49.99 C 50.49 51.14 48.03 53.32 46.64 55.08 C 45.26 56.83 44.62 58.33 44.04 60.51 C 43.46 62.69 44.48 65.51 43.15 68.16 C 41.82 70.80 37.42 74.20 36.08 76.39 C 34.74 78.57 35.10 80.02 35.11 81.27 C 35.12 82.52 35.39 82.71 36.11 83.89 C 36.83 85.08 38.94 85.62 39.43 88.38 C 39.91 91.13 38.89 97.76 39.05 100.40 C 39.20 103.04 39.69 103.04 40.36 104.22 C 41.03 105.40 41.80 106.23 43.07 107.47 C 44.34 108.70 46.61 110.68 47.98 111.63 C 49.34 112.57 50.26 112.88 51.26 113.12 C 52.26 113.37 52.71 113.41 53.99 113.10 C 55.26 112.79 57.09 111.24 58.91 111.26 C 60.73 111.28 63.55 112.90 64.92 113.23 C 66.28 113.57 65.83 113.72 67.10 113.25 C 68.37 112.79 70.75 111.85 72.53 110.43 C 74.32 109.02 76.66 106.62 77.81 104.77 C 78.96 102.91 79.15 101.67 79.44 99.30 C 79.73 96.94 78.85 92.88 79.55 90.59 C 80.25 88.31 82.87 86.89 83.65 85.61 C 84.44 84.33 84.33 83.82 84.27 82.91 C 84.20 82.01 84.07 81.47 83.28 80.18 C 82.50 78.89 80.50 76.65 79.57 75.19 C 78.65 73.74 78.10 72.43 77.73 71.44 C 77.36 70.45 77.27 70.71 77.33 69.25 C 77.39 67.79 78.19 64.51 78.08 62.69 C 77.96 60.87 77.20 59.59 76.64 58.32 C 76.08 57.05 75.63 56.23 74.72 55.08 C 73.81 53.92 72.34 52.36 71.16 51.40 C 69.98 50.43 68.87 49.82 67.65 49.27 C 66.43 48.71 65.37 48.28 63.83 48.08 C 62.28 47.89 59.36 48.09 58.36 48.11 C 57.36 48.12 58.82 47.87 57.81 48.18 Z M 52.32 55.90 C 52.87 55.70 54.13 54.98 55.06 55.11 C 56.00 55.25 57.27 55.92 57.93 56.71 C 58.59 57.51 58.99 58.55 59.00 59.89 C 59.02 61.23 58.01 63.73 58.01 64.75 C 58.01 65.77 58.48 65.69 58.99 66.01 C 59.51 66.34 60.49 66.66 61.09 66.71 C 61.68 66.75 62.15 66.55 62.54 66.30 C 62.93 66.06 63.30 66.20 63.42 65.22 C 63.54 64.24 62.97 61.84 63.26 60.44 C 63.54 59.04 64.39 57.59 65.12 56.83 C 65.86 56.06 66.81 55.77 67.68 55.84 C 68.55 55.91 69.54 56.50 70.34 57.26 C 71.14 58.03 71.94 59.09 72.45 60.44 C 72.97 61.79 73.46 64.01 73.41 65.37 C 73.35 66.74 72.91 67.40 72.13 68.63 C 71.34 69.86 68.27 72.02 68.69 72.75 C 69.12 73.48 72.47 71.51 74.66 73.02 C 76.85 74.53 80.60 80.10 81.82 81.82 C 83.04 83.55 82.15 82.95 81.98 83.38 C 81.81 83.81 81.53 84.62 80.79 84.41 C 80.06 84.20 78.26 82.42 77.57 82.13 C 76.88 81.83 76.90 81.87 76.65 82.64 C 76.40 83.41 76.00 85.07 76.06 86.76 C 76.11 88.45 76.87 90.60 76.99 92.79 C 77.10 94.98 77.01 98.09 76.73 99.92 C 76.45 101.74 76.09 102.57 75.31 103.75 C 74.53 104.93 73.52 106.10 72.06 107.00 C 70.61 107.90 70.23 108.78 66.58 109.13 C 62.92 109.48 53.68 109.55 50.13 109.09 C 46.58 108.64 46.71 107.86 45.30 106.42 C 43.88 104.98 42.37 102.37 41.64 100.47 C 40.90 98.56 40.63 98.14 40.88 94.98 C 41.12 91.83 42.81 83.89 43.09 81.54 C 43.37 79.20 43.26 80.88 42.54 80.90 C 41.82 80.91 39.55 81.83 38.76 81.62 C 37.97 81.41 37.70 80.41 37.79 79.63 C 37.88 78.85 38.06 78.29 39.31 76.92 C 40.56 75.56 43.28 72.27 45.31 71.43 C 47.33 70.59 50.88 72.52 51.47 71.88 C 52.07 71.23 49.37 68.93 48.88 67.57 C 48.38 66.21 48.42 65.10 48.49 63.73 C 48.55 62.36 48.71 60.59 49.26 59.34 C 49.81 58.10 51.28 56.85 51.79 56.28 C 52.30 55.70 51.78 56.09 52.32 55.90 Z", "penFace": "M 54.45 55.99 C 53.84 56.25 52.09 56.83 51.29 57.48 C 50.49 58.14 49.96 58.51 49.65 59.93 C 49.35 61.36 49.41 64.56 49.48 66.02 C 49.56 67.48 49.64 67.87 50.11 68.68 C 50.57 69.48 51.44 70.27 52.25 70.88 C 53.07 71.48 53.16 71.93 55.01 72.31 C 56.85 72.70 61.19 73.26 63.31 73.18 C 65.43 73.10 66.37 72.59 67.74 71.84 C 69.10 71.08 70.67 69.82 71.51 68.66 C 72.35 67.51 72.74 66.37 72.76 64.91 C 72.79 63.46 72.24 61.23 71.67 59.95 C 71.10 58.66 70.25 57.70 69.35 57.22 C 68.45 56.74 67.06 56.61 66.28 57.07 C 65.50 57.52 64.99 58.57 64.66 59.97 C 64.33 61.36 64.63 64.23 64.30 65.42 C 63.98 66.61 63.35 66.77 62.72 67.12 C 62.09 67.46 61.25 67.63 60.54 67.50 C 59.83 67.37 58.97 66.79 58.45 66.35 C 57.94 65.91 57.54 66.04 57.46 64.88 C 57.38 63.72 57.97 60.63 57.99 59.38 C 58.01 58.13 58.08 57.93 57.58 57.36 C 57.08 56.79 55.52 56.19 55.00 55.96 C 54.48 55.73 55.07 55.74 54.45 55.99 Z M 66.45 62.15 C 66.84 62.15 67.96 62.21 68.26 62.60 C 68.57 62.99 68.57 64.10 68.26 64.49 C 67.96 64.88 66.90 65.05 66.45 64.94 C 66.01 64.84 65.69 64.27 65.60 63.88 C 65.51 63.49 65.78 62.89 65.92 62.60 C 66.06 62.31 66.06 62.15 66.45 62.15 Z M 53.34 61.03 C 53.64 60.92 54.23 60.72 54.63 60.79 C 55.04 60.87 55.50 61.15 55.77 61.48 C 56.04 61.80 56.25 62.31 56.25 62.73 C 56.25 63.14 56.04 63.66 55.77 63.98 C 55.50 64.30 55.04 64.59 54.63 64.66 C 54.23 64.73 53.70 64.63 53.34 64.42 C 52.99 64.21 52.58 63.88 52.49 63.39 C 52.41 62.90 52.68 61.87 52.83 61.48 C 52.97 61.08 53.04 61.15 53.34 61.03 Z", "penEye0": "M 53.89 61.75 C 53.70 62.02 53.18 62.87 53.29 63.24 C 53.39 63.60 54.16 64.06 54.52 63.96 C 54.88 63.87 55.45 63.06 55.44 62.67 C 55.42 62.28 54.68 61.78 54.43 61.63 C 54.17 61.47 54.08 61.48 53.89 61.75 Z", "penEye1": "M 67.07 62.27 C 66.84 62.53 66.19 63.45 66.28 63.88 C 66.36 64.31 67.24 64.83 67.58 64.83 C 67.92 64.83 68.32 64.31 68.33 63.88 C 68.33 63.45 67.83 62.53 67.62 62.27 C 67.41 62.00 67.29 62.00 67.07 62.27 Z", "bearEarL": "M 23 26 a 13 13 0 1 0 26 0 a 13 13 0 1 0 -26 0 Z", "bearEarR": "M 71 26 a 13 13 0 1 0 26 0 a 13 13 0 1 0 -26 0 Z", "bearEarLIn": "M 30.5 26 a 5.5 5.5 0 1 0 11 0 a 5.5 5.5 0 1 0 -11 0 Z", "bearEarRIn": "M 78.5 26 a 5.5 5.5 0 1 0 11 0 a 5.5 5.5 0 1 0 -11 0 Z", "bearHead": "M 29 54 a 31 31 0 1 0 62 0 a 31 31 0 1 0 -62 0 Z", "bearMuzzle": "M 45 66 a 15 11 0 1 0 30 0 a 15 11 0 1 0 -30 0 Z", "bearNose": "M 55 59 a 5 3.8 0 1 0 10 0 a 5 3.8 0 1 0 -10 0 Z", "bearEyeL": "M 44.6 48 a 3.4 3.4 0 1 0 6.8 0 a 3.4 3.4 0 1 0 -6.8 0 Z", "bearEyeR": "M 68.6 48 a 3.4 3.4 0 1 0 6.8 0 a 3.4 3.4 0 1 0 -6.8 0 Z", "bearBody": "M 60 70 C 76 70 88 79 88 93 C 88 105 76 114 60 114 C 44 114 32 105 32 93 C 32 79 44 70 60 70 Z", "bearBelly": "M 47 98 a 13 10 0 1 0 26 0 a 13 10 0 1 0 -26 0 Z", "bearArmL": "M 34 76 C 27 76 23 83 24 91 C 25 96 31 96 33 90 C 35 84 37 77 34 76 Z", "bearArmR": "M 86 76 C 93 76 97 83 96 91 C 95 96 89 96 87 90 C 85 84 83 77 86 76 Z", "bearFootL": "M 44 107 C 44 103 52 102 55 105 C 58 108 58 114 55 117 C 50 120 44 115 44 107 Z", "bearFootR": "M 76 107 C 76 103 68 102 65 105 C 62 108 62 114 65 117 C 70 120 76 115 76 107 Z", "chickBody": "M 30 68 a 30 30 0 1 0 60 0 a 30 30 0 1 0 -60 0 Z", "chickTuft": "M 54 42 C 55 30 63 26 69 32 C 62 33 59 37 59 44 Z", "chickBeak": "M 53 70 C 53 67 67 67 67 70 C 67 74 63 79 60 79 C 57 79 53 74 53 70 Z", "chickEyeL": "M 44.6 62 a 3.6 3.6 0 1 0 7.2 0 a 3.6 3.6 0 1 0 -7.2 0 Z", "chickEyeR": "M 68.2 62 a 3.6 3.6 0 1 0 7.2 0 a 3.6 3.6 0 1 0 -7.2 0 Z", "chickWingL": "M 31 68 C 24 68 20 77 24 85 C 27 90 33 86 34 79 C 35 73 34 68 31 68 Z", "chickWingR": "M 89 68 C 96 68 100 77 96 85 C 93 90 87 86 86 79 C 85 73 86 68 89 68 Z", "chickLegL": "M 50 95 C 50 91 55 91 55 95 L 55 105 C 55 109 50 109 50 105 Z", "chickLegR": "M 65 95 C 65 91 70 91 70 95 L 70 105 C 70 109 65 109 65 105 Z", "chickFootL": "M 44 105 C 44 102 56 102 56 105 C 56 109 44 109 44 105 Z", "chickFootR": "M 64 105 C 64 102 76 102 76 105 C 76 109 64 109 64 105 Z"};
 
 var INKH="#6b3d16";
-var CHARSW=3.2;
-function fillPath(d,fill){return '<path d="'+d+'" fill="'+fill+'"/>';}
-function linePath(d,sw){return '<path d="'+d+'" fill="none" stroke="'+INKH+'" stroke-width="'+(sw||CHARSW)+'" stroke-linejoin="round" stroke-linecap="round"/>';}
-function solidPath(d,fill){return '<path d="'+d+'" fill="'+fill+'"/>';}
+var uid=0;
+var HAND={"catBody": "M 67.71 6.46 C 67.44 6.72 67.17 6.26 66.50 7.92 C 65.83 9.59 64.43 14.72 63.70 16.45 C 62.96 18.19 62.72 17.89 62.10 18.35 C 61.48 18.81 62.21 18.94 60.00 19.22 C 57.79 19.50 50.96 20.13 48.83 20.02 C 46.70 19.91 48.19 20.01 47.23 18.56 C 46.28 17.10 44.08 12.71 43.09 11.31 C 42.09 9.92 41.82 10.32 41.25 10.20 C 40.68 10.07 40.81 8.19 39.67 10.57 C 38.53 12.95 36.14 21.10 34.40 24.50 C 32.66 27.89 30.61 28.78 29.26 30.93 C 27.91 33.07 27.00 35.57 26.32 37.36 C 25.63 39.15 25.47 39.51 25.12 41.65 C 24.78 43.79 24.06 47.73 24.26 50.23 C 24.46 52.73 25.56 54.88 26.32 56.66 C 27.07 58.44 27.90 59.77 28.78 60.88 C 29.66 61.99 30.34 62.52 31.60 63.32 C 32.86 64.13 35.32 65.02 36.35 65.71 C 37.37 66.39 37.52 66.70 37.74 67.42 C 37.95 68.15 38.18 68.37 37.64 70.06 C 37.10 71.75 34.97 75.74 34.51 77.57 C 34.05 79.40 34.48 80.20 34.88 81.04 C 35.29 81.89 36.23 82.39 36.95 82.61 C 37.67 82.83 38.74 82.60 39.21 82.37 C 39.69 82.14 39.80 82.01 39.78 81.23 C 39.77 80.45 38.98 78.48 39.13 77.66 C 39.27 76.85 40.14 76.41 40.67 76.33 C 41.19 76.25 41.78 76.64 42.28 77.20 C 42.78 77.77 43.32 78.85 43.68 79.71 C 44.04 80.57 44.15 79.71 44.44 82.39 C 44.74 85.07 44.98 92.22 45.46 95.79 C 45.94 99.37 46.73 101.97 47.33 103.83 C 47.93 105.69 48.37 106.10 49.05 106.94 C 49.73 107.78 50.73 108.49 51.41 108.87 C 52.09 109.24 52.39 109.73 53.14 109.17 C 53.89 108.62 55.04 106.43 55.92 105.54 C 56.79 104.65 56.46 104.22 58.39 103.82 C 60.32 103.42 65.54 103.13 67.50 103.14 C 69.46 103.15 69.12 103.20 70.15 103.88 C 71.19 104.55 72.81 106.63 73.71 107.19 C 74.60 107.75 74.92 107.43 75.52 107.26 C 76.13 107.09 76.83 106.66 77.33 106.17 C 77.83 105.69 77.97 106.16 78.51 104.34 C 79.05 102.52 80.09 97.84 80.56 95.26 C 81.02 92.67 81.28 92.12 81.31 88.82 C 81.34 85.53 80.62 77.90 80.74 75.48 C 80.87 73.05 81.54 74.35 82.07 74.27 C 82.59 74.20 83.46 74.67 83.87 75.04 C 84.29 75.41 84.44 75.78 84.56 76.49 C 84.68 77.21 84.44 78.75 84.58 79.33 C 84.72 79.90 84.77 79.99 85.39 79.95 C 86.01 79.91 87.59 79.56 88.30 79.06 C 89.01 78.57 89.58 77.84 89.67 76.96 C 89.76 76.09 90.09 75.87 88.84 73.82 C 87.59 71.78 83.36 66.56 82.16 64.70 C 80.97 62.84 79.98 64.64 81.67 62.68 C 83.36 60.71 90.19 55.24 92.31 52.90 C 94.42 50.55 93.96 50.14 94.37 48.62 C 94.79 47.10 94.99 45.94 94.80 43.79 C 94.61 41.65 94.02 38.08 93.21 35.75 C 92.41 33.43 91.41 31.87 89.95 29.86 C 88.50 27.84 86.69 25.81 84.48 23.66 C 82.28 21.52 79.09 19.68 76.72 16.98 C 74.34 14.28 71.65 9.23 70.22 7.45 C 68.79 5.68 68.55 6.50 68.13 6.34 C 67.71 6.17 67.98 6.19 67.71 6.46 Z M 59.43 40.35 C 60.26 40.33 62.56 40.06 63.82 40.26 C 65.08 40.47 66.13 40.91 67.01 41.58 C 67.88 42.25 68.66 43.19 69.09 44.28 C 69.51 45.37 69.63 47.05 69.55 48.11 C 69.46 49.18 68.93 50.08 68.58 50.65 C 68.24 51.23 68.65 51.40 67.49 51.58 C 66.33 51.76 63.33 51.52 61.63 51.72 C 59.92 51.92 58.34 52.62 57.24 52.78 C 56.14 52.94 55.74 52.86 55.05 52.67 C 54.36 52.48 53.64 52.12 53.11 51.64 C 52.58 51.15 52.14 50.52 51.86 49.75 C 51.58 48.98 51.38 47.84 51.45 47.02 C 51.51 46.20 51.73 45.62 52.24 44.83 C 52.75 44.03 53.40 42.98 54.51 42.24 C 55.62 41.51 58.07 40.72 58.89 40.41 C 59.71 40.09 58.61 40.38 59.43 40.35 Z M 44.99 38.97 C 45.48 39.11 46.72 39.38 47.30 39.91 C 47.89 40.45 48.46 41.39 48.53 42.15 C 48.60 42.91 48.22 43.86 47.73 44.49 C 47.24 45.12 46.34 45.78 45.59 45.94 C 44.84 46.09 43.90 45.97 43.22 45.44 C 42.54 44.91 41.68 43.59 41.53 42.76 C 41.38 41.94 41.83 41.10 42.31 40.48 C 42.78 39.86 43.95 39.30 44.39 39.05 C 44.84 38.80 44.51 38.82 44.99 38.97 Z M 72.74 35.81 C 73.21 35.67 74.24 35.12 75.04 35.36 C 75.85 35.60 77.07 36.55 77.58 37.25 C 78.09 37.96 78.24 38.86 78.10 39.59 C 77.97 40.33 77.37 41.20 76.76 41.66 C 76.15 42.12 75.27 42.51 74.45 42.35 C 73.63 42.20 72.38 41.37 71.84 40.71 C 71.29 40.05 71.09 39.14 71.16 38.39 C 71.24 37.64 72.00 36.64 72.26 36.21 C 72.52 35.78 72.28 35.95 72.74 35.81 Z", "catLine": "M 67.51 2.53 C 66.87 2.99 65.53 3.25 64.25 5.19 C 62.96 7.13 61.21 12.37 59.79 14.19 C 58.37 16.00 56.84 15.71 55.71 16.06 C 54.58 16.40 53.81 16.35 53.03 16.26 C 52.24 16.18 52.48 16.96 50.99 15.52 C 49.51 14.08 45.56 9.16 44.11 7.63 C 42.66 6.10 43.02 6.61 42.27 6.34 C 41.52 6.07 40.38 5.90 39.62 6.02 C 38.87 6.14 39.09 4.43 37.74 7.06 C 36.39 9.69 33.89 17.29 31.52 21.80 C 29.16 26.32 25.30 30.74 23.56 34.14 C 21.81 37.53 21.49 39.59 21.05 42.18 C 20.61 44.77 20.76 47.36 20.92 49.69 C 21.08 52.01 21.49 54.42 22.00 56.12 C 22.52 57.82 22.83 58.22 24.02 59.88 C 25.20 61.53 27.49 64.53 29.11 66.07 C 30.72 67.61 32.90 68.38 33.69 69.14 C 34.48 69.89 34.25 69.21 33.85 70.61 C 33.46 72.02 31.74 75.70 31.32 77.57 C 30.89 79.45 30.91 80.62 31.32 81.86 C 31.72 83.11 32.39 84.29 33.76 85.04 C 35.12 85.78 38.32 85.88 39.51 86.34 C 40.71 86.80 40.22 84.89 40.91 87.81 C 41.60 90.72 42.68 100.28 43.65 103.85 C 44.62 107.42 45.51 107.72 46.71 109.21 C 47.92 110.71 49.57 112.12 50.88 112.81 C 52.20 113.50 53.69 113.40 54.60 113.35 C 55.51 113.30 55.72 113.28 56.34 112.52 C 56.97 111.75 57.74 109.64 58.36 108.75 C 58.98 107.87 58.79 107.58 60.04 107.22 C 61.30 106.86 64.51 106.54 65.90 106.57 C 67.29 106.61 67.44 106.60 68.36 107.45 C 69.28 108.30 70.31 110.87 71.41 111.67 C 72.52 112.48 73.81 112.51 75.02 112.27 C 76.22 112.02 77.54 111.34 78.65 110.21 C 79.76 109.07 80.78 107.50 81.67 105.46 C 82.56 103.42 83.37 101.24 83.97 97.95 C 84.57 94.66 84.11 88.43 85.28 85.72 C 86.45 83.00 89.73 82.83 91.00 81.66 C 92.28 80.48 92.55 79.59 92.91 78.65 C 93.27 77.70 93.24 76.86 93.17 75.96 C 93.11 75.07 93.55 74.98 92.53 73.28 C 91.50 71.59 88.07 67.38 87.04 65.78 C 86.01 64.17 86.27 64.31 86.34 63.67 C 86.41 63.04 86.40 62.86 87.46 61.96 C 88.51 61.05 91.27 59.56 92.68 58.24 C 94.08 56.91 95.08 55.49 95.89 53.98 C 96.70 52.46 97.10 51.30 97.54 49.15 C 97.97 47.01 98.75 43.79 98.50 41.11 C 98.25 38.43 97.20 35.57 96.04 33.06 C 94.88 30.56 92.98 28.05 91.53 26.09 C 90.08 24.13 89.54 23.44 87.34 21.30 C 85.14 19.15 80.79 15.98 78.34 13.22 C 75.89 10.47 74.00 6.48 72.64 4.76 C 71.28 3.04 70.94 3.29 70.18 2.90 C 69.41 2.52 68.49 2.50 68.04 2.44 C 67.60 2.38 68.14 2.07 67.51 2.53 Z M 67.56 6.17 C 67.88 6.08 68.57 5.85 69.05 5.97 C 69.52 6.09 69.01 5.07 70.39 6.87 C 71.78 8.67 74.42 13.58 77.36 16.78 C 80.30 19.99 85.40 23.21 88.04 26.10 C 90.67 28.99 91.97 31.62 93.18 34.12 C 94.40 36.62 95.02 38.77 95.35 41.09 C 95.69 43.42 95.53 46.19 95.21 48.07 C 94.89 49.95 94.39 50.85 93.44 52.36 C 92.49 53.87 91.30 55.42 89.50 57.13 C 87.71 58.84 83.71 61.28 82.66 62.64 C 81.61 63.99 82.01 63.47 83.21 65.24 C 84.40 67.02 88.62 71.41 89.83 73.29 C 91.04 75.17 90.63 75.49 90.47 76.51 C 90.31 77.53 89.65 78.76 88.87 79.41 C 88.09 80.07 86.54 80.45 85.78 80.47 C 85.02 80.48 84.67 80.39 84.29 79.51 C 83.91 78.64 83.78 76.03 83.50 75.22 C 83.22 74.41 82.89 74.67 82.62 74.66 C 82.35 74.66 82.11 74.44 81.88 75.20 C 81.66 75.95 81.24 77.64 81.26 79.20 C 81.28 80.76 81.91 82.15 81.99 84.56 C 82.08 86.98 82.15 90.55 81.77 93.69 C 81.39 96.82 80.50 101.09 79.72 103.34 C 78.94 105.60 78.05 106.45 77.10 107.19 C 76.14 107.92 75.16 108.18 73.99 107.76 C 72.81 107.33 71.22 105.27 70.05 104.64 C 68.89 104.01 69.07 103.94 66.98 103.98 C 64.88 104.02 59.58 104.03 57.47 104.87 C 55.36 105.71 55.06 108.20 54.32 109.03 C 53.57 109.86 53.55 109.77 52.98 109.83 C 52.41 109.89 51.57 109.76 50.88 109.39 C 50.19 109.02 49.52 108.46 48.85 107.63 C 48.18 106.80 47.55 106.38 46.87 104.42 C 46.18 102.45 45.24 99.50 44.73 95.83 C 44.23 92.16 44.11 85.10 43.82 82.42 C 43.54 79.73 43.40 80.56 43.02 79.73 C 42.65 78.91 41.97 77.91 41.58 77.48 C 41.18 77.04 40.92 76.99 40.66 77.11 C 40.40 77.24 40.05 77.45 40.00 78.23 C 39.95 79.02 40.45 81.03 40.36 81.84 C 40.27 82.64 40.04 82.79 39.46 83.04 C 38.89 83.29 37.80 83.63 36.92 83.34 C 36.05 83.04 34.74 82.13 34.22 81.27 C 33.69 80.40 33.35 79.90 33.77 78.12 C 34.19 76.35 36.19 72.37 36.73 70.61 C 37.27 68.85 37.18 68.30 37.01 67.54 C 36.85 66.79 36.83 66.80 35.74 66.09 C 34.65 65.37 31.85 64.21 30.48 63.26 C 29.12 62.32 28.44 61.60 27.57 60.41 C 26.70 59.22 25.92 57.91 25.25 56.12 C 24.58 54.33 23.85 51.74 23.57 49.68 C 23.30 47.62 23.37 45.57 23.58 43.78 C 23.80 41.99 24.10 41.00 24.88 38.95 C 25.65 36.89 26.71 34.03 28.23 31.43 C 29.75 28.84 32.13 26.92 34.00 23.38 C 35.87 19.85 38.22 12.52 39.42 10.22 C 40.63 7.92 40.59 9.49 41.23 9.56 C 41.86 9.64 41.86 9.04 43.22 10.66 C 44.59 12.27 48.05 17.76 49.42 19.24 C 50.79 20.73 49.57 19.68 51.41 19.55 C 53.26 19.42 58.59 18.90 60.49 18.45 C 62.39 17.99 61.93 18.52 62.80 16.84 C 63.67 15.15 65.00 10.09 65.72 8.36 C 66.43 6.63 66.78 6.84 67.09 6.47 C 67.39 6.11 67.23 6.25 67.56 6.17 Z", "catNose": "M 58.88 41.22 C 58.24 41.42 56.52 41.82 55.61 42.34 C 54.69 42.86 53.96 43.47 53.41 44.34 C 52.86 45.21 52.39 46.60 52.31 47.57 C 52.23 48.55 52.56 49.50 52.94 50.19 C 53.31 50.87 54.02 51.36 54.55 51.68 C 55.08 52.01 55.03 52.26 56.12 52.15 C 57.21 52.04 59.53 51.24 61.09 51.03 C 62.65 50.83 64.43 51.09 65.50 50.92 C 66.58 50.75 67.01 50.38 67.52 50.00 C 68.03 49.61 68.33 49.22 68.56 48.63 C 68.79 48.05 68.98 47.19 68.91 46.47 C 68.83 45.75 68.51 44.97 68.11 44.30 C 67.70 43.63 67.10 42.94 66.48 42.45 C 65.87 41.96 65.58 41.57 64.40 41.35 C 63.23 41.13 60.35 41.15 59.43 41.13 C 58.51 41.11 59.52 41.02 58.88 41.22 Z M 56.21 44.32 C 56.59 44.21 57.40 43.83 57.94 44.07 C 58.48 44.31 59.25 45.16 59.47 45.76 C 59.69 46.37 59.52 47.11 59.26 47.70 C 59.01 48.29 58.45 48.95 57.94 49.31 C 57.43 49.66 56.72 49.89 56.21 49.81 C 55.69 49.74 55.11 49.43 54.85 48.86 C 54.58 48.29 54.46 47.08 54.60 46.39 C 54.74 45.70 55.41 45.04 55.68 44.70 C 55.95 44.35 55.83 44.42 56.21 44.32 Z M 62.62 43.79 C 62.97 43.68 63.73 43.39 64.27 43.54 C 64.82 43.68 65.51 44.18 65.90 44.67 C 66.29 45.17 66.61 45.93 66.62 46.51 C 66.63 47.08 66.35 47.76 65.98 48.14 C 65.61 48.53 64.93 48.81 64.38 48.81 C 63.84 48.82 63.16 48.66 62.70 48.17 C 62.25 47.69 61.73 46.56 61.65 45.90 C 61.56 45.23 62.03 44.53 62.19 44.17 C 62.35 43.82 62.27 43.89 62.62 43.79 Z", "catNostril0": "M 57.88 44.77 C 57.42 45.00 55.99 45.80 55.55 46.37 C 55.12 46.94 55.16 47.70 55.27 48.19 C 55.37 48.68 55.65 49.30 56.18 49.29 C 56.71 49.28 57.99 48.62 58.45 48.13 C 58.91 47.64 58.99 46.86 58.96 46.33 C 58.94 45.80 58.48 45.21 58.30 44.95 C 58.12 44.69 58.34 44.53 57.88 44.77 Z", "catNostril1": "M 62.56 43.79 C 62.43 43.97 62.11 44.28 62.15 44.80 C 62.19 45.32 62.34 46.37 62.80 46.92 C 63.25 47.47 64.39 48.01 64.91 48.10 C 65.42 48.18 65.77 47.78 65.90 47.43 C 66.03 47.07 66.17 46.56 65.67 45.94 C 65.17 45.33 63.41 44.11 62.89 43.75 C 62.37 43.39 62.68 43.62 62.56 43.79 Z", "catEye0": "M 73.35 36.03 C 73.00 36.36 72.07 37.11 71.82 37.79 C 71.58 38.46 71.61 39.43 71.87 40.07 C 72.14 40.70 72.78 41.33 73.40 41.59 C 74.01 41.85 74.94 41.89 75.55 41.64 C 76.16 41.40 76.80 40.75 77.05 40.12 C 77.29 39.48 77.29 38.50 77.05 37.83 C 76.80 37.15 76.07 36.41 75.55 36.08 C 75.02 35.76 74.25 35.86 73.88 35.85 C 73.52 35.85 73.69 35.71 73.35 36.03 Z", "catEye1": "M 43.48 40.34 C 43.22 40.69 42.51 41.51 42.39 42.17 C 42.27 42.83 42.51 43.79 42.77 44.32 C 43.03 44.84 43.39 45.18 43.95 45.31 C 44.51 45.45 45.50 45.47 46.12 45.13 C 46.75 44.80 47.44 44.00 47.69 43.33 C 47.95 42.67 47.91 41.71 47.64 41.14 C 47.37 40.56 46.69 40.07 46.07 39.90 C 45.45 39.72 44.38 40.00 43.95 40.07 C 43.52 40.15 43.74 39.99 43.48 40.34 Z", "penBody": "M 45.96 71.48 C 44.88 72.31 41.26 75.01 39.97 76.45 C 38.69 77.90 38.30 78.99 38.25 80.17 C 38.19 81.35 39.03 83.39 39.66 83.52 C 40.29 83.65 41.37 81.22 42.00 80.95 C 42.63 80.68 43.20 81.21 43.45 81.90 C 43.70 82.59 43.78 83.73 43.51 85.09 C 43.24 86.44 42.19 88.18 41.82 90.00 C 41.46 91.82 41.07 93.92 41.31 96.01 C 41.55 98.11 42.49 100.81 43.27 102.57 C 44.06 104.33 44.95 105.60 46.01 106.55 C 47.06 107.51 46.47 107.97 49.62 108.30 C 52.77 108.64 61.46 108.73 64.92 108.57 C 68.38 108.41 69.03 107.84 70.38 107.33 C 71.74 106.83 72.26 106.25 73.04 105.55 C 73.81 104.84 74.47 104.42 75.02 103.11 C 75.58 101.79 76.14 99.47 76.36 97.65 C 76.58 95.83 76.50 93.92 76.35 92.19 C 76.20 90.46 75.56 88.55 75.47 87.27 C 75.38 86.00 75.63 85.23 75.79 84.54 C 75.95 83.85 76.15 83.46 76.44 83.12 C 76.73 82.78 76.83 82.28 77.55 82.51 C 78.27 82.73 80.12 84.41 80.77 84.47 C 81.41 84.53 81.38 83.42 81.41 82.89 C 81.44 82.35 82.12 82.96 80.94 81.26 C 79.77 79.57 76.23 73.97 74.38 72.72 C 72.52 71.47 72.41 73.61 69.84 73.76 C 67.26 73.90 62.81 73.96 58.91 73.58 C 55.01 73.20 48.61 71.82 46.45 71.47 C 44.29 71.12 47.04 70.65 45.96 71.48 Z", "penLine": "M 57.81 48.18 C 56.81 48.50 54.21 48.84 52.35 49.99 C 50.49 51.14 48.03 53.32 46.64 55.08 C 45.26 56.83 44.62 58.33 44.04 60.51 C 43.46 62.69 44.48 65.51 43.15 68.16 C 41.82 70.80 37.42 74.20 36.08 76.39 C 34.74 78.57 35.10 80.02 35.11 81.27 C 35.12 82.52 35.39 82.71 36.11 83.89 C 36.83 85.08 38.94 85.62 39.43 88.38 C 39.91 91.13 38.89 97.76 39.05 100.40 C 39.20 103.04 39.69 103.04 40.36 104.22 C 41.03 105.40 41.80 106.23 43.07 107.47 C 44.34 108.70 46.61 110.68 47.98 111.63 C 49.34 112.57 50.26 112.88 51.26 113.12 C 52.26 113.37 52.71 113.41 53.99 113.10 C 55.26 112.79 57.09 111.24 58.91 111.26 C 60.73 111.28 63.55 112.90 64.92 113.23 C 66.28 113.57 65.83 113.72 67.10 113.25 C 68.37 112.79 70.75 111.85 72.53 110.43 C 74.32 109.02 76.66 106.62 77.81 104.77 C 78.96 102.91 79.15 101.67 79.44 99.30 C 79.73 96.94 78.85 92.88 79.55 90.59 C 80.25 88.31 82.87 86.89 83.65 85.61 C 84.44 84.33 84.33 83.82 84.27 82.91 C 84.20 82.01 84.07 81.47 83.28 80.18 C 82.50 78.89 80.50 76.65 79.57 75.19 C 78.65 73.74 78.10 72.43 77.73 71.44 C 77.36 70.45 77.27 70.71 77.33 69.25 C 77.39 67.79 78.19 64.51 78.08 62.69 C 77.96 60.87 77.20 59.59 76.64 58.32 C 76.08 57.05 75.63 56.23 74.72 55.08 C 73.81 53.92 72.34 52.36 71.16 51.40 C 69.98 50.43 68.87 49.82 67.65 49.27 C 66.43 48.71 65.37 48.28 63.83 48.08 C 62.28 47.89 59.36 48.09 58.36 48.11 C 57.36 48.12 58.82 47.87 57.81 48.18 Z M 52.32 55.90 C 52.87 55.70 54.13 54.98 55.06 55.11 C 56.00 55.25 57.27 55.92 57.93 56.71 C 58.59 57.51 58.99 58.55 59.00 59.89 C 59.02 61.23 58.01 63.73 58.01 64.75 C 58.01 65.77 58.48 65.69 58.99 66.01 C 59.51 66.34 60.49 66.66 61.09 66.71 C 61.68 66.75 62.15 66.55 62.54 66.30 C 62.93 66.06 63.30 66.20 63.42 65.22 C 63.54 64.24 62.97 61.84 63.26 60.44 C 63.54 59.04 64.39 57.59 65.12 56.83 C 65.86 56.06 66.81 55.77 67.68 55.84 C 68.55 55.91 69.54 56.50 70.34 57.26 C 71.14 58.03 71.94 59.09 72.45 60.44 C 72.97 61.79 73.46 64.01 73.41 65.37 C 73.35 66.74 72.91 67.40 72.13 68.63 C 71.34 69.86 68.27 72.02 68.69 72.75 C 69.12 73.48 72.47 71.51 74.66 73.02 C 76.85 74.53 80.60 80.10 81.82 81.82 C 83.04 83.55 82.15 82.95 81.98 83.38 C 81.81 83.81 81.53 84.62 80.79 84.41 C 80.06 84.20 78.26 82.42 77.57 82.13 C 76.88 81.83 76.90 81.87 76.65 82.64 C 76.40 83.41 76.00 85.07 76.06 86.76 C 76.11 88.45 76.87 90.60 76.99 92.79 C 77.10 94.98 77.01 98.09 76.73 99.92 C 76.45 101.74 76.09 102.57 75.31 103.75 C 74.53 104.93 73.52 106.10 72.06 107.00 C 70.61 107.90 70.23 108.78 66.58 109.13 C 62.92 109.48 53.68 109.55 50.13 109.09 C 46.58 108.64 46.71 107.86 45.30 106.42 C 43.88 104.98 42.37 102.37 41.64 100.47 C 40.90 98.56 40.63 98.14 40.88 94.98 C 41.12 91.83 42.81 83.89 43.09 81.54 C 43.37 79.20 43.26 80.88 42.54 80.90 C 41.82 80.91 39.55 81.83 38.76 81.62 C 37.97 81.41 37.70 80.41 37.79 79.63 C 37.88 78.85 38.06 78.29 39.31 76.92 C 40.56 75.56 43.28 72.27 45.31 71.43 C 47.33 70.59 50.88 72.52 51.47 71.88 C 52.07 71.23 49.37 68.93 48.88 67.57 C 48.38 66.21 48.42 65.10 48.49 63.73 C 48.55 62.36 48.71 60.59 49.26 59.34 C 49.81 58.10 51.28 56.85 51.79 56.28 C 52.30 55.70 51.78 56.09 52.32 55.90 Z", "penFace": "M 54.45 55.99 C 53.84 56.25 52.09 56.83 51.29 57.48 C 50.49 58.14 49.96 58.51 49.65 59.93 C 49.35 61.36 49.41 64.56 49.48 66.02 C 49.56 67.48 49.64 67.87 50.11 68.68 C 50.57 69.48 51.44 70.27 52.25 70.88 C 53.07 71.48 53.16 71.93 55.01 72.31 C 56.85 72.70 61.19 73.26 63.31 73.18 C 65.43 73.10 66.37 72.59 67.74 71.84 C 69.10 71.08 70.67 69.82 71.51 68.66 C 72.35 67.51 72.74 66.37 72.76 64.91 C 72.79 63.46 72.24 61.23 71.67 59.95 C 71.10 58.66 70.25 57.70 69.35 57.22 C 68.45 56.74 67.06 56.61 66.28 57.07 C 65.50 57.52 64.99 58.57 64.66 59.97 C 64.33 61.36 64.63 64.23 64.30 65.42 C 63.98 66.61 63.35 66.77 62.72 67.12 C 62.09 67.46 61.25 67.63 60.54 67.50 C 59.83 67.37 58.97 66.79 58.45 66.35 C 57.94 65.91 57.54 66.04 57.46 64.88 C 57.38 63.72 57.97 60.63 57.99 59.38 C 58.01 58.13 58.08 57.93 57.58 57.36 C 57.08 56.79 55.52 56.19 55.00 55.96 C 54.48 55.73 55.07 55.74 54.45 55.99 Z M 66.45 62.15 C 66.84 62.15 67.96 62.21 68.26 62.60 C 68.57 62.99 68.57 64.10 68.26 64.49 C 67.96 64.88 66.90 65.05 66.45 64.94 C 66.01 64.84 65.69 64.27 65.60 63.88 C 65.51 63.49 65.78 62.89 65.92 62.60 C 66.06 62.31 66.06 62.15 66.45 62.15 Z M 53.34 61.03 C 53.64 60.92 54.23 60.72 54.63 60.79 C 55.04 60.87 55.50 61.15 55.77 61.48 C 56.04 61.80 56.25 62.31 56.25 62.73 C 56.25 63.14 56.04 63.66 55.77 63.98 C 55.50 64.30 55.04 64.59 54.63 64.66 C 54.23 64.73 53.70 64.63 53.34 64.42 C 52.99 64.21 52.58 63.88 52.49 63.39 C 52.41 62.90 52.68 61.87 52.83 61.48 C 52.97 61.08 53.04 61.15 53.34 61.03 Z", "penEye0": "M 53.89 61.75 C 53.70 62.02 53.18 62.87 53.29 63.24 C 53.39 63.60 54.16 64.06 54.52 63.96 C 54.88 63.87 55.45 63.06 55.44 62.67 C 55.42 62.28 54.68 61.78 54.43 61.63 C 54.17 61.47 54.08 61.48 53.89 61.75 Z", "penEye1": "M 67.07 62.27 C 66.84 62.53 66.19 63.45 66.28 63.88 C 66.36 64.31 67.24 64.83 67.58 64.83 C 67.92 64.83 68.32 64.31 68.33 63.88 C 68.33 63.45 67.83 62.53 67.62 62.27 C 67.41 62.00 67.29 62.00 67.07 62.27 Z", "bearEarL": "M 23 26 a 13 13 0 1 0 26 0 a 13 13 0 1 0 -26 0 Z", "bearEarR": "M 71 26 a 13 13 0 1 0 26 0 a 13 13 0 1 0 -26 0 Z", "bearEarLIn": "M 30.5 26 a 5.5 5.5 0 1 0 11 0 a 5.5 5.5 0 1 0 -11 0 Z", "bearEarRIn": "M 78.5 26 a 5.5 5.5 0 1 0 11 0 a 5.5 5.5 0 1 0 -11 0 Z", "bearHead": "M 29 54 a 31 31 0 1 0 62 0 a 31 31 0 1 0 -62 0 Z", "bearMuzzle": "M 45 66 a 15 11 0 1 0 30 0 a 15 11 0 1 0 -30 0 Z", "bearNose": "M 55 59 a 5 3.8 0 1 0 10 0 a 5 3.8 0 1 0 -10 0 Z", "bearEyeL": "M 44.6 48 a 3.4 3.4 0 1 0 6.8 0 a 3.4 3.4 0 1 0 -6.8 0 Z", "bearEyeR": "M 68.6 48 a 3.4 3.4 0 1 0 6.8 0 a 3.4 3.4 0 1 0 -6.8 0 Z", "bearBody": "M 60 70 C 76 70 88 79 88 93 C 88 105 76 114 60 114 C 44 114 32 105 32 93 C 32 79 44 70 60 70 Z", "bearBelly": "M 47 98 a 13 10 0 1 0 26 0 a 13 10 0 1 0 -26 0 Z", "bearArmL": "M 34 76 C 27 76 23 83 24 91 C 25 96 31 96 33 90 C 35 84 37 77 34 76 Z", "bearArmR": "M 86 76 C 93 76 97 83 96 91 C 95 96 89 96 87 90 C 85 84 83 77 86 76 Z", "bearFootL": "M 44 107 C 44 103 52 102 55 105 C 58 108 58 114 55 117 C 50 120 44 115 44 107 Z", "bearFootR": "M 76 107 C 76 103 68 102 65 105 C 62 108 62 114 65 117 C 70 120 76 115 76 107 Z", "chickBody": "M 30 68 a 30 30 0 1 0 60 0 a 30 30 0 1 0 -60 0 Z", "chickTuft": "M 54 42 C 55 30 63 26 69 32 C 62 33 59 37 59 44 Z", "chickBeak": "M 53 70 C 53 67 67 67 67 70 C 67 74 63 79 60 79 C 57 79 53 74 53 70 Z", "chickEyeL": "M 44.6 62 a 3.6 3.6 0 1 0 7.2 0 a 3.6 3.6 0 1 0 -7.2 0 Z", "chickEyeR": "M 68.2 62 a 3.6 3.6 0 1 0 7.2 0 a 3.6 3.6 0 1 0 -7.2 0 Z", "chickWingL": "M 31 68 C 24 68 20 77 24 85 C 27 90 33 86 34 79 C 35 73 34 68 31 68 Z", "chickWingR": "M 89 68 C 96 68 100 77 96 85 C 93 90 87 86 86 79 C 85 73 86 68 89 68 Z", "chickLegL": "M 50 95 C 50 91 55 91 55 95 L 55 105 C 55 109 50 109 50 105 Z", "chickLegR": "M 65 95 C 65 91 70 91 70 95 L 70 105 C 70 109 65 109 65 105 Z", "chickFootL": "M 44 105 C 44 102 56 102 56 105 C 56 109 44 109 44 105 Z", "chickFootR": "M 64 105 C 64 102 76 102 76 105 C 76 109 64 109 64 105 Z"};
+function fillPath(d,f){return '<path d="'+d+'" fill="'+f+'"/>';}
+function regionPath(d,f){return '<path d="'+d+'" fill="'+f+'" fill-rule="evenodd"/>';}
+function inkPath(d,f){return '<path d="'+d+'" fill="'+f+'" stroke="'+INKH+'" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/>';}
+function solidPath(d,f){return '<path d="'+d+'" fill="'+f+'"/>';}
+/* ねこくん：一只奶油色的猫。身体和头在原版里是同一块，
+   所以这里也是一整块闭合区域，五官只是叠在上面的小形状。 */
 function handCat(o){
   o=o||{}; var id='hc'+(++uid);
-  var fur=o.fur||'#fdfdf2', ink=o.ink||INKH, eye=o.eye||INKH, cut=o.cut||fur;
-  var s='<defs>'
-    +'<clipPath id="'+id+'bc"><path d="'+HAND.catBody+'"/></clipPath>'
-    +'<clipPath id="'+id+'hc"><path d="'+HAND.catHead+'"/></clipPath>'
-    +'</defs>';
+  var fur=o.fur||'#fdfdf2', ink=o.ink||INKH, eye=o.eye||INKH, nost=o.nostril||o.fur||'#fdfdf2';
+  var s='<defs><clipPath id="'+id+'b"><path d="'+HAND.catBody+'" fill-rule="evenodd"/></clipPath></defs>';
   s+='<g class="rig rig-cat">';
-  /* 两只小脚和手臂都画在身体后面，只露出一点点 */
-  s+='<g class="ft ft-l">'+fillPath(HAND.catFoot0,fur)+linePath(HAND.catFoot0)+'</g>';
-  s+='<g class="ft ft-r">'+fillPath(HAND.catFoot1,fur)+linePath(HAND.catFoot1)+'</g>';
-  if(o.arms){
-    s+='<g class="am am-l">'+fillPath(HAND.catArm0,fur)+linePath(HAND.catArm0)+'</g>';
-    s+='<g class="am am-r">'+fillPath(HAND.catArm1,fur)+linePath(HAND.catArm1)+'</g>';
-  }
-  /* 躯干 */
-  s+='<g class="bd">'+fillPath(HAND.catBody,fur);
-  if(o.patches) s+='<g clip-path="url(#'+id+'bc)">'+o.patches+'</g>';
-  s+=linePath(HAND.catBody)+'</g>';
-  /* 头（可点头、扭头、抬头） */
-  s+='<g class="hd">'+fillPath(HAND.catHead,fur);
-  if(o.patches) s+='<g clip-path="url(#'+id+'hc)">'+o.patches+'</g>';
-  s+=linePath(HAND.catHead)
-    +'<g class="fe">'+solidPath(HAND.catNose,ink)+solidPath(HAND.catNoseCut0,cut)+solidPath(HAND.catNoseCut1,cut)
-    +'<g class="ey">'+solidPath(HAND.catEye0,eye)+solidPath(HAND.catEye1,eye)+'</g></g></g>';
+  s+='<g class="bd">';
+  s+=regionPath(HAND.catBody,fur);
+  if(o.patches) s+='<g clip-path="url(#'+id+'b)">'+o.patches+'</g>';
+  s+=regionPath(HAND.catLine,ink);
+  s+=regionPath(HAND.catNose,ink);
+  s+=fillPath(HAND.catNostril0,nost);
+  s+=fillPath(HAND.catNostril1,nost);
+  s+='</g>';
+  s+='<g class="eyes"><path class="ey" d="'+HAND.catEye0+'" fill="'+eye+'"/>'
+    +'<path class="ey" d="'+HAND.catEye1+'" fill="'+eye+'"/></g>';
   if(o.acc) s+=o.acc;
   s+='</g>';
   return s;
 }
+/* ぺんちゃん：褐色头罩 + 白色脸斑 + 灰身子。原版没有喙，
+   脸中间那道褐色楔形是头罩自己垂下来的，所以这里也不加喙。 */
 function handPen(o){
   o=o||{}; var id='hp'+(++uid);
   var ink=o.ink||INKH, body=o.body||'#c9c8b7', face=o.face||'#fdfdf2', eye=o.eye||ink;
-  var s='<defs><clipPath id="'+id+'bc"><path d="'+HAND.penBody+'"/></clipPath></defs>';
+  var s='<defs><clipPath id="'+id+'b"><path d="'+HAND.penBody+'" fill-rule="evenodd"/></clipPath></defs>';
   s+='<g class="rig rig-pen">';
-  if(o.arms){
-    s+='<g class="am am-l">'+fillPath(HAND.penFin0,body)+linePath(HAND.penFin0)+'</g>';
-    s+='<g class="am am-r">'+fillPath(HAND.penFin1,body)+linePath(HAND.penFin1)+'</g>';
-  }
-  s+='<g class="bd">'+fillPath(HAND.penBody,body);
-  if(o.patches) s+='<g clip-path="url(#'+id+'bc)">'+o.patches+'</g>';
-  s+=linePath(HAND.penBody)+'</g>';
-  s+='<g class="hd">'+solidPath(HAND.penHood,ink)+solidPath(HAND.penFace,face)
-    +'<g class="fe">'+solidPath(HAND.penBeak,ink)
-    +'<g class="ey">'+solidPath(HAND.penEye0,eye)+solidPath(HAND.penEye1,eye)+'</g></g></g>';
+  s+='<g class="bd">';
+  s+=regionPath(HAND.penBody,body);
+  if(o.patches) s+='<g clip-path="url(#'+id+'b)">'+o.patches+'</g>';
+  s+=regionPath(HAND.penLine,ink);
+  s+=regionPath(HAND.penFace,face);
+  s+='</g>';
+  s+='<g class="eyes"><path class="ey" d="'+HAND.penEye0+'" fill="'+eye+'"/>'
+    +'<path class="ey" d="'+HAND.penEye1+'" fill="'+eye+'"/></g>';
   if(o.acc) s+=o.acc;
   s+='</g>';
   return s;
+}
+/* くまさん：和猫鹅同一套手绘规则 —— 闭合曲线、同一笔墨、同一线宽 */
+function handBear(o){
+  o=o||{};
+  var fur=o.fur||'#dfae7c', light=o.light||'#f6e3c6', ink=o.ink||INKH;
+  var s='<g class="rig rig-bear"><g class="bd">';
+  s+=inkPath(HAND.bearArmL,fur)+inkPath(HAND.bearArmR,fur);
+  s+=inkPath(HAND.bearFootL,fur)+inkPath(HAND.bearFootR,fur);
+  s+=inkPath(HAND.bearBody,fur);
+  s+=inkPath(HAND.bearBelly,light);
+  s+=inkPath(HAND.bearEarL,fur)+inkPath(HAND.bearEarR,fur);
+  s+=inkPath(HAND.bearHead,fur);
+  s+=inkPath(HAND.bearEarLIn,light)+inkPath(HAND.bearEarRIn,light);
+  s+=inkPath(HAND.bearMuzzle,light);
+  s+='<g class="eyes"><path class="ey" d="'+HAND.bearEyeL+'" fill="'+ink+'"/>'
+    +'<path class="ey" d="'+HAND.bearEyeR+'" fill="'+ink+'"/></g>';
+  s+=solidPath(HAND.bearNose,ink);
+  s+='</g></g>';
+  return s;
+}
+/* ひよこさんきょうだい：两只小鸡，一前一后 */
+function handChick(o){
+  o=o||{};
+  var fur=o.fur||'#f8d15c', beak=o.beak||'#e08a3a', ink=o.ink||INKH;
+  function one(tx,ty,k){
+    var g='<g transform="translate('+tx+' '+ty+') scale('+k+')">';
+    g+=inkPath(HAND.chickLegL,fur)+inkPath(HAND.chickLegR,fur);
+    g+=inkPath(HAND.chickFootL,fur)+inkPath(HAND.chickFootR,fur);
+    g+=inkPath(HAND.chickTuft,fur);
+    g+=inkPath(HAND.chickBody,fur);
+    g+=inkPath(HAND.chickWingL,fur)+inkPath(HAND.chickWingR,fur);
+    g+=inkPath(HAND.chickBeak,beak);
+    g+='<g class="eyes"><path class="ey" d="'+HAND.chickEyeL+'" fill="'+ink+'"/>'
+      +'<path class="ey" d="'+HAND.chickEyeR+'" fill="'+ink+'"/></g>';
+    return g+'</g>';
+  }
+  return '<g class="rig rig-chick"><g class="bd">'+one(-6,-4,1)+one(46,10,.72)+'</g></g>';
 }
 
 function flower(x,y,c,r){
@@ -1122,21 +1049,28 @@ function flower(x,y,c,r){
   for(var i=0;i<5;i++){var a=Math.PI*2*i/5-Math.PI/2; s+='<circle cx="'+(x+Math.cos(a)*r).toFixed(1)+'" cy="'+(y+Math.sin(a)*r).toFixed(1)+'" r="'+(r*.75).toFixed(1)+'" fill="'+c+'" stroke="'+INKH+'" stroke-width="1.6"/>';}
   return s+'<circle cx="'+x+'" cy="'+y+'" r="'+(r*.6).toFixed(1)+'" fill="#ffd34d" stroke="'+INKH+'" stroke-width="1.4"/></g>';
 }
+/* 虎纹：额头三道 + 身侧两道（坐标按新形象的眉心量过） */
+function tabby(c){
+  return '<path d="M47 19l-2.6 11M54 16.5v12M61 19l2.6 11" fill="none" stroke="'+c+'" stroke-width="3.2" stroke-linecap="round"/>'
+       +'<path d="M36 71q7 2 9 7M34 83q8 1 11 6" fill="none" stroke="'+c+'" stroke-width="3.2" stroke-linecap="round"/>';
+}
 var CHAR={
 neko:function(){return handCat({});},
 nekoPlain:function(){return handCat({});},
 pen:function(){return handPen({});},
 penPlain:function(){return handPen({});},
-nekoRig:function(){return handCat({arms:true});},
-penRig:function(){return handPen({arms:true});},
-saba:function(){return handCat({fur:'#cfd3d8',patches:'<path d="M45 22l4 13M60 20v14M75 22l-4 13" stroke="#8b929b" stroke-width="3.4" stroke-linecap="round"/>'});},
-cha:function(){return handCat({fur:'#f2c184',patches:'<path d="M45 22l4 13M60 20v14M75 22l-4 13" stroke="#d98a3d" stroke-width="3.4" stroke-linecap="round"/>',acc:flower(60,86,'#fff',5)});},
-buchi:function(){return handCat({patches:'<ellipse cx="74" cy="30" rx="15" ry="11" fill="#3d3836"/><ellipse cx="35" cy="50" rx="8" ry="6" fill="#3d3836"/><ellipse cx="55" cy="86" rx="10" ry="8" fill="#3d3836"/>'});},
-mike:function(){return handCat({patches:'<ellipse cx="38" cy="26" rx="16" ry="12" fill="#f2a65a"/><ellipse cx="78" cy="36" rx="11" ry="9" fill="#3d3836"/><ellipse cx="64" cy="92" rx="9" ry="7" fill="#f2a65a"/>',acc:'<path d="M86 22l-9-6v12zM86 22l9-6v12z" fill="#f6a5b8" stroke="'+INKH+'" stroke-width="2" stroke-linejoin="round"/><circle cx="86" cy="22" r="3" fill="#e9708a" stroke="'+INKH+'" stroke-width="1.5"/>'});},
-kuro:function(){return handCat({fur:'#3d3836',eye:'#f3dc6b',cut:'#efe3d2'});},
-hana:function(){return handPen({acc:flower(72,56,'#f6a5b8',6.5)});},
-friend:function(){return handPen({acc:'<path d="M56 100L64 86L72 100Z" fill="#fff" stroke="'+INKH+'" stroke-width="2.2" stroke-linejoin="round"/><rect x="60" y="94" width="8" height="6" fill="#2f3b2f"/>'});},
-parents:adultInner, bear:bearInner, hiyoko:chickInner,
+nekoRig:function(){return handCat({});},
+penRig:function(){return handPen({});},
+saba:function(){return handCat({fur:'#cfd3d8',patches:tabby('#8b929b')});},
+cha:function(){return handCat({fur:'#f2c184',patches:tabby('#d98a3d'),acc:flower(60,88,'#fff',5)});},
+buchi:function(){return handCat({patches:'<ellipse cx="78" cy="26" rx="13" ry="10" fill="#3d3836"/><ellipse cx="40" cy="78" rx="9" ry="7" fill="#3d3836"/><ellipse cx="76" cy="90" rx="11" ry="8" fill="#3d3836"/>'});},
+mike:function(){return handCat({patches:'<ellipse cx="36" cy="28" rx="13" ry="10" fill="#f2a65a"/><ellipse cx="76" cy="25" rx="11" ry="9" fill="#3d3836"/><ellipse cx="64" cy="93" rx="10" ry="8" fill="#f2a65a"/>',acc:'<g><path d="M70 7l-8-5v10zM70 7l8-5v10z" fill="#f6a5b8" stroke="'+INKH+'" stroke-width="2" stroke-linejoin="round"/><circle cx="70" cy="7" r="3" fill="#e9708a" stroke="'+INKH+'" stroke-width="1.5"/></g>'});},
+kuro:function(){return handCat({fur:'#3d3836',eye:'#f3dc6b',nostril:'#efe3d2'});},
+hana:function(){return handPen({acc:flower(77,55,'#f6a5b8',6.5)});},
+friend:function(){return handPen({acc:'<path d="M52 100L60 86L68 100Z" fill="#fff" stroke="'+INKH+'" stroke-width="2.2" stroke-linejoin="round"/><rect x="56" y="94" width="8" height="6" fill="#2f3b2f"/>'});},
+parents:function(){return '<g transform="translate(-6 -11.4) scale(1.1)">'+handPen({})+'</g>';},
+bear:function(){return handBear({});},
+hiyoko:function(){return handChick({});},
 car:function(){return carInner();}, carEmpty:function(){return carInner({empty:true});}
 };
 function svgOf(key,vb,cls){return '<svg class="'+(cls||'')+'" viewBox="'+(vb||'0 0 120 120')+'" aria-hidden="true">'+CHAR[key]()+'</svg>';}
@@ -1153,11 +1087,6 @@ function carInner(o){
   s+='<circle cx="40" cy="100" r="12" fill="#fff" stroke="'+INK+'" stroke-width="3"/><circle cx="130" cy="100" r="12" fill="#fff" stroke="'+INK+'" stroke-width="3"/>';
   s+='<path d="M146 56L150 50" stroke="'+INK+'" stroke-width="3"/><circle cx="152" cy="42" r="10" fill="#e9a25f" stroke="'+INK+'" stroke-width="2.6"/><circle cx="152" cy="42" r="4" fill="#fff6e4" stroke="'+INK+'" stroke-width="1.8"/><path d="M145 38l3-1M157 35l2 2M158 47l-2 2M146 47l2 1" stroke="#f6a5b8" stroke-width="2" stroke-linecap="round"/>';
   return s;
-}
-function adultInner(){
-  /* 父母：成体企鹅，比ぺんちゃん大一圈，橙喙 */
-  return '<g transform="translate(-4 -8) scale(1.28)">'+handPen({})+
-         '<path d="M55 26q5-2.5 10 0l-5 11z" fill="#f0a32e" stroke="'+INKH+'" stroke-width="1.8" stroke-linejoin="round"/></g>';
 }
 function bearInner(){
   var b='#b07a4f', l='#ecd0a6', s='', w=' stroke="'+INKH+'" stroke-width="3" stroke-linejoin="round"';
@@ -1466,6 +1395,25 @@ function bindFilm(){
       sc.classList.toggle('film-patched',!!FILMPATCH[FILMIDX]); }
   });
 }
+/* 预取相邻时段的片子：冷缓存要十几秒，预热之后切时段几乎瞬时 */
+var PREWARMED={};
+function prefetchClip(i){
+  var u=FILMS[i];
+  if(!u||PREWARMED[u]) return;
+  PREWARMED[u]=1;
+  try{
+    if(window.fetch&&window.Promise){
+      fetch(u,{cache:'force-cache'}).then(function(r){ return r.arrayBuffer(); })
+        .catch(function(){});
+    }
+  }catch(e){}
+}
+function prefetchNeighbours(i){ prefetchClip(i+1); if(i>0) prefetchClip(i-1); }
+function prefetchLater(i){
+  var go=function(){ prefetchClip(i); };
+  if(window.requestIdleCallback) requestIdleCallback(go,{timeout:4000});
+  else setTimeout(go,1200);
+}
 function setDay(i){
   var d=DAY[i]; var sc=document.getElementById('dayScene'), sky=SKY[d.h];
   /* 动作与道具：每两个小时切换一次，猫和企鹅各演一段符合文字描述的小动作 */
@@ -1513,6 +1461,7 @@ function setDay(i){
     if(fsrc&&!REDUCE.matches){ var pr=film.play(); if(pr&&pr.catch) pr.catch(function(){}); }
     else film.pause();
   }
+    prefetchNeighbours(i);
 }
 function buildDay(){
   var hs=''; DAY.forEach(function(d,i){hs+='<button type="button" data-i="'+i+'">'+(d.h<10?'0':'')+d.h+':00</button>';});
@@ -1599,6 +1548,7 @@ function bindShare(){
 /* ---------- init ---------- */
 buildMap(); buildResidents(); buildRel(); buildVeh(); buildTL();
 bindFilm();
+prefetchLater(1);
 fillChars(document);
 bindMap(); bindModal(); buildDay(); bindShare();
 particles('spring'); selectPlace('shukai');
