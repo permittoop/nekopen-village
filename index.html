@@ -448,8 +448,11 @@ section.plank::before{content:"";position:absolute;left:0;right:0;top:0;height:1
 .day-scene.film .day-chars .hold{display:none}
 .day-scene .bubble{z-index:5}
 .day-scene .day-clock{z-index:5}
-/* 某些片段右上角会被模型画出一个多余的挂钟，用同色的天空补掉 */
-.film-patch{position:absolute;right:0;top:0;width:11.4%;height:19.6%;z-index:6;display:none;pointer-events:none}
+/* 某些片段右上角会被模型画出一块多余的色块，用同色的天空补掉；
+   左边留一小段渐隐，免得补丁自己变成一个看得见的方块 */
+.film-patch{position:absolute;right:0;top:0;width:11.4%;height:19.6%;z-index:6;display:none;pointer-events:none;
+  -webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,0) 0%,rgba(0,0,0,1) 14%);
+  mask-image:linear-gradient(90deg,rgba(0,0,0,0) 0%,rgba(0,0,0,1) 14%)}
 .day-scene.film-patched .film-patch{display:block}
 /* 坐车时角色要站在车斗沿上，所以整体抬高，让车体留在下方 */
 .day-scene.car .day-chars{bottom:20%}
@@ -1483,7 +1486,7 @@ var SKY={5:['#f6c1a0','#fde5c6'],6:['#f9cfae','#fff0d6'],8:['#9fd6f5','#dcf2fc']
 var FILMS=['media/day-0600.mp4','media/day-0800.mp4','media/day-1000.mp4','media/day-1200.mp4','media/day-1300.mp4','media/day-1500.mp4','media/day-1700.mp4','media/day-1900.mp4','media/day-2100.mp4',''];
 var FILMPOST=['media/day-0600.jpg','media/day-0800.jpg','media/day-1000.jpg','media/day-1200.jpg','media/day-1300.jpg','media/day-1500.jpg','media/day-1700.jpg','media/day-1900.jpg','media/day-2100.jpg',''];
 /* 需要补掉模型画残的片段：索引 -> 补丁渐变（取自该片段自身的天空色） */
-var FILMPATCH={5:'linear-gradient(180deg,rgb(147,197,233) 0%,rgb(152,200,234) 45%,rgb(160,205,236) 100%)'};
+var FILMPATCH={5:'linear-gradient(180deg,rgb(156,206,235) 0%,rgb(161,206,236) 48%,rgb(167,210,239) 100%)'};
 var REDUCE=window.matchMedia?window.matchMedia('(prefers-reduced-motion: reduce)'):{matches:false};
 var FILMIDX=-1;
 function bindFilm(){
