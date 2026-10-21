@@ -1485,6 +1485,7 @@ var FILMPOST=['media/day-0600.jpg','media/day-0800.jpg','media/day-1000.jpg','me
 /* 需要补掉模型画残的片段：索引 -> 补丁渐变（取自该片段自身的天空色） */
 var FILMPATCH={5:'linear-gradient(180deg,rgb(147,197,233) 0%,rgb(152,200,234) 45%,rgb(160,205,236) 100%)'};
 var REDUCE=window.matchMedia?window.matchMedia('(prefers-reduced-motion: reduce)'):{matches:false};
+var FILMIDX=-1;
 function bindFilm(){
   var f=document.getElementById('dayFilm');
   if(!f) return;
@@ -1492,7 +1493,14 @@ function bindFilm(){
     var sc=document.getElementById('dayScene');
     if(sc) sc.classList.remove('film');
   });
-  f.addEventListener('canplay',function(){ f.classList.add('ready'); });
+  /* 片子下载完之前一直是骨架在演，canplay 之后才切到影片，
+     这样冷缓存时页面也是满的，而不是空场景 */
+  f.addEventListener('canplay',function(){
+    if(f.getAttribute('data-src')!==(FILMS[FILMIDX]||'')) return;
+    var sc=document.getElementById('dayScene');
+    if(sc){ sc.classList.add('film');
+      sc.classList.toggle('film-patched',!!FILMPATCH[FILMIDX]); }
+  });
 }
 function setDay(i){
   var d=DAY[i]; var sc=document.getElementById('dayScene'), sky=SKY[d.h];
@@ -1523,16 +1531,21 @@ function setDay(i){
   document.querySelectorAll('#dayHours button').forEach(function(b,k){b.classList.toggle('on',k===i);});
   /* 动作流视频：切时段时换片，播放失败就退回 SVG 骨架 */
   var film=document.getElementById('dayFilm'), fsrc=FILMS[i];
+  FILMIDX=i;
   if(film){
-    if(film.getAttribute('data-src')!==(fsrc||'')){
+    var changed=film.getAttribute('data-src')!==(fsrc||'');
+    if(changed){
       film.setAttribute('data-src',fsrc||'');
       film.poster=FILMPOST[i]||'';
       if(fsrc){ film.src=fsrc; film.load(); } else { film.removeAttribute('src'); }
     }
-    sc.classList.toggle('film',!!fsrc);
+    /* 片子还在路上时用骨架顶着，canplay 之后自动换成影片；
+       减少动效时直接停在首帧海报上 */
+    var on=!!(fsrc && (REDUCE.matches || (!changed && film.readyState>=3)));
+    sc.classList.toggle('film', on);
     var patch=document.getElementById('filmPatch');
     if(patch){ patch.style.background=FILMPATCH[i]||'';
-      sc.classList.toggle('film-patched',!!FILMPATCH[i]); }
+      sc.classList.toggle('film-patched', on && !!FILMPATCH[i]); }
     if(fsrc&&!REDUCE.matches){ var pr=film.play(); if(pr&&pr.catch) pr.catch(function(){}); }
     else film.pause();
   }
