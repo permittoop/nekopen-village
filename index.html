@@ -433,6 +433,12 @@ section.plank::before{content:"";position:absolute;left:0;right:0;top:0;height:1
 /* 前景层：纸箱车这种「把角色装进去」的道具要画在角色之前 */
 .day-front{position:absolute;left:0;right:0;bottom:0;height:160px;pointer-events:none;z-index:3}
 .day-front svg{position:absolute;left:0;bottom:0;width:100%;height:160px}
+/* ---- H3 动作流视频层：视频本身带画面与气泡，SVG 骨架退为降级方案 ----
+   视频里烘进了第一帧的圆角边框，所以这里放大一点点再裁掉，避免和站点边框重影 */
+.day-film-wrap{position:absolute;inset:0;overflow:hidden;z-index:4;display:none}
+.day-scene.film .day-film-wrap{display:block}
+.day-film{position:absolute;left:-1.5%;top:-1.5%;width:103%;height:103%;object-fit:fill}
+.day-scene.film .day-chars,.day-scene.film .day-props,.day-scene.film .day-front,.day-scene.film .day-clock{display:none}
 /* 坐车时角色要站在车斗沿上，所以整体抬高，让车体留在下方 */
 .day-scene.car .day-chars{bottom:20%}
 .day-scene.night .hold .zzz{fill:#fff6d8}
@@ -934,6 +940,7 @@ footer b{color:#fff}
           <div class="c"><div class="bubble" id="bPen"></div><svg viewBox="0 0 120 120"><g class="chr" id="gPen" data-c="pen" style="animation-delay:-.25s"></g></svg><div class="hold" id="holdPen"></div></div>
         </div>
         <div class="day-front" id="dayFront"></div>
+        <div class="day-film-wrap"><video class="day-film" id="dayFilm" muted loop playsinline preload="none" poster=""></video></div>
       </div>
       <div class="card day-info">
         <h3 id="dayTitle"></h3>
@@ -1438,6 +1445,19 @@ var FRONTPROPS={
 car:'<svg viewBox="0 0 600 160" preserveAspectRatio="none"><g stroke="#6b3d16" stroke-width="3.4" stroke-linejoin="round" vector-effect="non-scaling-stroke"><path d="M14 88h572v46H14z" fill="#e0b47a"/><path d="M14 88h572v10H14z" fill="#eec48f"/></g><g fill="none" stroke="#6b3d16" stroke-width="3" vector-effect="non-scaling-stroke"><path d="M42 112h516"/><path d="M424 88v46"/></g><g stroke="#6b3d16" stroke-width="3.4" vector-effect="non-scaling-stroke"><circle cx="150" cy="146" r="13" fill="#fff"/><circle cx="400" cy="146" r="13" fill="#fff"/></g><circle cx="478" cy="66" r="9" fill="#f6c7cf" stroke="#6b3d16" stroke-width="3.4" vector-effect="non-scaling-stroke"/></svg>'
 };
 var SKY={5:['#f6c1a0','#fde5c6'],6:['#f9cfae','#fff0d6'],8:['#9fd6f5','#dcf2fc'],10:['#8fd0f5','#d2effc'],12:['#86ccf4','#cdeefc'],13:['#8fd0f5','#d2effc'],15:['#9fd2f0','#e3f3fb'],17:['#f4b27c','#fbe2b2'],19:['#7d74bd','#f1a58e'],21:['#1f2a5a','#3b4a86'],23:['#141c42','#2a3570']};
+/* 每个时段一条 H3 生成的动作流：首帧驱动，5 秒循环 */
+var FILMS=['media/day-0600.mp4','media/day-0800.mp4','media/day-1000.mp4','media/day-1200.mp4','media/day-1300.mp4','media/day-1500.mp4','media/day-1700.mp4','media/day-1900.mp4','media/day-2100.mp4','media/day-2300.mp4'];
+var FILMPOST=['media/day-0600.jpg','media/day-0800.jpg','media/day-1000.jpg','media/day-1200.jpg','media/day-1300.jpg','media/day-1500.jpg','media/day-1700.jpg','media/day-1900.jpg','media/day-2100.jpg','media/day-2300.jpg'];
+var REDUCE=window.matchMedia?window.matchMedia('(prefers-reduced-motion: reduce)'):{matches:false};
+function bindFilm(){
+  var f=document.getElementById('dayFilm');
+  if(!f) return;
+  f.addEventListener('error',function(){
+    var sc=document.getElementById('dayScene');
+    if(sc) sc.classList.remove('film');
+  });
+  f.addEventListener('canplay',function(){ f.classList.add('ready'); });
+}
 function setDay(i){
   var d=DAY[i]; var sc=document.getElementById('dayScene'), sky=SKY[d.h];
   /* 动作与道具：每两个小时切换一次，猫和企鹅各演一段符合文字描述的小动作 */
@@ -1465,6 +1485,18 @@ function setDay(i){
   document.getElementById('dayGo').setAttribute('data-id',d.p2);
   document.getElementById('daySlider').value=i;
   document.querySelectorAll('#dayHours button').forEach(function(b,k){b.classList.toggle('on',k===i);});
+  /* 动作流视频：切时段时换片，播放失败就退回 SVG 骨架 */
+  var film=document.getElementById('dayFilm'), fsrc=FILMS[i];
+  if(film){
+    if(film.getAttribute('data-src')!==(fsrc||'')){
+      film.setAttribute('data-src',fsrc||'');
+      film.poster=FILMPOST[i]||'';
+      if(fsrc){ film.src=fsrc; film.load(); } else { film.removeAttribute('src'); }
+    }
+    sc.classList.toggle('film',!!fsrc);
+    if(fsrc&&!REDUCE.matches){ var pr=film.play(); if(pr&&pr.catch) pr.catch(function(){}); }
+    else film.pause();
+  }
 }
 function buildDay(){
   var hs=''; DAY.forEach(function(d,i){hs+='<button type="button" data-i="'+i+'">'+(d.h<10?'0':'')+d.h+':00</button>';});
@@ -1550,6 +1582,7 @@ function bindShare(){
 
 /* ---------- init ---------- */
 buildMap(); buildResidents(); buildRel(); buildVeh(); buildTL();
+bindFilm();
 fillChars(document);
 bindMap(); bindModal(); buildDay(); bindShare();
 particles('spring'); selectPlace('shukai');
