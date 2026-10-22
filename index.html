@@ -500,6 +500,15 @@ footer b{color:#fff}
 }
 @media (min-width:641px){.map-hint{display:none}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+/* ===== 窄屏：角色与气泡一起缩小，否则两个气泡会超出画面被裁掉 ===== */
+@media (max-width:640px){
+  .day-chars{gap:9%}
+  .day-chars .c{width:120px}
+  .day-chars svg{width:120px;height:120px}
+  .day-chars .hold svg{width:108px;height:108px}
+  .day-chars .bubble{bottom:124px;max-width:150px;font-size:12px;padding:6px 10px;border-radius:14px}
+  .bubble::after{border-width:6px;margin-left:-6px}
+}
 </style>
 </head>
 <body>
