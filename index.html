@@ -297,9 +297,10 @@ section.plank::before{content:"";position:absolute;left:0;right:0;top:0;height:1
 .day-props .pr{left:76%}
 .day-props .sky{bottom:86px}
 .day-chars{z-index:2}
-/* 前景层：纸箱车这种「把角色装进去」的道具要画在角色之前 */
-.day-front{position:absolute;left:0;right:0;bottom:0;height:160px;pointer-events:none;z-index:3}
-.day-front svg{position:absolute;left:0;bottom:0;width:100%;height:160px}
+/* 前景层：纸箱车这种「把角色装进去」的道具要画在角色之前
+   高度要够，箱沿之上还要放得下方向盘和企鹅的上半身 */
+.day-front{position:absolute;left:0;right:0;bottom:0;height:210px;pointer-events:none;z-index:3}
+.day-front svg{position:absolute;left:0;bottom:0;width:100%;height:210px}
 /* ---- H3 动作流视频层：视频本身带画面与道具，SVG 骨架退为降级方案 ----
    视频里烘进了第一帧的圆角边框，所以这里放大一点点再裁掉，避免和站点边框重影 */
 .day-film-wrap{position:absolute;inset:0;overflow:hidden;z-index:4;display:none}
@@ -436,6 +437,8 @@ input[type=range]{width:100%;accent-color:var(--mikan);margin:14px 0 6px}
   box-shadow:0 3px 0 rgba(74,50,34,.16)}
 /* 坐车时角色要沉进车斗里，只露出上半身 */
 .day-scene.car .day-chars{bottom:15%}
+/* 企鹅站在方向盘后面，比猫高一点才够得着轮子 */
+.day-scene.car .day-chars .c:last-child{transform:translateY(-20px)}
 /* ===== 右侧信息卡：层次更清楚一点 ===== */
 .day-info{padding:22px 24px}
 .day-info h3{font-size:23px;letter-spacing:.5px}
@@ -1369,7 +1372,7 @@ cake:'<svg viewBox="0 0 96 96"><path d="M28 92V70h20v22z" fill="#f6d7a8" stroke=
 };
 /* 前景道具：纸箱车要横跨整个画面并画在角色之前，两只才像坐在车里 */
 var FRONTPROPS={
-car:'<svg viewBox="0 0 600 160" preserveAspectRatio="none"><g stroke="#6b3d16" stroke-width="3.4" stroke-linejoin="round" vector-effect="non-scaling-stroke"><path d="M14 88h572v46H14z" fill="#e0b47a"/><path d="M14 88h572v10H14z" fill="#eec48f"/></g><g fill="none" stroke="#6b3d16" stroke-width="3" vector-effect="non-scaling-stroke"><path d="M42 112h516"/><path d="M424 88v46"/></g><g stroke="#6b3d16" stroke-width="3.4" vector-effect="non-scaling-stroke"><circle cx="150" cy="146" r="13" fill="#fff"/><circle cx="400" cy="146" r="13" fill="#fff"/></g><circle cx="478" cy="66" r="9" fill="#f6c7cf" stroke="#6b3d16" stroke-width="3.4" vector-effect="non-scaling-stroke"/></svg>'
+car:'<svg viewBox="0 0 600 210" preserveAspectRatio="none"><g stroke="#6b3d16" stroke-width="3.4" stroke-linejoin="round" vector-effect="non-scaling-stroke"><path d="M14 100h572v78H14z" fill="#e0b47a"/><path d="M14 100h572v14H14z" fill="#eec48f"/><path d="M14 164h572v14H14z" fill="#d3a165"/></g><g fill="none" stroke="#6b3d16" stroke-width="2.4" stroke-linecap="round" vector-effect="non-scaling-stroke"><path d="M88 114v50"/><path d="M176 114v50"/><path d="M264 114v50"/><path d="M352 114v50"/><path d="M440 114v50"/><path d="M528 114v50"/></g><g stroke="#6b3d16" stroke-width="3.4" vector-effect="non-scaling-stroke"><circle cx="140" cy="196" r="14" fill="#fff"/><circle cx="400" cy="196" r="14" fill="#fff"/></g><g fill="#d8d2c4" stroke="#6b3d16" stroke-width="2.4" vector-effect="non-scaling-stroke"><circle cx="140" cy="196" r="5"/><circle cx="400" cy="196" r="5"/></g><path d="M505 104V56" fill="none" stroke="#6b3d16" stroke-width="3.4" stroke-linecap="round" vector-effect="non-scaling-stroke"/><circle cx="505" cy="38" r="20" fill="#f6c7cf" stroke="#6b3d16" stroke-width="3.4" vector-effect="non-scaling-stroke"/><circle cx="505" cy="38" r="7" fill="none" stroke="#6b3d16" stroke-width="2.6" vector-effect="non-scaling-stroke"/><g stroke="#6b3d16" stroke-width="2.4" stroke-linecap="round" vector-effect="non-scaling-stroke"><path d="M512 38h13"/><path d="M498 38h-13"/><path d="M505 31V18"/></g></svg>'
 };
 var SKY={5:['#f6c1a0','#fde5c6'],6:['#f9cfae','#fff0d6'],8:['#9fd6f5','#dcf2fc'],10:['#8fd0f5','#d2effc'],12:['#86ccf4','#cdeefc'],13:['#8fd0f5','#d2effc'],15:['#9fd2f0','#e3f3fb'],17:['#f4b27c','#fbe2b2'],19:['#7d74bd','#f1a58e'],21:['#1f2a5a','#3b4a86'],23:['#141c42','#2a3570']};
 /* 每个时段一条 H3 生成的动作流：首帧驱动，5 秒循环 */
